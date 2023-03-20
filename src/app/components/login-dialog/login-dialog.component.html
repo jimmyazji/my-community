@@ -1,0 +1,13 @@
+<div class="login-dialog-container">
+  <div class="login-form-container">
+    <h2 class="title">Log In</h2>
+    <form class="login-form">
+      <app-input class="login-input" type="email" placeholder="Email"></app-input>
+      <app-input class="login-input" type="password" placeholder="Password"></app-input>
+      <a class="password-reset-link" routerLink="/">Forgot Password?</a>
+      <app-button class="login-button" color="secondary">login</app-button>
+      <a href="#" (click)="register($event)">Sign up</a>
+    </form>
+  </div>
+  <div class="login-img"><img src="../../../assets/images/login.png" /></div>
+</div>

@@ -1,0 +1,23 @@
+.story-container {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  width: 10rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.16));
+  scroll-snap-align: end;
+}
+
+.story-img {
+  object-fit: cover;
+  height: 100%;
+  filter: brightness(80%);
+}
+
+.story-name {
+  position: absolute;
+  bottom: 0.25rem;
+  right: 50%;
+  transform: translateX(50%);
+  color: #fff;
+}

@@ -1,0 +1,26 @@
+.doctor-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  aspect-ratio: 1 / 1;
+}
+
+.doctor-img {
+  position: absolute;
+  background-color: var(--primary-color);
+  aspect-ratio: 1 / 1;
+  transform: translateX(50%);
+  right: 50%;
+  top: 0.5rem;
+  height: 5rem;
+  border-radius: 99rem;
+}
+.doctor-info {
+  height: 70%;
+  color: var(--primary-color);
+  background-color: var(--main-background);
+  border-radius: 0.25rem;
+  padding-top: 3rem;
+  text-align: center;
+}

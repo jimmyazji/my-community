@@ -1,1 +1,79 @@
-/* You can add global styles to this file, and also import other style files */
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "roboto";
+  background-color: var(--main-background);
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+*:focus {
+  outline: none;
+}
+
+button {
+  background-color: transparent;
+  border: solid 1px transparent;
+  cursor: pointer;
+}
+/* Colors */
+:root {
+  --primary-color: #199de0;
+  --primary-darker-color: #2786b4;
+  --main-background: #fdfdfd;
+  --main-darker-background: #efe9e9;
+  --primary-content: #ffffffff;
+  --primary-placeholder: #c0c0c0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

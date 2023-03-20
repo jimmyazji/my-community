@@ -1,0 +1,78 @@
+.main-navigation {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 5.5rem;
+  left: 0;
+  z-index: 50;
+  justify-content: space-between;
+  padding: 0 3rem;
+  align-items: center;
+  text-transform: capitalize;
+  transition: top 200ms ease-out, background-color 400ms ease-in-out;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-container {
+  font-size: 1.25rem;
+  display: flex;
+}
+
+.navigation-list {
+  display: flex;
+  list-style: none;
+}
+
+.navigation-item {
+  font-weight: 400;
+  padding: 2rem;
+  white-space: nowrap;
+  position: relative;
+}
+
+.authentication-container {
+  font-size: 1rem;
+  font-weight: 400;
+  display: flex;
+  column-gap: 0.5rem;
+}
+
+.navigation-item > *:after {
+  content: "";
+  opacity: 0;
+  background-color: var(--primary-color);
+  height: 0.25rem;
+  position: absolute;
+  bottom: 25%;
+  right: 50%;
+  transform: translateX(50%);
+  display: block;
+  width: 2rem;
+  border-radius: 90rem;
+  transition: all 200ms ease-out;
+}
+
+.navigation-item:focus ::after {
+  opacity: 0.3;
+}
+
+.navigation-item:hover ::after {
+  opacity: 0.3;
+}
+
+.navigation-item .active::after {
+  opacity: 1;
+}
+
+.sticky-nav {
+  top: 0;
+  background-color: #f5f5f5f5;
+}
+
+.search-icon {
+  width: 1.5rem;
+}

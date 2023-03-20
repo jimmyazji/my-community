@@ -1,0 +1,45 @@
+<div class="main-navigation" changeOnScroll role="banner">
+  <div class="navigation-container">
+    <a class="logo" routerLink="/">
+      <img height="80" src="../assets/images/logo.png" alt="My Community" />
+    </a>
+    <ul class="navigation-list">
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/home">home</a>
+      </li>
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/clinic">clinic</a>
+      </li>
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/insurance">insurance</a>
+      </li>
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/about-us">about us</a>
+      </li>
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/contact-us">contact us</a>
+      </li>
+    </ul>
+  </div>
+  <div class="authentication-container">
+    <app-button color="icon-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="search-icon"
+        viewBox="1.2 1.2 29.05 29.083"
+      >
+        <g data-name="search-normal">
+          <path
+            fill="transparent"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M26.212 14.417c0 6.514-5.281 11.795-11.795 11.795-6.515 0-11.796-5.281-11.796-11.795 0-6.515 5.281-11.796 11.796-11.796 6.514 0 11.795 5.281 11.795 11.796ZM24.81 27.116c.694 2.097 2.28 2.307 3.499.472 1.114-1.678.38-3.054-1.638-3.054-1.495-.013-2.333 1.153-1.861 2.582Z"
+            data-name="Vector"
+          />
+        </g></svg
+    ></app-button>
+    <app-button (click)="login()">log in</app-button>
+  </div>
+</div>

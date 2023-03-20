@@ -1,0 +1,45 @@
+.login-dialog-container {
+  min-height: 42rem;
+  min-width: 42rem;
+  background-color: var(--main-background);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+}
+
+.login-form-container {
+  padding: 2rem;
+  background-color: var(--primary-color);
+  color: var(--primary-content);
+  display: grid;
+  gap: 4rem;
+  place-content: center;
+  text-align: center;
+}
+
+.login-form {
+  display: grid;
+  place-content: center;
+}
+
+.password-reset-link {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1.25rem;
+}
+
+.login-button {
+  margin-top: 4rem;
+}
+
+.login-img {
+  padding: 2rem;
+}
+
+.login-input{
+  margin-top: 1rem;
+}
+
+.title{
+  text-transform: uppercase;
+  font-size: 2rem;
+}

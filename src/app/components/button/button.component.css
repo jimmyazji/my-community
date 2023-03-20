@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  border: solid 2px var(--primary-color);
+  border-radius: 2rem;
+  text-transform: capitalize;
+}
+
+.button.primary {
+  background-color: var(--primary-color);
+  padding: 0.625rem 2.5rem;
+  color: #fff;
+}
+
+.button.secondary {
+  background-color: var(--main-background);
+  padding: 0.625rem 2.5rem;
+  color: var(--primary-color);
+}
+
+.button.icon-button {
+  background-color: var(--primary-color);
+  padding: 0.625rem;
+  color: #fff;
+}

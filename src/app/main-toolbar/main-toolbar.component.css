@@ -1,0 +1,46 @@
+.toolbar {
+  background-color: var(--main-background);
+}
+
+.toolbar-list {
+  display: flex;
+  height: 4.5rem;
+  justify-content: space-between;
+  max-width: 42rem;
+  padding: 0.5rem;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.toolbar-item button {
+  font-size: 1.125rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+.toolbar-item button:focus {
+  background-color: #f1f1f1f1;
+}
+
+.toolbar-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 100%;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
+.toolbar-icon svg {
+  height: 1.5rem;
+}

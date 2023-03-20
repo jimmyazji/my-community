@@ -1,0 +1,13 @@
+:host {
+position: relative;
+}
+
+.input {
+  display: flex;
+  min-width: 24rem;
+  background-color: var(--main-background);
+  border: 1px solid var(--primary-color);
+  padding: 1rem 3rem;
+  border-radius: 99rem;
+  filter: drop-shadow(1px 3px 3px rgba(0, 0, 0, 0.16));
+}
