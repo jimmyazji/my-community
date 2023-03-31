@@ -1,0 +1,39 @@
+.arch {
+  overflow: hidden;
+  margin-top: 6rem;
+  background-color: var(--main-darker-background);
+}
+
+.arch::before {
+  content: "";
+  position: absolute;
+  background-color: var(--main-darker-background);
+  top: 4.5rem;
+  padding-top: 6rem;
+  width: 100%;
+  z-index: 1;
+}
+
+.arch::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: var(--primary-color);
+  width: 72rem;
+  top: 4.5rem;
+  right: 50%;
+  transform: translateX(50%);
+  border-radius: 50% 50% 50% 50% / 25% 25% 75% 75%;
+  height: 20rem;
+  z-index: 0;
+}
+
+.arch-content {
+  position: absolute;
+  display: flex;
+  padding-top: 2rem;
+  gap: 1rem;
+  z-index: 1;
+  right: 50%;
+  transform: translateX(50%);
+}

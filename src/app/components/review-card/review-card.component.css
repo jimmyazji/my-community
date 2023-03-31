@@ -1,0 +1,21 @@
+.review-card-container {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}
+
+.review-content {
+  display: flex;
+  gap: 1rem;
+}
+
+.reviewer-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.reviewer-avatar {
+  height: 6rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 99rem;
+}

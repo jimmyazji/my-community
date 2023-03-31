@@ -3,11 +3,12 @@
   padding: 1rem;
   background-color: var(--primary-content);
   aspect-ratio: 2 / 1;
-  width: 20rem;
+  max-height: 10rem;
   border-radius: 0.25rem;
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.16));
   grid-template-columns: 8rem auto;
   scroll-snap-align: end;
+  cursor: pointer;
 }
 
 .clinic-img {
@@ -31,18 +32,10 @@
   display: flex;
   align-items: center;
   color: var(--primary-placeholder);
+  white-space: nowrap;
 }
 
 .call-icon {
   height: 1rem;
   margin-right: 0.5rem;
-}
-
-.clinic-rating {
-  display: flex;
-}
-
-.star {
-  height: 1rem;
-  padding: 0 0.125rem;
 }

@@ -1,0 +1,28 @@
+<div class="main-navigation" changeOnScroll role="banner">
+  <div class="navigation-container">
+    <a class="logo" routerLink="/">
+      <img height="80" src="../assets/images/logo.png" alt="My Community" />
+    </a>
+    <ul class="navigation-list">
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/home">home</a>
+      </li>
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/clinics">clinic</a>
+      </li>
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/insurance">insurance</a>
+      </li>
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/about-us">about us</a>
+      </li>
+      <li class="navigation-item">
+        <a routerLinkActive="active" routerLink="/contact-us">contact us</a>
+      </li>
+    </ul>
+  </div>
+  <div class="authentication-container">
+    <app-search-bar></app-search-bar>
+    <app-button (click)="login()">log in</app-button>
+  </div>
+</div>

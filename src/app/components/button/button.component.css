@@ -7,14 +7,26 @@
   display: flex;
   justify-content: center;
   border: solid 2px var(--primary-color);
-  border-radius: 2rem;
+  border-radius: 0.25rem;
   text-transform: capitalize;
+}
+.button.rounded {
+  border-radius: 99rem;
+}
+
+.button.full-width {
+  width: 100%;
+}
+
+.button.transparent {
+  padding: 0.625rem 2.5rem;
+  color: var(--primary-color);
 }
 
 .button.primary {
   background-color: var(--primary-color);
   padding: 0.625rem 2.5rem;
-  color: #fff;
+  color: var(--primary-content);
 }
 
 .button.secondary {

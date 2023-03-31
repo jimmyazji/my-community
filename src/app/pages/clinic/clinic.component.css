@@ -1,0 +1,196 @@
+.clinic-grid {
+  max-width: var(--main-page-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem 0 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.img-container {
+  min-width: max-content;
+}
+
+.appointment-request {
+  margin: 1rem 0;
+}
+
+.clinic-img {
+  height: 24rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  border-bottom-right-radius: 6rem;
+}
+
+.header > * {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header :nth-child(even) {
+  justify-content: end;
+}
+
+.clinic-info {
+  grid-column: span 9;
+}
+
+.clinic-name,
+.clinic-phone {
+  font-weight: 400;
+}
+
+.crown {
+  width: 2rem;
+}
+
+.call-icon {
+  width: 1.25rem;
+}
+
+.clinic-description {
+  min-height: 6rem;
+}
+
+::ng-deep .secondary-tabs .mat-mdc-tab-label-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40rem;
+}
+
+::ng-deep .mat-mdc-tab-label-container {
+  filter: drop-shadow(0px 1px 0.5px rgba(0, 0, 0, 0.16));
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+}
+
+::ng-deep .primary-tabs .mat-mdc-tab-label-container {
+  background-color: var(--main-background);
+}
+
+::ng-deep .secondary-tabs .mat-mdc-tab-label-container {
+  background-color: var(--primary-color);
+}
+
+::ng-deep .mat-mdc-tab-label {
+  border-radius: 0.25rem;
+}
+
+::ng-deep .mat-mdc-tab {
+  border-radius: 0.25rem;
+  transition: background-color 300ms ease-in-out;
+}
+
+::ng-deep .mdc-tab-indicator {
+  display: none !important;
+}
+
+::ng-deep .primary-tabs .mdc-tab-indicator--active {
+  background-color: var(--primary-color);
+}
+
+::ng-deep .secondary-tabs .mdc-tab-indicator--active {
+  background-color: var(--main-background);
+}
+
+::ng-deep
+  .primary-tabs
+  .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active
+  .mdc-tab__text-label {
+  color: var(--primary-content);
+}
+
+::ng-deep
+  .secondary-tabs
+  .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active
+  .mdc-tab__text-label {
+  color: var(--primary-color);
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, min(100%, 9rem));
+  place-content: center;
+  gap: 1rem;
+}
+
+.location-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.125rem solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.location-name {
+  font-weight: 400;
+}
+
+.services-grid {
+  max-width: 60rem;
+  display: grid;
+  padding: 0 0.5rem 1rem 0.5rem;
+  grid-template-columns: repeat(auto-fit, min(100%, 9rem));
+  gap: 1rem;
+}
+
+.insurances-grid {
+  max-width: 60rem;
+  display: grid;
+  padding: 0 0.5rem 1rem 0.5rem;
+  grid-template-columns: repeat(auto-fit, min(100%, 8rem));
+  gap: 1rem;
+}
+
+.providers-grid {
+  max-width: 60rem;
+  display: grid;
+  padding: 0 0.5rem 1rem 0.5rem;
+  grid-template-columns: repeat(auto-fit, min(100%, 18rem));
+  gap: 1rem;
+}
+
+.review {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rating-input {
+  width: 40rem;
+  display: flex;
+  min-width: 24rem;
+  background-color: var(--main-background);
+  border: 1px solid transparent;
+  padding: 1rem 2rem;
+  filter: drop-shadow(0px 1px 0.5px rgba(0, 0, 0, 0.16));
+  border-radius: 0.25rem;
+  resize: none;
+}
+.reviews-container {
+  padding: 1rem 0;
+}
+
+.recommendation-container {
+  max-width: 42rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recommend-question {
+  font-weight: 400;
+}
+
+.recommend-actions {
+  display: flex;
+  padding: 0.5rem 0;
+  justify-content: center;
+  gap: 0.5rem;
+}

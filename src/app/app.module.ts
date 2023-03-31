@@ -1,36 +1,47 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs'
+
+import { HomeComponent } from './pages/home/home.component';
+import { ClinicsComponent } from './pages/clinics/clinics.component';
+import { InsurancesComponent } from './pages/insurances/insurances.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { ClinicComponent } from './pages/clinic/clinic.component';
+
 import { AppComponent } from './app.component';
-import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
-import { MainNavigationBarComponent } from './main-navigation-bar/main-navigation-bar.component';
-import { HomeComponent } from './home/home.component';
-import { ClinicComponent } from './clinic/clinic.component';
-import { InsuranceComponent } from './insurance/insurance.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
+import { MainNavigationBarComponent } from './components/main-navigation-bar/main-navigation-bar.component';
 import { ButtonComponent } from './components/button/button.component';
 import { ClinicCardComponent } from './components/clinic-card/clinic-card.component';
 import { HorizontalScrollDirective } from './horizontal-scroll.directive';
-import { ChangeOnScrollDirective } from './change-on-scroll.directive';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { InsuranceCardComponent } from './components/insurance-card/insurance-card.component';
 import { StoryComponent } from './components/story/story.component';
 import { PostComponent } from './components/post/post.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from './components/register-dialog/register-dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { InputComponent } from './components/input/input.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
+import { ChangeOnScrollDirective } from './change-on-scroll.directive';
+import { ArchComponent } from './components/arch/arch.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { ServiceCardComponent } from './components/service-card/service-card.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
+import { RecommendedClinicComponent } from './components/recommended-clinic/recommended-clinic.component';
 @NgModule({
   declarations: [
     AppComponent,
     MainToolbarComponent,
     MainNavigationBarComponent,
     HomeComponent,
-    ClinicComponent,
-    InsuranceComponent,
+    ClinicsComponent,
+    InsurancesComponent,
     AboutUsComponent,
     ContactUsComponent,
     ButtonComponent,
@@ -44,11 +55,22 @@ import { InputComponent } from './components/input/input.component';
     LoginDialogComponent,
     RegisterDialogComponent,
     InputComponent,
+    SearchBarComponent,
+    ClinicComponent,
+    ArchComponent,
+    RatingComponent,
+    ServiceCardComponent,
+    ReviewCardComponent,
+    RecommendedClinicComponent,
   ],
   imports: [
     BrowserModule,
     MatDialogModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

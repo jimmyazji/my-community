@@ -1,1 +1,8 @@
-<input class="input" [type]="type" [placeholder]="placeholder" [name]="name" [id]="id" />
+<input
+  class="input"
+  [type]="type"
+  [placeholder]="placeholder"
+  [name]="name"
+  [id]="id"
+  [ngClass]="[rounded ? 'rounded' : '', size]"
+/>

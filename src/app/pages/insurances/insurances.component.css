@@ -1,0 +1,55 @@
+.search {
+  position: relative;
+  width: 32rem;
+}
+
+.search-input {
+  border: solid 1px transparent;
+  background-color: #fff;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: 4rem;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.search-input::placeholder {
+  color: var(--primary-placeholder);
+  opacity: 1;
+}
+
+.search-icons {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  top: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  pointer-events: none;
+}
+
+.search-icon {
+  color: var(--primary-content);
+  width: 1.5rem;
+}
+
+.search-submit {
+  padding: 0.5rem;
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+  pointer-events: all;
+}
+.insurances-grid {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--main-page-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16rem 1rem 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, min(8rem, 100%));
+  gap: 2rem;
+}

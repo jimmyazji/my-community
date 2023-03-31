@@ -6,6 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./button.component.css']
 })
 export class ButtonComponent {
-  @Input() color: 'primary' | 'secondary' | 'danger' | 'icon-button' = 'primary';
-  @Input() link: string | any[] | undefined | null
+  @Input() color: 'primary' | 'secondary' | 'danger' | 'icon-button' | 'transparent' = 'primary';
+  @Input() link: string | undefined | null
+  @Input() fullWidth: Boolean = false;
+  @Input() rounded: Boolean = true;
 }

@@ -1,0 +1,217 @@
+<div class="padded-content">
+  <div class="clinic-grid">
+    <div class="img-container">
+      <img src="../../../assets/images/clinic.jpeg" class="clinic-img" alt="" />
+      <app-button
+        class="appointment-request"
+        [fullWidth]="true"
+        [rounded]="false"
+        >Request an Appointment</app-button
+      >
+    </div>
+    <div class="clinic-info">
+      <div class="header">
+        <h2 class="clinic-name">
+          <svg
+            class="crown"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="168.467 382.817 43.05 42.85"
+          >
+            <g>
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                d="M200.833 425.667h-21.666a1.637 1.637 0 0 1-1.625-1.625c0-.889.736-1.625 1.625-1.625h21.666c.889 0 1.625.736 1.625 1.625 0 .888-.736 1.625-1.625 1.625Zm7.259-35.707-8.667 6.197c-1.148.823-2.795.325-3.293-.997l-4.095-10.92c-.694-1.885-3.359-1.885-4.052 0l-4.117 10.898c-.498 1.344-2.123 1.842-3.271.997l-8.667-6.197c-1.733-1.213-4.03.499-3.315 2.514l9.013 25.241a2.15 2.15 0 0 0 2.037 1.43h20.648a2.18 2.18 0 0 0 2.037-1.43l9.013-25.241c.737-2.015-1.56-3.727-3.271-2.492Zm-12.675 19.998h-10.834a1.637 1.637 0 0 1-1.625-1.625c0-.888.737-1.625 1.625-1.625h10.834c.888 0 1.625.737 1.625 1.625 0 .889-.737 1.625-1.625 1.625Z"
+                data-name="Vector"
+              />
+            </g></svg
+          >{{ clinic.name }}
+        </h2>
+        <app-rating
+          size="lg"
+          class="clinic-rating"
+          [rating]="clinic.rating"
+        ></app-rating>
+        <h4 class="clinic-phone">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox=".783 .783 20.65 20.683"
+            class="call-icon"
+          >
+            <g data-name="call">
+              <path
+                fill="transparent"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M20.35 16.978c0 .334-.074.676-.232 1.01a3.822 3.822 0 0 1-.63.945c-.454.5-.954.86-1.519 1.093a4.651 4.651 0 0 1-1.806.351c-.945 0-1.954-.222-3.02-.676a16.269 16.269 0 0 1-3.186-1.834 26.63 26.63 0 0 1-3.038-2.593 26.318 26.318 0 0 1-2.584-3.029c-.76-1.056-1.371-2.112-1.816-3.158-.444-1.056-.667-2.066-.667-3.03 0-.63.112-1.231.334-1.787A4.263 4.263 0 0 1 3.25 2.723c.593-.583 1.241-.87 1.927-.87.26 0 .518.055.75.166.24.111.454.278.62.519l2.15 3.029c.166.231.287.444.37.648.083.195.13.39.13.565 0 .222-.065.445-.195.658a3.15 3.15 0 0 1-.519.657l-.704.732a.496.496 0 0 0-.148.37c0 .075.01.14.028.214.028.074.056.13.074.185.167.306.454.704.862 1.186.416.481.861.972 1.343 1.463.5.49.981.945 1.472 1.362.482.407.88.685 1.195.852.047.018.102.046.167.074a.64.64 0 0 0 .232.037.51.51 0 0 0 .38-.158l.703-.694c.232-.232.454-.408.667-.519.213-.13.426-.194.658-.194.176 0 .361.037.565.12.204.083.417.204.648.361l3.066 2.177c.24.167.408.361.51.593a1.9 1.9 0 0 1 .148.722Z"
+                data-name="Vector"
+              />
+            </g></svg
+          >{{ clinic.phone }}
+        </h4>
+      </div>
+      <p class="clinic-description">{{ clinic.description }}</p>
+      <mat-tab-group dynamicHeight class="primary-tabs">
+        <mat-tab label="Location">
+          <div class="locations-grid">
+            <div class="location-card-container">
+              <h3 class="location-name">Name</h3>
+            </div>
+            <div class="location-card-container">
+              <h3 class="location-name">Name</h3>
+            </div>
+            <div class="location-card-container">
+              <h3 class="location-name">Name</h3>
+            </div>
+            <div class="location-card-container">
+              <h3 class="location-name">Name</h3>
+            </div>
+            <div class="location-card-container">
+              <h3 class="location-name">Name</h3>
+            </div>
+            <div class="location-card-container">
+              <h3 class="location-name">Name</h3>
+            </div>
+            <div class="location-card-container">
+              <h3 class="location-name">Name</h3>
+            </div>
+            <div class="location-card-container">
+              <h3 class="location-name">Name</h3>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Services">
+          <div class="services-grid">
+            <app-service-card></app-service-card>
+            <app-service-card></app-service-card>
+            <app-service-card></app-service-card>
+            <app-service-card></app-service-card>
+            <app-service-card></app-service-card>
+            <app-service-card></app-service-card>
+          </div>
+        </mat-tab>
+        <mat-tab label="Insurances">
+          <div class="insurances-grid">
+            <app-insurance-card
+              [insurance]="{ name: 'Name' }"
+            ></app-insurance-card>
+            <app-insurance-card
+              [insurance]="{ name: 'Name' }"
+            ></app-insurance-card>
+            <app-insurance-card
+              [insurance]="{ name: 'Name' }"
+            ></app-insurance-card>
+            <app-insurance-card
+              [insurance]="{ name: 'Name' }"
+            ></app-insurance-card>
+            <app-insurance-card
+              [insurance]="{ name: 'Name' }"
+            ></app-insurance-card>
+            <app-insurance-card
+              [insurance]="{ name: 'Name' }"
+            ></app-insurance-card>
+            <app-insurance-card
+              [insurance]="{ name: 'Name' }"
+            ></app-insurance-card>
+            <app-insurance-card
+              [insurance]="{ name: 'Name' }"
+            ></app-insurance-card>
+          </div>
+        </mat-tab>
+        <mat-tab label="Providers">
+          <mat-tab-group dynamicHeight class="secondary-tabs">
+            <mat-tab label="All"
+              ><div class="providers-grid">
+                <app-clinic-card
+                  [clinic]="{
+                    id: 7,
+                    name: 'Ellis Langley',
+                    rating: 2,
+                    phone: '0923 487 29'
+                  }"
+                >
+                </app-clinic-card>
+                <app-clinic-card
+                  [clinic]="{
+                    id: 3,
+                    name: 'Jacklyn Shaw',
+                    rating: 5,
+                    phone: '0923 487 29'
+                  }"
+                >
+                </app-clinic-card>
+                <app-clinic-card
+                  [clinic]="{
+                    id: 7,
+                    name: 'Ellis Langley',
+                    rating: 2,
+                    phone: '0923 487 29'
+                  }"
+                >
+                </app-clinic-card></div
+            ></mat-tab>
+            <mat-tab label="Dr"></mat-tab>
+            <mat-tab label="NPA"></mat-tab>
+            <mat-tab label="NPF"></mat-tab>
+          </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="Reviews">
+          <div class="review">
+            <textarea
+              class="rating-input"
+              placeholder="Write a review"
+              rows="4"
+            ></textarea>
+            <app-rating size="lg" [rating]="0" class="set-rating"></app-rating>
+          </div>
+          <div class="reviews-container">
+            <app-review-card
+              [review]="{
+                content:
+                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, fugiat quos porro, labore accusantium molestiae in aliquam vero neque mollitia provident vel impedit laudantium at sapiente necessitatibus veritatis omnis ut nesciunt corporis, ea delectus tenetur consectetur? Excepturi cum a soluta?',
+                rating: 4
+              }"
+              [reviewer]="{
+                img: 'https://loremflickr.com/96/96',
+                name: 'Yousef Ali'
+              }"
+            ></app-review-card>
+            <app-review-card
+              [review]="{
+                content:
+                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, fugiat quos porro, labore accusantium molestiae in aliquam vero neque mollitia provident vel impedit laudantium at sapiente necessitatibus veritatis omnis ut nesciunt corporis, ea delectus tenetur consectetur? Excepturi cum a soluta?',
+                rating: 4
+              }"
+              [reviewer]="{
+                img: 'https://loremflickr.com/96/96',
+                name: 'Khaled Mohamad'
+              }"
+            ></app-review-card>
+            <app-review-card
+              [review]="{
+                content:
+                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, fugiat quos porro, labore accusantium molestiae in aliquam vero neque mollitia provident vel impedit laudantium at sapiente necessitatibus veritatis omnis ut nesciunt corporis, ea delectus tenetur consectetur? Excepturi cum a soluta?',
+                rating: 4
+              }"
+              [reviewer]="{
+                img: 'https://loremflickr.com/96/96',
+                name: 'Mohamad Ysine'
+              }"
+            ></app-review-card>
+          </div>
+        </mat-tab>
+        <mat-tab label="Recommendation">
+          <div class="recommendation-container">
+            <h2 class="recommend-question">Do you recommend this clinic?</h2>
+            <div class="recommend-actions">
+              <app-button [rounded]="false">Yes</app-button>
+              <app-button [rounded]="false" color="transparent">No</app-button>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

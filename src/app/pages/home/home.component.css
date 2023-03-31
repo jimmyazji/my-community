@@ -1,0 +1,243 @@
+.categories::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../assets/images/home-background.webp");
+  background-position: top right;
+  background-repeat: no-repeat;
+  filter: brightness(0.8);
+  aspect-ratio: 16 / 9;
+  z-index: 0;
+}
+
+.categories {
+  position: relative;
+  color: var(--primary-content);
+}
+
+.background-container {
+  position: relative;
+  max-width: 48rem;
+  min-height: 52rem;
+  padding: 10rem 1rem 0 1rem;
+  padding-top: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.background-container > :not(:first-child) {
+  margin-top: 1.5rem;
+}
+
+.paginator {
+  position: absolute;
+  width: calc(100% + 2rem);
+  transform: translateX(-1rem);
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+@media only screen and (min-width: 992px) {
+  .background-container {
+    margin-left: 0;
+    padding-left: 8rem;
+  }
+
+  .paginator {
+    width: calc(100% + 8rem);
+    transform: translateX(-4rem);
+  }
+}
+
+.pagination-button {
+  color: var(--primary-content);
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.categories-grid {
+  position: relative;
+  display: grid;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1.5rem;
+}
+
+.search {
+  position: relative;
+}
+
+.search-input {
+  border: solid 1px transparent;
+  background-color: #fff;
+  padding-left: 4rem;
+  padding-right: 2rem;
+  height: 4rem;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.search-input::placeholder {
+  color: var(--primary-placeholder);
+  opacity: 1;
+}
+
+.search-icons {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  top: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  color: lightgray;
+  pointer-events: none;
+}
+
+.search-icon {
+  color: var(--primary-placeholder);
+  margin-right: 0.5rem;
+  width: 1.5rem;
+}
+
+.search-submit {
+  padding: 0.5rem;
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+  pointer-events: all;
+}
+
+.search-submit--icon {
+  color: var(--primary-content);
+  width: 1.5rem;
+}
+
+.clinics {
+  position: relative;
+}
+
+.clinics-container {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-right: 1rem;
+  padding: 2rem 2rem 5rem;
+}
+
+.more-button {
+  position: absolute;
+  bottom: 1rem;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.insurance-grid {
+  padding-top: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+}
+
+.home-main {
+  display: flex;
+  padding: 1rem 0;
+  background-color: var(--main-darker-background);
+}
+
+
+.stories {
+  display: flex;
+  overflow-x: scroll;
+  gap: 1.5rem;
+  max-width: 56rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.posts {
+  padding: 2rem 0;
+}
+
+.stories::-webkit-scrollbar {
+  display: none;
+}
+
+.social {
+  padding: 0 2rem;
+}
+
+.map-container {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  width: 12rem;
+  transition: width 200ms ease-out;
+  height: 40rem;
+  right: 0;
+  z-index: 40;
+}
+
+.map-iframe {
+  width: 64rem;
+  height: 40rem;
+  border: 2px solid var(--primary-color);
+  z-index: 40;
+}
+
+.map-container:hover {
+  width: 18rem;
+}
+
+.map-container.close:hover .iframe-mask {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--primary-color);
+}
+
+.iframe-mask {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  color: transparent;
+  transition: color 300ms ease-out, background-color 300ms ease-out;
+  cursor: pointer;
+}
+
+.map-container.open {
+  width: 63.75rem;
+}
+
+.map-container.open:hover .iframe-mask {
+  pointer-events: none;
+}
+
+.map-backdrop {
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.20);
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+}

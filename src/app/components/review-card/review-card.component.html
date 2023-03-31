@@ -1,0 +1,12 @@
+<div class="review-card-container">
+  <div class="review-content">
+    <img [src]="reviewer?.img" class="reviewer-avatar" alt="" />
+    <div class="review">
+      <h2 class="reviewer-name">{{ reviewer?.name }}</h2>
+      <p>
+        {{ review?.content }}
+      </p>
+    </div>
+  </div>
+  <app-rating size="md" [rating]="review?.rating"></app-rating>
+</div>

@@ -1,0 +1,18 @@
+.rating-container {
+  display: flex;
+}
+
+.sm .star {
+  height: 1rem;
+  padding: 0 0.125rem;
+}
+
+.md .star {
+  height: 1.25rem;
+  padding: 0 0.1875;
+}
+
+.lg .star {
+  height: 1.5rem;
+  padding: 0 0.25rem;
+}
