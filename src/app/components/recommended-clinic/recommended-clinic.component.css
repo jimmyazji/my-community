@@ -95,3 +95,11 @@
 .visit-button {
   padding-bottom: 3.25rem;
 }
+
+.pagination-button {
+  color: var(--primary-content);
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  pointer-events: all;
+}
