@@ -1,12 +1,41 @@
 <div class="login-dialog-container">
   <div class="login-form-container">
     <h2 class="title">Log In</h2>
-    <form class="login-form">
-      <app-input size="lg" class="login-input" type="email" placeholder="Email"></app-input>
-      <app-input size="lg" class="login-input" type="password" placeholder="Password"></app-input>
+    <form class="login-form" [formGroup]="loginForm">
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Email" formControlName="myCommunityEm" autocomplete="nope" required>
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field [style.width]="'100%'" appearance="outline">
+          <input class="pass-input" placeholder="Password" matInput [type]="hide ? 'password' : 'text'"
+            autocomplete="nope" (keydown.enter)="$event.preventDefault(); login()" formControlName="Password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="wrongCred">
+        <mat-error>Incorrect Email or Password</mat-error>
+      </div>
+
+      <!-- <app-input size="lg" class="login-input" type="email" placeholder="Email"></app-input>
+      <app-input size="lg" class="login-input" type="password" placeholder="Password"></app-input> -->
       <a class="password-reset-link" routerLink="/">Forgot Password?</a>
-      <app-button class="login-button" color="secondary">login</app-button>
-      <a class="sign-up-link" href="#" (click)="register($event)">Sign up</a>
+
+      <div class="login-button">
+        <button (click)="login()">
+          login
+        </button>
+      </div>
+
+      <div class="signUp-button">
+        <a class="sign-up-link" href="#" (click)="register($event)">Sign up</a>
+      </div>
     </form>
   </div>
   <div class="login-img"><img src="../../../assets/images/login.png" /></div>

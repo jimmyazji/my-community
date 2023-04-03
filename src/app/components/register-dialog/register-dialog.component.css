@@ -23,15 +23,21 @@
   font-size: 1.25rem;
 }
 
+
 .gender-radio-label {
-    margin-left: .25rem;
+  margin-left: .25rem;
 }
 
 .gender-radio {
-  margin-top: 1rem;
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.gender-radio .item {
+  display: flex;
+  margin-top: 0.2rem;
 }
 
 .submit-button {
@@ -73,4 +79,22 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+
+input {
+  background: var(--main-background);
+  width: 100% !important;
+  padding: 1rem 2rem;
+  border-radius: 5rem;
+  border: 1px solid var(--primary-color) !important;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: 100% !important;
+  border-radius: 50%;
+  object-fit: contain;
 }

@@ -34,6 +34,10 @@ import { RatingComponent } from './components/rating/rating.component';
 import { ServiceCardComponent } from './components/service-card/service-card.component';
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { RecommendedClinicComponent } from './components/recommended-clinic/recommended-clinic.component';
+import { MaterialModule } from './material/material.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +66,7 @@ import { RecommendedClinicComponent } from './components/recommended-clinic/reco
     ServiceCardComponent,
     ReviewCardComponent,
     RecommendedClinicComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,9 +75,17 @@ import { RecommendedClinicComponent } from './components/recommended-clinic/reco
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
+    MaterialModule,
+    HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
