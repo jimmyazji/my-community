@@ -4,8 +4,9 @@
   margin-right: auto;
   max-width: var(--main-page-width);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(32rem, 100%), 1fr));
   gap: 1rem;
+  padding: 1rem;
 }
 
 .title {
@@ -57,14 +58,16 @@
   background-color: var(--primary-color);
   border-radius: 0.25rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(2, minmax(min(16rem, 100%), 1fr));
   grid-auto-rows: 5rem;
+  place-content: center;
   gap: 1rem;
   padding: 2rem;
 }
 
 .input-label {
   color: var(--primary-content);
+  line-height: 2rem;
 }
 
 .full-row-input {
@@ -87,3 +90,10 @@
   grid-row: span 2;
 }
 
+.install-apps {
+  display: flex;
+  justify-content: center;
+  max-height: 24rem;
+  place-items: center;
+  flex-wrap: wrap;
+}

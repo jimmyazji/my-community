@@ -1,8 +1,8 @@
 <div class="padded-content">
   <div class="contact-us-content">
     <article class="contact-us-info">
-      <h1 class="title">Contact us</h1>
-      <p class="contact-us-excerpt">
+      <h1 class="title" i18n>Contact us</h1>
+      <p class="contact-us-excerpt" i18n>
         Do you have a Comment or Message and would like to communicate with the
         work team?
       </p>
@@ -32,7 +32,9 @@
               </g>
             </svg>
           </div>
-          Office 2209, The Burlington Tower, Dubai, UAE
+          <ng-container i18n
+            >Office 2209, The Burlington Tower, Dubai, UAE</ng-container
+          >
         </li>
         <li>
           <div class="contact-us-list-icon">
@@ -159,34 +161,54 @@
       </ul>
     </article>
     <div class="contact-us-form">
-      <h2 class="contact-us-form-title">Fill in the following fields</h2>
+      <h2 class="contact-us-form-title" i18n>Fill in the following fields</h2>
       <div class="">
-        <label class="input-label" for="">First Name</label>
+        <label class="input-label" for="first_name" i18n>First Name</label>
+        <app-input
+          id="first_name"
+          name="first_name"
+          [rounded]="false"
+          size="full"
+        ></app-input>
+      </div>
+      <div class="">
+        <label class="input-label" for="" i18n>Last Name</label>
         <app-input [rounded]="false" size="full"></app-input>
       </div>
       <div class="">
-        <label class="input-label" for="">First Name</label>
+        <label class="input-label" for="" i18n>Email</label>
         <app-input [rounded]="false" size="full"></app-input>
       </div>
       <div class="">
-        <label class="input-label" for="">First Name</label>
-        <app-input [rounded]="false" size="full"></app-input>
-      </div>
-      <div class="">
-        <label class="input-label" for="">First Name</label>
+        <label class="input-label" for="" i18n>Phone Number</label>
         <app-input [rounded]="false" size="full"></app-input>
       </div>
       <div class="full-row-input">
-        <label class="input-label" for="">First Name</label>
+        <label class="input-label" for="" i18n>Subject</label>
         <app-input [rounded]="false" size="full"></app-input>
       </div>
       <div class="full-row-input last-input">
-        <label class="input-label" for="">First Name</label>
+        <label class="input-label" for="" i18n>Message</label>
         <textarea name="" class="textarea"></textarea>
       </div>
       <div class="full-row-input submit">
-        <app-button color="secondary">Send</app-button>
+        <app-button color="secondary" i18n>Send</app-button>
       </div>
     </div>
   </div>
+</div>
+<div class="install-apps">
+  <a
+    href="https://play.google.com/store/apps/details?id=com.mycommunity_user.mycommunity&hl=en&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+    ><img
+      alt="Get it on Google Play"
+      src="../../../assets/images/google-play-badge.png"
+      height="128"
+  /></a>
+  <a href="#apple-store">
+    <img
+      alt="Get it on Google Play"
+      src="../../../assets/images/apple-store-badge.svg"
+      height="88"
+  /></a>
 </div>

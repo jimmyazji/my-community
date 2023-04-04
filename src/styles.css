@@ -75,6 +75,7 @@ button {
   --main-darker-background: #efe9e9;
   --primary-content: #ffffffff;
   --primary-placeholder: #c0c0c0;
+  --primary-darker-placeholder: #919191;
 
   --main-page-width: 80rem;
 }

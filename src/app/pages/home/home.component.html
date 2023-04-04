@@ -50,6 +50,7 @@
         class="search-input"
         placeholder="Search insurances..."
         type="text"
+        i18n-placeholder
       />
       <div class="search-icons">
         <svg
@@ -116,7 +117,7 @@
       *ngFor="let clinic of clinics"
       [clinic]="clinic"
     ></app-clinic-card>
-    <app-button class="more-button" (click)="moreClinics()"
+    <app-button class="more-button" (click)="moreClinics()" i18n
       >Show more</app-button
     >
   </div>

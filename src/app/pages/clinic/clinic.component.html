@@ -6,6 +6,7 @@
         class="appointment-request"
         [fullWidth]="true"
         [rounded]="false"
+        i18n
         >Request an Appointment</app-button
       >
     </div>
@@ -54,7 +55,7 @@
       </div>
       <p class="clinic-description">{{ clinic.description }}</p>
       <mat-tab-group dynamicHeight class="primary-tabs">
-        <mat-tab label="Location">
+        <mat-tab label="Location" i18n-label>
           <div class="locations-grid">
             <div class="location-card-container">
               <h3 class="location-name">Name</h3>
@@ -82,7 +83,7 @@
             </div>
           </div>
         </mat-tab>
-        <mat-tab label="Services">
+        <mat-tab label="Services" i18n-label>
           <div class="services-grid">
             <app-service-card></app-service-card>
             <app-service-card></app-service-card>
@@ -92,7 +93,7 @@
             <app-service-card></app-service-card>
           </div>
         </mat-tab>
-        <mat-tab label="Insurances">
+        <mat-tab label="Insurances" i18n-label>
           <div class="insurances-grid">
             <app-insurance-card
               [insurance]="{ name: 'Name' }"
@@ -120,7 +121,7 @@
             ></app-insurance-card>
           </div>
         </mat-tab>
-        <mat-tab label="Providers">
+        <mat-tab label="Providers" i18n-label>
           <mat-tab-group dynamicHeight class="secondary-tabs">
             <mat-tab label="All"
               ><div class="providers-grid">
@@ -157,7 +158,7 @@
             <mat-tab label="NPF"></mat-tab>
           </mat-tab-group>
         </mat-tab>
-        <mat-tab label="Reviews">
+        <mat-tab label="Reviews" i18n-label>
           <div class="review">
             <textarea
               class="rating-input"
@@ -202,12 +203,12 @@
             ></app-review-card>
           </div>
         </mat-tab>
-        <mat-tab label="Recommendation">
+        <mat-tab label="Recommendation" i18n-label>
           <div class="recommendation-container">
-            <h2 class="recommend-question">Do you recommend this clinic?</h2>
+            <h2 class="recommend-question" i18n>Do you recommend this clinic?</h2>
             <div class="recommend-actions">
-              <app-button [rounded]="false">Yes</app-button>
-              <app-button [rounded]="false" color="transparent">No</app-button>
+              <app-button [rounded]="false" i18n>Yes</app-button>
+              <app-button [rounded]="false" color="transparent" i18n>No</app-button>
             </div>
           </div>
         </mat-tab>

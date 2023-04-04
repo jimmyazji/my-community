@@ -33,19 +33,28 @@
 }
 
 .pass-input {
-  width: 100% !important;
   position: relative;
-  z-index: -1;
+}
+
+.pass-input .mat-icon {
+  color: var(--primary-darker-placeholder);
+}
+
+.input {
+  width: 100%;
+}
+
+.visibility-button {
+  position: absolute;
+  bottom: 50%;
+  right: 1.25rem;
+  transform: translateY(50%);
 }
 
 .password-reset-link {
   display: flex;
   justify-content: flex-end;
   padding-right: 1.25rem;
-}
-
-mat-icon {
-  color: #222 !important
 }
 
 .input.lg {
@@ -61,49 +70,28 @@ mat-icon {
   border-radius: 99rem;
 }
 
-
 .login-button {
   margin-top: 2.5rem;
 }
 
 .login-button button {
-  background: var(--main-background);
-  padding: 0.5rem 2rem;
-  border-radius: 5rem;
-  width: 50%;
-  border: none;
-  transition: 0.4s;
+  border: solid 2px var(--primary-color);
+  text-transform: capitalize;
+  background-color: var(--primary-content);
+  padding: 0.625rem 2.5rem;
+  color: var(--primary-color);
+  border-radius: 99rem;
+  transition: transform 200ms ease-in, color 400ms ease-in-out;
+  margin-bottom: 0.5rem;
 }
 
-.signUp-button {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-.signUp-button a {
-  display: block;
-  color: #222;
-  background-color: var(--main-background);
-  padding: 0.5rem 2rem;
-  border-radius: 5rem;
-  width: 50%;
-  border: none;
-  transition: 0.4s;
-}
-
-.login-button button:hover,
-.signUp-button a:hover {
+.login-button button:hover {
   color: var(--primary-darker-color);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .login-img {
   padding: 2rem;
-}
-
-.login-input {
-  margin-top: 1rem;
 }
 
 .title {
@@ -111,10 +99,15 @@ mat-icon {
   font-size: 2rem;
 }
 
-.sign-up-link {
-  margin-top: .5rem;
+.sign-up-button {
+  color: var(--primary-content);
 }
 
 .login-form .mat-mdc-form-field input {
   background-color: var(--main-background);
+  padding: 1rem 2rem;
+}
+
+::ng-deep .mdc-text-field {
+  padding: 0 !important;
 }

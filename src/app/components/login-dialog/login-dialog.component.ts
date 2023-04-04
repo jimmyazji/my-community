@@ -39,8 +39,7 @@ export class LoginDialogComponent {
     })
   }
 
-  register(e: Event) {
-    e.preventDefault();
+  register() {
     this.dialog.closeAll()
     timer(100).subscribe(
       () => { const dialogRef = this.dialog.open(RegisterDialogComponent); }
