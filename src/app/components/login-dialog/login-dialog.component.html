@@ -12,7 +12,7 @@
           required
         />
       </mat-form-field>
-      <mat-form-field appearance="fill" class="input pass-input">
+      <mat-form-field appearance="fill" class="input">
         <input
           placeholder="Password"
           i18n-placeholder
@@ -25,7 +25,6 @@
         />
         <button
           mat-icon-button
-          matSuffix
           (click)="hide = !hide"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide"

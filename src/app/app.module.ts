@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatTabsModule } from '@angular/material/tabs'
+import { MatTabsModule } from '@angular/material/tabs';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 import { HomeComponent } from './pages/home/home.component';
 import { ClinicsComponent } from './pages/clinics/clinics.component';
@@ -77,6 +78,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     MatTabsModule,
     MaterialModule,
     HttpClientModule,
+    LoadingBarHttpClientModule,
     BrowserAnimationsModule
   ],
   providers: [

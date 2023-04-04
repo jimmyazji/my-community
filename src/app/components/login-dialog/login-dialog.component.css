@@ -32,23 +32,22 @@
   border-radius: 3rem;
 }
 
-.pass-input {
+.input {
   position: relative;
 }
 
 .pass-input .mat-icon {
-  color: var(--primary-darker-placeholder);
 }
 
 .input {
-  width: 100%;
 }
 
 .visibility-button {
   position: absolute;
   bottom: 50%;
   right: 1.25rem;
-  transform: translateY(50%);
+  transform: translateY(60%);
+  color: var(--primary-darker-placeholder);
 }
 
 .password-reset-link {
