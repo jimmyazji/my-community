@@ -1,5 +1,5 @@
 <div class="clinic-card" [routerLink]="['/clinics', clinic?.id]">
-  <img class="clinic-img" src="../../assets/images/clinic.jpeg" alt="" />
+  <img class="clinic-img" [src]="clinic?.imagePath" alt="" />
   <div class="clinic-info">
     <h3 class="clinic-name">{{ clinic?.name }}</h3>
     <span class="clinic-number"
@@ -20,7 +20,7 @@
           />
         </g>
       </svg>
-      {{ clinic?.phone }}
+      {{ clinic?.phoneNumber }}
     </span>
     <app-rating [rating]="clinic?.rating"></app-rating>
   </div>

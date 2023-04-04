@@ -1,7 +1,7 @@
 <div class="padded-content">
   <div class="clinic-grid">
     <div class="img-container">
-      <img src="../../../assets/images/clinic.jpeg" class="clinic-img" alt="" />
+      <img [src]="clinic.imagePath" class="clinic-img" alt="" />
       <app-button
         class="appointment-request"
         [fullWidth]="true"
@@ -50,7 +50,7 @@
                 data-name="Vector"
               />
             </g></svg
-          >{{ clinic.phone }}
+          >{{ clinic.phoneNumber }}
         </h4>
       </div>
       <p class="clinic-description">{{ clinic.description }}</p>
@@ -123,36 +123,7 @@
         </mat-tab>
         <mat-tab label="Providers" i18n-label>
           <mat-tab-group dynamicHeight class="secondary-tabs">
-            <mat-tab label="All"
-              ><div class="providers-grid">
-                <app-clinic-card
-                  [clinic]="{
-                    id: 7,
-                    name: 'Ellis Langley',
-                    rating: 2,
-                    phone: '0923 487 29'
-                  }"
-                >
-                </app-clinic-card>
-                <app-clinic-card
-                  [clinic]="{
-                    id: 3,
-                    name: 'Jacklyn Shaw',
-                    rating: 5,
-                    phone: '0923 487 29'
-                  }"
-                >
-                </app-clinic-card>
-                <app-clinic-card
-                  [clinic]="{
-                    id: 7,
-                    name: 'Ellis Langley',
-                    rating: 2,
-                    phone: '0923 487 29'
-                  }"
-                >
-                </app-clinic-card></div
-            ></mat-tab>
+            <mat-tab label="All"><div class="providers-grid"></div></mat-tab>
             <mat-tab label="Dr"></mat-tab>
             <mat-tab label="NPA"></mat-tab>
             <mat-tab label="NPF"></mat-tab>
@@ -205,10 +176,14 @@
         </mat-tab>
         <mat-tab label="Recommendation" i18n-label>
           <div class="recommendation-container">
-            <h2 class="recommend-question" i18n>Do you recommend this clinic?</h2>
+            <h2 class="recommend-question" i18n>
+              Do you recommend this clinic?
+            </h2>
             <div class="recommend-actions">
               <app-button [rounded]="false" i18n>Yes</app-button>
-              <app-button [rounded]="false" color="transparent" i18n>No</app-button>
+              <app-button [rounded]="false" color="transparent" i18n
+                >No</app-button
+              >
             </div>
           </div>
         </mat-tab>
