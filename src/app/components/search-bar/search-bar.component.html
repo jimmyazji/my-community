@@ -1,34 +1,18 @@
 <form>
-  <label
-    class="search-button"
-    for="search"
-    [ngClass]="{ 'not-empty': search.value }"
-  >
-    <input
-      class="search-input"
-      type="search"
-      placeholder="Search"
-      id="search"
-      [formControl]="search"
-      [ngClass]="{ 'not-empty': search.value }"
-      i18n-placeholder
-    />
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="search-icon"
-      viewBox="1.2 1.2 29.05 29.083"
-    >
+  <label class="search-button" for="search" [ngClass]="{ 'not-empty': search.value }">
+    <input class="search-input" type="text" placeholder="Search here" id="search"
+      (keydown.enter)="$event.preventDefault(); test(search.value)" [formControl]="search"
+      [ngClass]="{ 'not-empty': search.value }" />
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="1.2 1.2 29.05 29.083">
       <g>
-        <path
-          fill="transparent"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+        <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M26.212 14.417c0 6.514-5.281 11.795-11.795 11.795-6.515 0-11.796-5.281-11.796-11.795 0-6.515 5.281-11.796 11.796-11.796 6.514 0 11.795 5.281 11.795 11.796ZM24.81 27.116c.694 2.097 2.28 2.307 3.499.472 1.114-1.678.38-3.054-1.638-3.054-1.495-.013-2.333 1.153-1.861 2.582Z"
-          data-name="Vector"
-        />
+          data-name="Vector" />
       </g>
     </svg>
   </label>
+  <ul [ngClass]="clinics.length > 0 &&  search.value!=='' ? 'show':'hide' ">
+    <li *ngFor="let item of clinics" (click)="navigateToSelectedClinic(item.id)">{{item.name}}</li>
+  </ul>
 </form>

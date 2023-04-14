@@ -41,3 +41,39 @@
   width: 100%;
   height: 1.25rem;
 }
+
+
+form {
+  position: relative;
+}
+
+form ul {
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  background-color: var(--main-background);
+  right: 0;
+  border-radius: 1rem;
+  top: 4rem;
+  height: auto;
+  max-height: 210px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+form ul.show {
+  display: block;
+}
+
+form ul.hide {
+  display: none;
+}
+
+form ul li {
+  padding: 1rem 0 1rem 0.5rem;
+  cursor: pointer;
+}
+
+form ul li:hover {
+  background-color: var(--main-darker-background);
+}

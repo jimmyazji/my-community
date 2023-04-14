@@ -44,9 +44,6 @@ import { RecommendedClinicComponent } from './components/recommended-clinic/reco
 import { ProviderCardComponent } from './provider-card/provider-card.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ProviderComponent } from './pages/provider/provider.component';
-import { MaterialModule } from './material/material.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { StoryDetailsComponent } from './components/story-details/story-details.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
