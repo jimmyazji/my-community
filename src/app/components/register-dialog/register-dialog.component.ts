@@ -44,7 +44,6 @@ export class RegisterDialogComponent {
     this.authService.register(formData).subscribe(res => {
       this.dialog.closeAll()
     }, err => {
-      console.log('true')
       this.dialog.closeAll()
     })
   }
@@ -59,7 +58,6 @@ export class RegisterDialogComponent {
       reader.onload = () => {
         // convert image to base64 format
         this.imageBase64 = reader.result as string;
-        console.log(this.imageBase64)
       };
     }
   }

@@ -2,7 +2,7 @@
   <div class="background-container">
     <div class="categories-grid">
       <div class="paginator">
-        <button class="pagination-button">
+        <button class="pagination-button" (click)="prevIndex(categories.length)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.967 3.967 39.8 39.8">
             <g data-name="arrow-circle-right">
               <path fill="currentColor" fill-rule="evenodd"
@@ -11,7 +11,7 @@
             </g>
           </svg>
         </button>
-        <button class="pagination-button">
+        <button class="pagination-button" (click)="nextIndex(categories.length)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.967 3.967 39.8 39.8">
             <g data-name="arrow-circle-right">
               <path fill="currentColor" fill-rule="evenodd"
@@ -20,10 +20,9 @@
           </svg>
         </button>
       </div>
-      <app-category-card [category]="{ name: 'Category 1' }"></app-category-card>
-      <app-category-card [category]="{ name: 'Category 2' }"></app-category-card>
-      <app-category-card [category]="{ name: 'Category 3' }"></app-category-card>
-      <app-category-card [category]="{ name: 'Category 4' }"></app-category-card>
+      <app-category-card *ngFor="let category of categories  | slice:startIndex:endIndex;"
+        [category]="{ name: category.name}"></app-category-card>
+
     </div>
     <div class="search">
       <input class="search-input" placeholder="Search insurances..." type="text" i18n-placeholder />
@@ -76,15 +75,11 @@
   <app-recommended-clinic></app-recommended-clinic>
   <section id="social" class="social">
     <article id="stories" class="stories" horizontalScroll>
-      <app-story></app-story>
-      <app-story></app-story>
-      <app-story></app-story>
-      <app-story></app-story>
-      <app-story></app-story>
-      <app-story></app-story>
+      <app-story *ngFor="let story of stories" [name]="story.name" [image]="story.imagePath"
+        (click)="openStoryModal(story)"></app-story>
     </article>
     <article id="posts" class="posts">
-      <app-post></app-post>
+      <app-post *ngFor="let post of posts" [postDetails]="post" (click)="openPostModal(post)"></app-post>
     </article>
   </section>
   <div *ngIf="mapOpen" class="map-backdrop" (click)="closeMap()"></div>

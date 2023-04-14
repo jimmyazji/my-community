@@ -4,7 +4,7 @@
 
 .recommended-clinics {
   width: 100%;
-  height: max-content;
+  height: 85vh;
   background-color: var(--primary-darker-color);
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
@@ -25,7 +25,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.clinic-info > * {
+.clinic-info>* {
   display: flex;
   align-items: center;
 }
