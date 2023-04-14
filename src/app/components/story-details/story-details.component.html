@@ -1,0 +1,18 @@
+<div class="post-container">
+    <div class="post-head">
+        <img [src]="data.clinicImage" alt="doctor" class="avatar" />
+        <div class="publisher-info">
+            <h3 class="publisher-name">{{data.clinicName? data.clinicName : 'ClinicName'}}</h3>
+        </div>
+        <span class="publish-date">{{days ? days +' days' : hours ? hours + 'hours': minutes +
+            'minutes' }}</span>
+    </div>
+    <div class="post-body">
+        <div class="image-container">
+            <img [src]="data.imagePath" alt="">
+        </div>
+    </div>
+    <div class="post-tail">
+        {{data.name}}
+    </div>
+</div>

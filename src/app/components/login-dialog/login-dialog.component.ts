@@ -32,7 +32,6 @@ export class LoginDialogComponent {
     formData.append('Password', this.loginForm.value.Password);
 
     this.authService.login(formData).subscribe(res => {
-      console.log(res)
       if (res.message.includes('Wrong Credentials')) {
         this.wrongCred = true;
       }

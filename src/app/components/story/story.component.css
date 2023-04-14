@@ -9,6 +9,8 @@
 }
 
 .story-img {
+  width: 100%;
+  max-width: 100%;
   object-fit: cover;
   height: 100%;
   filter: brightness(80%);
@@ -17,7 +19,7 @@
 .story-name {
   position: absolute;
   bottom: 0.25rem;
-  right: 50%;
-  transform: translateX(50%);
+  left: 50%;
+  transform: translateX(-50%);
   color: #fff;
 }

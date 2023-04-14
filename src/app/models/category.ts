@@ -1,4 +1,5 @@
 export class Category {
-    name: string = 'NaN'
+    name: string | null = null
     icon?: SVGAElement;
+    id?: number;
 }

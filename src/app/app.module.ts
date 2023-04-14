@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
@@ -39,6 +39,8 @@ import { MaterialModule } from './material/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { StoryDetailsComponent } from './components/story-details/story-details.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,8 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     ReviewCardComponent,
     RecommendedClinicComponent,
     LoaderComponent,
+    StoryDetailsComponent,
+    PostDetailsComponent,
   ],
   imports: [
     BrowserModule,
