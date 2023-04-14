@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { timer } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+type ValidationErrors = { [key: string]: string }
 @Component({
   selector: 'app-login',
   templateUrl: './login-dialog.component.html',
@@ -13,6 +14,7 @@ export class LoginDialogComponent {
 
   loginForm!: FormGroup;
   hide = true;
+  validationErrors: ValidationErrors = {};
 
   constructor(
     public dialog: MatDialog,
@@ -25,23 +27,32 @@ export class LoginDialogComponent {
     })
   }
 
-  wrongCred: boolean = false;
+  errorResponse: string | null = null;
   login() {
-    let formData = new FormData();
+    this.errorResponse = null;
+    const formData = new FormData();
     formData.append('Email', this.loginForm.value.myCommunityEm);
     formData.append('Password', this.loginForm.value.Password);
 
     this.authService.login(formData).subscribe(res => {
-      console.log(res)
-      if (res.message.includes('Wrong Credentials')) {
-        this.wrongCred = true;
+      if (!res.status) {
+        this.errorResponse = res.message;
+        console.log(res);
+      } else {
+        console.log(res);
+        localStorage.setItem('authToken',res.value.token);
       }
+    }, (err) => {
+      console.log(err);
+      this.validationErrors = err.error.errors;
+
+      this.errorResponse = err.error.title;
     })
   }
 
   register() {
     this.dialog.closeAll()
-    timer(100).subscribe(
+    timer(300).subscribe(
       () => { const dialogRef = this.dialog.open(RegisterDialogComponent); }
     )
   }

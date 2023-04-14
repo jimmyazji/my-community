@@ -3,9 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { MaterialModule } from './material/material.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
+import { StarRatingModule } from 'angular-star-rating';
+
 
 import { HomeComponent } from './pages/home/home.component';
 import { ClinicsComponent } from './pages/clinics/clinics.component';
@@ -30,15 +35,21 @@ import { InputComponent } from './components/input/input.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 import { ChangeOnScrollDirective } from './change-on-scroll.directive';
+import { LoaderComponent } from './components/loader/loader.component';
 import { ArchComponent } from './components/arch/arch.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { ServiceCardComponent } from './components/service-card/service-card.component';
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { RecommendedClinicComponent } from './components/recommended-clinic/recommended-clinic.component';
+import { ProviderCardComponent } from './provider-card/provider-card.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ProviderComponent } from './pages/provider/provider.component';
 import { MaterialModule } from './material/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { StoryDetailsComponent } from './components/story-details/story-details.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +79,10 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     ReviewCardComponent,
     RecommendedClinicComponent,
     LoaderComponent,
+    StoryDetailsComponent,
+    PostDetailsComponent,
+    ProviderCardComponent,
+    ProviderComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,15 +91,17 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
+    MatSelectModule,
     MaterialModule,
     HttpClientModule,
     LoadingBarHttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StarRatingModule.forRoot()
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
+      useClass: AuthInterceptor,
       multi: true,
     },
   ],

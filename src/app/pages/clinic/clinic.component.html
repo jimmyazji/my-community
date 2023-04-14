@@ -28,11 +28,13 @@
             </g></svg
           >{{ clinic.name }}
         </h2>
-        <app-rating
-          size="lg"
-          class="clinic-rating"
-          [rating]="clinic.rating"
-        ></app-rating>
+        <star-rating
+          size="large"
+          staticColor="ok"
+          [showHalfStars]="true"
+          [readOnly]="true"
+          [rating]="clinic.rate ?? 0"
+        ></star-rating>
         <h4 class="clinic-phone">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,120 +59,67 @@
       <mat-tab-group dynamicHeight class="primary-tabs">
         <mat-tab label="Location" i18n-label>
           <div class="locations-grid">
-            <div class="location-card-container">
-              <h3 class="location-name">Name</h3>
-            </div>
-            <div class="location-card-container">
-              <h3 class="location-name">Name</h3>
-            </div>
-            <div class="location-card-container">
-              <h3 class="location-name">Name</h3>
-            </div>
-            <div class="location-card-container">
-              <h3 class="location-name">Name</h3>
-            </div>
-            <div class="location-card-container">
-              <h3 class="location-name">Name</h3>
-            </div>
-            <div class="location-card-container">
-              <h3 class="location-name">Name</h3>
-            </div>
-            <div class="location-card-container">
-              <h3 class="location-name">Name</h3>
-            </div>
-            <div class="location-card-container">
-              <h3 class="location-name">Name</h3>
+            <div
+              *ngFor="let location of locations"
+              class="location-card-container"
+            >
+              <h3 class="location-name">{{ location.name }}</h3>
             </div>
           </div>
         </mat-tab>
         <mat-tab label="Services" i18n-label>
           <div class="services-grid">
-            <app-service-card></app-service-card>
-            <app-service-card></app-service-card>
-            <app-service-card></app-service-card>
-            <app-service-card></app-service-card>
-            <app-service-card></app-service-card>
-            <app-service-card></app-service-card>
+            <app-service-card
+              *ngFor="let service of services"
+              [service]="service"
+            ></app-service-card>
           </div>
         </mat-tab>
         <mat-tab label="Insurances" i18n-label>
           <div class="insurances-grid">
             <app-insurance-card
-              [insurance]="{ name: 'Name' }"
-            ></app-insurance-card>
-            <app-insurance-card
-              [insurance]="{ name: 'Name' }"
-            ></app-insurance-card>
-            <app-insurance-card
-              [insurance]="{ name: 'Name' }"
-            ></app-insurance-card>
-            <app-insurance-card
-              [insurance]="{ name: 'Name' }"
-            ></app-insurance-card>
-            <app-insurance-card
-              [insurance]="{ name: 'Name' }"
-            ></app-insurance-card>
-            <app-insurance-card
-              [insurance]="{ name: 'Name' }"
-            ></app-insurance-card>
-            <app-insurance-card
-              [insurance]="{ name: 'Name' }"
-            ></app-insurance-card>
-            <app-insurance-card
-              [insurance]="{ name: 'Name' }"
+              *ngFor="let insurance of insurances"
+              [insurance]="insurance"
             ></app-insurance-card>
           </div>
         </mat-tab>
         <mat-tab label="Providers" i18n-label>
-          <mat-tab-group dynamicHeight class="secondary-tabs">
-            <mat-tab label="All"><div class="providers-grid"></div></mat-tab>
+          <div class="providers-grid">
+            <app-provider-card
+              *ngFor="let provider of clinic.doctors"
+              [provider]="provider"
+            ></app-provider-card>
+          </div>
+          <!-- <mat-tab-group dynamicHeight class="secondary-tabs">
+            <mat-tab label="All"
+              >
+            </mat-tab>
             <mat-tab label="Dr"></mat-tab>
             <mat-tab label="NPA"></mat-tab>
             <mat-tab label="NPF"></mat-tab>
-          </mat-tab-group>
+          </mat-tab-group> -->
         </mat-tab>
         <mat-tab label="Reviews" i18n-label>
           <div class="review">
-            <textarea
-              class="rating-input"
-              placeholder="Write a review"
-              rows="4"
-            ></textarea>
-            <app-rating size="lg" [rating]="0" class="set-rating"></app-rating>
+            <div class="rating-input">
+              <textarea
+                class="rating-textarea"
+                placeholder="Write a review"
+                rows="4"
+              ></textarea>
+              <app-button class="review-submit" [rounded]="false">Submit</app-button>
+            </div>
+            <star-rating
+              size="large"
+              staticColor="ok"
+              [rating]="0"
+              [hoverEnabled]="true"
+            ></star-rating>
           </div>
           <div class="reviews-container">
             <app-review-card
-              [review]="{
-                content:
-                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, fugiat quos porro, labore accusantium molestiae in aliquam vero neque mollitia provident vel impedit laudantium at sapiente necessitatibus veritatis omnis ut nesciunt corporis, ea delectus tenetur consectetur? Excepturi cum a soluta?',
-                rating: 4
-              }"
-              [reviewer]="{
-                img: 'https://loremflickr.com/96/96',
-                name: 'Yousef Ali'
-              }"
-            ></app-review-card>
-            <app-review-card
-              [review]="{
-                content:
-                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, fugiat quos porro, labore accusantium molestiae in aliquam vero neque mollitia provident vel impedit laudantium at sapiente necessitatibus veritatis omnis ut nesciunt corporis, ea delectus tenetur consectetur? Excepturi cum a soluta?',
-                rating: 4
-              }"
-              [reviewer]="{
-                img: 'https://loremflickr.com/96/96',
-                name: 'Khaled Mohamad'
-              }"
-            ></app-review-card>
-            <app-review-card
-              [review]="{
-                content:
-                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, fugiat quos porro, labore accusantium molestiae in aliquam vero neque mollitia provident vel impedit laudantium at sapiente necessitatibus veritatis omnis ut nesciunt corporis, ea delectus tenetur consectetur? Excepturi cum a soluta?',
-                rating: 4
-              }"
-              [reviewer]="{
-                img: 'https://loremflickr.com/96/96',
-                name: 'Mohamad Ysine'
-              }"
+              *ngFor="let review of reviews"
+              [review]="review"
             ></app-review-card>
           </div>
         </mat-tab>

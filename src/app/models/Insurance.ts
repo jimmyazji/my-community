@@ -1,4 +1,11 @@
 export class Insurance {
+    id?: number
+    clinicId?: number
     name: string = 'NaN'
-    img?: string;
+    iconPath?: string;
+
+    deserialize(input: any) {
+        Object.assign(this, input);
+        return this;
+    }
 }

@@ -6,6 +6,7 @@
 
 .title {
   font-size: 4rem;
+  line-height: 4rem;
 }
 
 .about-us-container {
@@ -25,4 +26,8 @@
   min-height: 24rem;
   width: auto;
   object-fit: cover;
+}
+
+.about-us-paragraph {
+  font-size: 1rem;
 }

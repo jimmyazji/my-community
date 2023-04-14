@@ -36,10 +36,9 @@
   position: relative;
 }
 
-.pass-input .mat-icon {
-}
-
-.input {
+.error-response {
+  position: relative;
+  top: -3.25rem;
 }
 
 .visibility-button {
@@ -109,4 +108,8 @@
 
 ::ng-deep .mdc-text-field {
   padding: 0 !important;
+}
+
+::ng-deep .mdc-text-field--invalid input {
+  border: 1px solid #f44336 !important;
 }

@@ -22,6 +22,11 @@
       </svg>
       {{ clinic?.phoneNumber }}
     </span>
-    <app-rating [rating]="clinic?.rating"></app-rating>
+    <star-rating
+      staticColor="ok"
+      [showHalfStars]="true"
+      [readOnly]="true"
+      [rating]="clinic?.rate ?? 0"
+    ></star-rating>
   </div>
 </div>

@@ -1,0 +1,12 @@
+<div class="provider-card" [routerLink]="['/providers', provider?.id]">
+  <img class="provider-img" [src]="provider?.imagePath" alt="" />
+  <div class="provider-info">
+    <h3 class="provider-name">{{ provider?.name }}</h3>
+    <star-rating
+      staticColor="ok"
+      [showHalfStars]="true"
+      [readOnly]="true"
+      [rating]="provider?.rate ?? 0"
+    ></star-rating>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="padded-content">
+  <div class="main-container">
+    <img
+      class="provider-image"
+      [src]="provider.imagePath"
+      [alt]="provider.name"
+    />
+    <div class="provider-info">
+      <h2 class="provider-name">{{ provider.name }}</h2>
+      <h4 class="provider-jurisdiction">
+        <img class="jurisdiction-icon" [src]="provider.iconPath" alt="" />{{
+          provider.jurisdiction
+        }}
+      </h4>
+      <h4>Open time: {{ provider.workStartHour | date : "hh:mm a" }}</h4>
+      <h4>Close time: {{ provider.workEndHour | date : "hh:mm a" }}</h4>
+      <app-button
+        class="appointment-request"
+        [fullWidth]="true"
+        [rounded]="false"
+        i18n
+        >Request an Appointment</app-button
+      >
+    </div>
+    <mat-tab-group dynamicHeight class="primary-tabs">
+      <mat-tab label="Description">{{ provider.description }}</mat-tab>
+      <mat-tab label="Recommendation">
+        <div class="recommendation-container">
+          <h2 class="recommend-question" i18n>Do you recommend this clinic?</h2>
+          <div class="recommend-actions">
+            <app-button [rounded]="false" i18n>Yes</app-button>
+            <app-button [rounded]="false" color="transparent" i18n
+              >No</app-button
+            >
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Reviews"
+        ><div class="review">
+          <div class="rating-input">
+            <textarea
+              class="rating-textarea"
+              placeholder="Write a review"
+              rows="4"
+            ></textarea>
+            <app-button class="review-submit" [rounded]="false"
+              >Submit</app-button
+            >
+          </div>
+          <star-rating
+            size="large"
+            staticColor="ok"
+            [rating]="0"
+            [hoverEnabled]="true"
+          ></star-rating>
+        </div>
+        <div class="reviews-container">
+          <app-review-card
+            *ngFor="let review of reviews"
+            [review]="review"
+          ></app-review-card></div
+      ></mat-tab>
+      <mat-tab label="Insurance">
+        <div class="insurances-grid">
+          <app-insurance-card
+            *ngFor="let insurance of provider.insurances"
+            [insurance]="insurance"
+          ></app-insurance-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

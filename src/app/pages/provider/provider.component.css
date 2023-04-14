@@ -1,0 +1,120 @@
+.main-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  max-width: var(--main-page-width);
+}
+
+.provider-image {
+  height: 24rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  border-bottom-right-radius: 6rem;
+}
+
+.provider-name {
+  text-transform: capitalize;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.provider-info {
+  min-width: 16rem;
+}
+
+.provider-jurisdiction {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.jurisdiction-icon {
+  max-height: 1rem;
+}
+
+::ng-deep .mat-mdc-tab-label-container {
+  filter: drop-shadow(0px 1px 0.5px rgba(0, 0, 0, 0.16));
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+}
+
+::ng-deep .primary-tabs .mat-mdc-tab-label-container {
+  background-color: var(--main-background);
+}
+
+::ng-deep .mat-mdc-tab-label {
+  border-radius: 0.25rem;
+}
+
+::ng-deep .mat-mdc-tab {
+  border-radius: 0.25rem;
+  transition: background-color 300ms ease-in-out;
+}
+
+::ng-deep .mdc-tab-indicator {
+  display: none !important;
+}
+
+::ng-deep .primary-tabs .mdc-tab-indicator--active {
+  background-color: var(--primary-color);
+}
+
+::ng-deep
+  .primary-tabs
+  .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active
+  .mdc-tab__text-label {
+  color: var(--primary-content);
+}
+
+.recommend-actions {
+  display: flex;
+  padding: 0.5rem 0;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.rating-input {
+  position: relative;
+}
+
+.rating-textarea {
+  display: flex;
+  min-width: 24rem;
+  background-color: var(--main-background);
+  border: 1px solid transparent;
+  padding: 1rem 2rem;
+  filter: drop-shadow(0px 1px 0.5px rgba(0, 0, 0, 0.16));
+  border-radius: 0.25rem;
+  resize: none;
+}
+
+.reviews-container {
+  padding: 1rem 0;
+}
+
+.review {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.review-submit {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+}
+
+.insurances-grid {
+  max-width: 60rem;
+  display: grid;
+  padding: 0 0.5rem 1rem 0.5rem;
+  grid-template-columns: repeat(auto-fit, min(100%, 8rem));
+  gap: 1rem;
+}

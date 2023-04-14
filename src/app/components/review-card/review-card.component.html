@@ -1,12 +1,17 @@
 <div class="review-card-container">
-  <div class="review-content">
-    <img [src]="reviewer?.img" class="reviewer-avatar" alt="" />
-    <div class="review">
-      <h2 class="reviewer-name">{{ reviewer?.name }}</h2>
-      <p>
-        {{ review?.content }}
-      </p>
-    </div>
+  <img [src]="review?.userImagePath" class="reviewer-avatar" alt="" />
+  <div class="review-body">
+    <h2 class="reviewer-name">{{ review?.userName }}</h2>
+    <star-rating
+      class="review-rating"
+      size="medium"
+      staticColor="ok"
+      [showHalfStars]="true"
+      [readOnly]="true"
+      [rating]="review?.rate ?? 0"
+    ></star-rating>
+    <p class="review-content">
+      {{ review?.content }}
+    </p>
   </div>
-  <app-rating size="md" [rating]="review?.rating"></app-rating>
 </div>

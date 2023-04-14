@@ -1,0 +1,36 @@
+.provider-card {
+  display: flex;
+  padding: 1rem;
+  background-color: var(--primary-content);
+  aspect-ratio: 2 / 1;
+  max-height: 7rem;
+  border-radius: 0.25rem;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.16));
+  scroll-snap-align: end;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.provider-img {
+  border-radius: 99rem;
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
+}
+
+.provider-name {
+  font-weight: 400;
+}
+
+.provider-number {
+  display: flex;
+  align-items: center;
+  color: var(--primary-placeholder);
+  white-space: nowrap;
+}
+
+.call-icon {
+  height: 1rem;
+  margin-right: 0.5rem;
+}

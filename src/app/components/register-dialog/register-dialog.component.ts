@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
+type ValidationErrors = { [key: string]: string }
 
 @Component({
   selector: 'app-register-dialog',
@@ -12,13 +14,15 @@ export class RegisterDialogComponent {
 
   registerForm!: FormGroup;
   hide = true;
+  errorResponse: string | null = null;
+  validationErrors: ValidationErrors = {};
   constructor(
     public dialog: MatDialog,
     private _fg: FormBuilder,
     private authService: AuthService
   ) {
     this.registerForm = this._fg.group({
-      gender: ['', Validators.required],
+      gender: [undefined, Validators.required],
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       p: ['', Validators.required],
@@ -33,8 +37,10 @@ export class RegisterDialogComponent {
 
   register() {
     let formData = new FormData();
+    this.errorResponse = null;
     formData.append('FirstName', this.registerForm.value.fname)
     formData.append('LastName', this.registerForm.value.lname)
+    formData.append('UserName', this.registerForm.value.userName)
     formData.append('PhoneNumber', this.registerForm.value.phoneNumber)
     formData.append('Email', this.registerForm.value.email)
     formData.append('Password', this.registerForm.value.p)
@@ -43,11 +49,17 @@ export class RegisterDialogComponent {
 
     this.authService.register(formData).subscribe(res => {
       this.dialog.closeAll()
-    }, err => {
-      console.log('true')
-      this.dialog.closeAll()
-    })
+    },
+      (err) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status == 400) {
+            this.validationErrors = err.error.errors;
+            this.errorResponse = err.error.title;
+          }
+        }
+      })
   }
+
   file!: File;
   imageBase64 = '';
   onFileChange(event: any) {
@@ -59,7 +71,6 @@ export class RegisterDialogComponent {
       reader.onload = () => {
         // convert image to base64 format
         this.imageBase64 = reader.result as string;
-        console.log(this.imageBase64)
       };
     }
   }

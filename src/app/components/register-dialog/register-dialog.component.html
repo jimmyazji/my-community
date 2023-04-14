@@ -1,4 +1,3 @@
-<app-loader></app-loader>
 <div class="register-dialog-container">
   <div class="login-form-container">
     <form class="register-form" [formGroup]="registerForm">
@@ -34,7 +33,9 @@
           class="img-upload-icon"
         />
       </label>
-
+      <mat-error class="error-response" *ngIf="errorResponse">{{
+        errorResponse
+      }}</mat-error>
       <mat-form-field appearance="fill">
         <input
           matInput
@@ -43,6 +44,9 @@
           autocomplete="nope"
           required
         />
+        <mat-error class="input-error" *ngIf="validationErrors['FirstName']">{{
+          validationErrors["FirstName"]
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -53,6 +57,9 @@
           autocomplete="nope"
           required
         />
+        <mat-error class="input-error" *ngIf="validationErrors['LastName']">{{
+          validationErrors["LastName"]
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -63,6 +70,9 @@
           autocomplete="nope"
           required
         />
+        <mat-error class="input-error" *ngIf="validationErrors['Username']">{{
+          validationErrors["Username"]
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -73,6 +83,11 @@
           autocomplete="nope"
           required
         />
+        <mat-error
+          class="input-error"
+          *ngIf="validationErrors['PhoneNumber']"
+          >{{ validationErrors["PhoneNumber"] }}</mat-error
+        >
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -83,6 +98,9 @@
           autocomplete="nope"
           required
         />
+        <mat-error class="input-error" *ngIf="validationErrors['Email']">{{
+          validationErrors["Email"]
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -91,8 +109,12 @@
           placeholder="Password"
           formControlName="p"
           autocomplete="nope"
+          type="password"
           required
         />
+        <mat-error class="input-error" *ngIf="validationErrors['Password']">{{
+          validationErrors["Password"]
+        }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -101,32 +123,38 @@
           placeholder="Confirm Password"
           formControlName="cp"
           autocomplete="nope"
+          type="password"
           required
         />
       </mat-form-field>
 
-      <div class="gender-radio">
-        <h3 class="radio-title">Gender:</h3>
-        <div class="item">
-          <input
-            type="radio"
-            name="gender"
-            formControlName="gender"
-            id="male"
-            value="0"
-          />
-          <label class="gender-radio-label" for="male">Male</label>
+      <div>
+        <div class="gender-radio">
+          <h3 class="radio-title">Gender:</h3>
+          <div class="item">
+            <input
+              type="radio"
+              name="gender"
+              formControlName="gender"
+              id="male"
+              value="0"
+            />
+            <label class="gender-radio-label" for="male">Male</label>
+          </div>
+          <div class="item">
+            <input
+              type="radio"
+              name="gender"
+              formControlName="gender"
+              id="female"
+              value="1"
+            />
+            <label class="gender-radio-label" for="female">Female</label>
+          </div>
         </div>
-        <div class="item">
-          <input
-            type="radio"
-            name="gender"
-            formControlName="gender"
-            id="female"
-            value="1"
-          />
-          <label class="gender-radio-label" for="female">Female</label>
-        </div>
+        <mat-error class="input-error" *ngIf="validationErrors['Gender']">{{
+          validationErrors["Gender"]
+        }}</mat-error>
       </div>
       <app-button class="submit-button" (click)="register()"
         >Create Account</app-button

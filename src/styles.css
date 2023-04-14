@@ -1,6 +1,7 @@
 /* CSS Reset */
 
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~css-star-rating/css/star-rating";
 
 *,
 *::before,
@@ -120,8 +121,10 @@ body {
   display: none !important;
 }
 
-.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing,
-.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading {
+.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+  .mdc-notched-outline__trailing,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+  .mdc-notched-outline__leading {
   display: none !important;
 }
 
@@ -134,4 +137,12 @@ body {
   width: 100%;
   position: relative;
   margin-top: -2rem !important;
+}
+
+.rating .star-container {
+  margin: 0;
+}
+
+.rating {
+  justify-content: start;
 }

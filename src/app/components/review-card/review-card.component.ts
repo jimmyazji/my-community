@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Review } from 'src/app/models/review';
 
 @Component({
   selector: 'app-review-card',
@@ -6,6 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./review-card.component.css']
 })
 export class ReviewCardComponent {
-  @Input() reviewer?: { img: string, name: string };
-  @Input() review?: { content: string, rating: number };
+  @Input() review?: Review;
 }

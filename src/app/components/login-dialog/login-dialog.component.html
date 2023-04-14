@@ -3,6 +3,9 @@
     <h2 class="title" i18n>Log In</h2>
     <form class="login-form" [formGroup]="loginForm">
       <mat-form-field appearance="fill" class="input">
+        <mat-error class="error-response" *ngIf="errorResponse">
+          {{ errorResponse }}
+        </mat-error>
         <input
           matInput
           placeholder="Email"
@@ -11,6 +14,9 @@
           autocomplete="nope"
           required
         />
+        <mat-error class="input-error" *ngIf="validationErrors['Email']">{{
+          validationErrors["Email"]
+        }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill" class="input">
         <input
@@ -33,10 +39,6 @@
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
       </mat-form-field>
-
-      <div *ngIf="wrongCred">
-        <mat-error i18n>Incorrect Email or Password</mat-error>
-      </div>
       <a class="password-reset-link" routerLink="/" i18n>Forgot Password?</a>
       <div class="login-button">
         <button (click)="login()" i18n>login</button>

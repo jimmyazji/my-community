@@ -33,7 +33,7 @@
 }
 
 .clinic-info {
-  grid-column: span 9;
+  width: 100%;
 }
 
 .clinic-name,
@@ -112,8 +112,8 @@
 .locations-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, min(100%, 9rem));
-  place-content: center;
   gap: 1rem;
+  padding: 0 0.5rem 1rem 0.5rem;
 }
 
 .location-card-container {
@@ -133,10 +133,10 @@
 
 .services-grid {
   max-width: 60rem;
-  display: grid;
+  display: flex;
   padding: 0 0.5rem 1rem 0.5rem;
-  grid-template-columns: repeat(auto-fit, min(100%, 9rem));
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .insurances-grid {
@@ -151,7 +151,7 @@
   max-width: 60rem;
   display: grid;
   padding: 0 0.5rem 1rem 0.5rem;
-  grid-template-columns: repeat(auto-fit, min(100%, 18rem));
+  grid-template-columns: repeat(auto-fit, min(100%, 14rem));
   gap: 1rem;
 }
 
@@ -163,6 +163,10 @@
 }
 
 .rating-input {
+  position: relative;
+}
+
+.rating-textarea {
   width: 40rem;
   display: flex;
   min-width: 24rem;
@@ -173,6 +177,7 @@
   border-radius: 0.25rem;
   resize: none;
 }
+
 .reviews-container {
   padding: 1rem 0;
 }
@@ -193,4 +198,11 @@
   padding: 0.5rem 0;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.review-submit {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
 }
