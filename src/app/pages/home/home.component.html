@@ -21,7 +21,7 @@
         </button>
       </div>
       <app-category-card *ngFor="let category of categories  | slice:startIndex:endIndex;"
-        [category]="{ name: category.name}"></app-category-card>
+        [category]="category"></app-category-card>
 
     </div>
     <div class="search">
@@ -51,14 +51,7 @@
       </div>
     </div>
     <div class="insurance-grid">
-      <app-insurance-card [insurance]="{ name: 'Name' }"></app-insurance-card>
-      <app-insurance-card [insurance]="{ name: 'Name' }"></app-insurance-card>
-      <app-insurance-card [insurance]="{ name: 'Name' }"></app-insurance-card>
-      <app-insurance-card [insurance]="{ name: 'Name' }"></app-insurance-card>
-      <app-insurance-card [insurance]="{ name: 'Name' }"></app-insurance-card>
-      <app-insurance-card [insurance]="{ name: 'Name' }"></app-insurance-card>
-      <app-insurance-card [insurance]="{ name: 'Name' }"></app-insurance-card>
-      <app-insurance-card [insurance]="{ name: 'Name' }"></app-insurance-card>
+      
     </div>
   </div>
 </section>

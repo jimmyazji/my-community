@@ -16,12 +16,6 @@ export class ClinicService {
   baseApiKey = 'https://mycommunity-api.solutions-it.net/app/api/'
   constructor(private http: HttpClient) { }
 
-  getAllClinics(): Observable<Clinic[]> {
-    return this.http.get(this.baseApiKey + 'clinics').pipe(
-      map((res: any) =>
-        res.dtos.map((clinic: Clinic) => new Clinic().deserialize(clinic))));
-  }
-
   getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.baseApiKey + 'categories/get-all')
   }
@@ -41,11 +35,12 @@ export class ClinicService {
   searchClinicByName(text: any): Observable<any> {
     return this.http.get(this.baseApiKey + `clinics?Search=${text}`)
   }
-  // getAllClinics(search?: string, category?: number): Observable<Clinic[]> {
-  //   return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(search && { search }), ...(category && { category }) } }) }).pipe(
-  //     map((res: any) =>
-  //       res.dtos.map((clinic: Clinic) => new Clinic().deserialize(clinic))));
-  // }
+  
+  getAllClinics(search?: string, category?: number): Observable<Clinic[]> {
+    return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(search && { search }), ...(category && { category }) } }) }).pipe(
+      map((res: any) =>
+        res.dtos.map((clinic: Clinic) => new Clinic().deserialize(clinic))));
+  }
 
   // getAllCategories(): Observable<Category[]> {
   //   return this.http.get(this.baseApiKey + 'categories/get-all').pipe(
