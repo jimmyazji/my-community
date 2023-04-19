@@ -6,9 +6,10 @@
 .toolbar-list {
   display: flex;
   height: 4.5rem;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   max-width: 42rem;
-  padding: 0.5rem;
+  padding: 0.125rem;
   list-style: none;
   margin-left: auto;
   margin-right: auto;
@@ -20,11 +21,15 @@
   text-transform: capitalize;
   white-space: nowrap;
   display: flex;
+  justify-content: center;
+  gap: 0.5rem;
   align-items: center;
   flex-shrink: 0;
   border-radius: 0.25rem;
+  flex-wrap: wrap;
   padding: 0.5rem;
 }
+
 .toolbar-item button:focus {
   background-color: #f1f1f1f1;
 }
@@ -37,11 +42,23 @@
   width: 2.25rem;
   border-radius: 100%;
   padding: 0.5rem;
-  margin-right: 0.5rem;
   color: #fff;
   background-color: var(--primary-color);
 }
 
 .toolbar-icon svg {
   height: 1.5rem;
+}
+
+.toolbar-item-description {
+  display: none;
+}
+
+@media only screen and (min-width: 25rem) {
+  .toolbar-item-description {
+    display: block;
+  }
+  .toolbar-list {
+    justify-content: space-between;
+  }
 }

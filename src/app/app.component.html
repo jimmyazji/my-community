@@ -1,8 +1,22 @@
 <!-- Toolbar -->
-<ngx-loading-bar color="#199de0" [includeSpinner]="false" height="4px"></ngx-loading-bar>
+<ngx-loading-bar
+  color="#199de0"
+  [includeSpinner]="false"
+  height="4px"
+></ngx-loading-bar>
 <app-main-toolbar></app-main-toolbar>
-<app-main-navigation-bar></app-main-navigation-bar>
+<mat-sidenav-container [hasBackdrop]="true">
+  <mat-sidenav #sidenav mode="over" position="end" [opened]="drawerOpened">
+    <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-main-navigation-bar
+      (drawerToggle)="sidenav.toggle()"
+      [drawerOpened]="drawerOpened"
+    ></app-main-navigation-bar>
 
-<div class="page-content" role="main">
-  <router-outlet></router-outlet>
-</div>
+    <div class="page-content" role="main">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

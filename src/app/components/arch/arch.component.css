@@ -8,8 +8,8 @@
   content: "";
   position: absolute;
   background-color: var(--main-darker-background);
-  top: 4.5rem;
-  padding-top: 5.25rem;
+  top: 0rem;
+  padding-top: 5.75rem;
   width: 100%;
   z-index: 1;
 }
@@ -20,7 +20,7 @@
   position: absolute;
   background-color: var(--primary-color);
   width: 72rem;
-  top: 4.5rem;
+  top: 0rem;
   right: 50%;
   transform: translateX(50%);
   border-radius: 50% 50% 50% 50% / 25% 25% 75% 75%;

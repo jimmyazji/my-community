@@ -19,24 +19,24 @@
 }
 
 .button.transparent {
-  padding: 0.625rem 2.5rem;
+  padding: 1rem 2.5rem;
   color: var(--primary-color);
 }
 
 .button.primary {
   background-color: var(--primary-color);
-  padding: 0.625rem 2.5rem;
+  padding: 1rem 2.5rem;
   color: var(--primary-content);
 }
 
 .button.secondary {
   background-color: var(--main-background);
-  padding: 0.625rem 2.5rem;
+  padding: 1rem 2.5rem;
   color: var(--primary-color);
 }
 
 .button.icon-button {
   background-color: var(--primary-color);
-  padding: 0.625rem;
+  padding: 1rem;
   color: #fff;
 }

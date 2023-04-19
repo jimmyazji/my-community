@@ -10,8 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { StarRatingModule } from 'angular-star-rating';
-
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './pages/home/home.component';
 import { ClinicsComponent } from './pages/clinics/clinics.component';
 import { InsurancesComponent } from './pages/insurances/insurances.component';
@@ -47,6 +46,8 @@ import { ProviderComponent } from './pages/provider/provider.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { StoryDetailsComponent } from './components/story-details/story-details.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { HomeMapComponent } from './home-map/home-map.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,10 +81,13 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
     PostDetailsComponent,
     ProviderCardComponent,
     ProviderComponent,
+    SidenavComponent,
+    HomeMapComponent,
   ],
   imports: [
     BrowserModule,
     MatDialogModule,
+    MatSidenavModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
