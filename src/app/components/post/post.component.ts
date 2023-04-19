@@ -1,6 +1,9 @@
 import { Component, Input, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
+import { RequestAnAppointmentComponent } from '../appointments/request-an-appointment/request-an-appointment.component';
+import { Router } from '@angular/router';
+import { VideoPlayerConfig } from 'ngx-thumbnail-video';
 
 @Component({
   selector: 'app-post',
@@ -17,10 +20,18 @@ export class PostComponent {
   creationTime: string = '';
   text: string = '';
   imagePath: string = '';
+  videoPath: string = '';
   videoThumbnailPath: string = '';
   minutes!: number
   hours!: number
   days!: number
+
+  options: VideoPlayerConfig = {
+    width: '800px',
+    height: '400px',
+    frontendPreload: false
+  };
+  constructor(private dialog: MatDialog, private router: Router) { }
   ngOnInit() {
     this.clinicName = this.postDetails.clinicName;
     this.clinicImagePath = this.postDetails.clinicImagePath;
@@ -34,6 +45,16 @@ export class PostComponent {
     this.days = +duration.days().toFixed(2);
     this.text = this.postDetails.text;
     this.imagePath = this.postDetails.imagePath;
+    this.videoPath = this.postDetails.videoPath;
     this.videoThumbnailPath = this.postDetails.videoThumbnailPath;
+  }
+
+  reqAnAppointment() {
+    this.dialog.open(RequestAnAppointmentComponent)
+  }
+
+  goToPostDetails() {
+    console.log(this.postDetails.id)
+    this.router.navigate(["post-details", this.postDetails.id])
   }
 }

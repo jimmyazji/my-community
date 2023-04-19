@@ -47,6 +47,8 @@ import { ProviderComponent } from './pages/provider/provider.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { StoryDetailsComponent } from './components/story-details/story-details.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { RequestAnAppointmentComponent } from './components/appointments/request-an-appointment/request-an-appointment.component';
+import { NgxThumbnailVideoModule } from 'ngx-thumbnail-video';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +82,7 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
     PostDetailsComponent,
     ProviderCardComponent,
     ProviderComponent,
+    RequestAnAppointmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +96,7 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
     HttpClientModule,
     LoadingBarHttpClientModule,
     BrowserAnimationsModule,
+    NgxThumbnailVideoModule,
     StarRatingModule.forRoot()
   ],
   providers: [

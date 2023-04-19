@@ -1,38 +1,63 @@
 import { Injectable } from '@angular/core';
 import { Pagination } from '../models/pagination';
 
+
+interface PaginationProps {
+  items: any[];
+  pageSize: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class PaginationService {
 
-  private data: any[] = [];
-  private pagination: Pagination = { currentPage: 1, totalPages: 0, pageSize: 4 };
+  items!: any[];
+  pageSize!: number;
+  currentPage!: number;
 
   constructor() {
 
   }
 
-  buildArray(array: any[]) {
-    this.data = array;
-    this.pagination.totalPages = Math.ceil(this.data.length / this.pagination.pageSize);
+  buildArray(props: PaginationProps) {
+    this.items = props.items;
+    this.pageSize = props.pageSize;
+    this.currentPage = 1;
+  }
+  totalPages(): number {
+    console.log(this.items)
+    console.log(this.pageSize)
+    return Math.ceil(this.items.length / this.pageSize);
   }
 
-  getCurrentPageData(): any[] {
-    const startIndex = (this.pagination.currentPage - 1) * this.pagination.pageSize;
-    const endIndex = startIndex + this.pagination.pageSize;
-    return this.data.slice(startIndex, endIndex);
+  currentItems(): any[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+
+    return this.items.slice(startIndex, endIndex);
+  }
+
+  hasNextPage(): boolean {
+    return this.currentPage < this.totalPages();
+  }
+
+  hasPreviousPage(): boolean {
+    return this.currentPage > 1;
   }
 
   nextPage(): void {
-    if (this.pagination.currentPage < this.pagination.totalPages) {
-      this.pagination.currentPage++;
+    if (this.hasNextPage()) {
+      this.currentPage++;
     }
   }
 
   previousPage(): void {
-    if (this.pagination.currentPage > 1) {
-      this.pagination.currentPage--;
+    if (this.hasPreviousPage()) {
+      this.currentPage--;
     }
   }
+
 }

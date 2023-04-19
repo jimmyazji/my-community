@@ -23,7 +23,9 @@
             {{data.text}}
         </div>
         <div class="image-container">
-            <img [src]="data.imagePath ? data.imagePath : data.videoThumbnailPath" alt="">
+            <img *ngIf="data.imagePath" [src]="data.imagePath ? data.imagePath : data.videoThumbnailPath" alt="">
+            <ngx-thumbnail-video *ngIf="!data.imagePath" [url]="data.videoPath"
+                [options]="options"></ngx-thumbnail-video>
         </div>
     </div>
     <div class="post-tail">
@@ -46,6 +48,6 @@
             </svg>
             <span i18n>Share</span>
         </button>
-        <app-button i18n>Request An Appointment</app-button>
+        <app-button i18n (click)="reqAnAppointment()">Request An Appointment</app-button>
     </div>
 </div>

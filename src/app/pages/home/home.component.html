@@ -20,8 +20,7 @@
           </svg>
         </button>
       </div>
-      <app-category-card *ngFor="let category of categories  | slice:startIndex:endIndex;"
-        [category]="category"></app-category-card>
+      <app-category-card *ngFor="let category of categories  | slice:0:4;" [category]="category"></app-category-card>
 
     </div>
     <div class="search">
@@ -51,7 +50,7 @@
       </div>
     </div>
     <div class="insurance-grid">
-      
+
     </div>
   </div>
 </section>
@@ -65,24 +64,28 @@
   </div>
 </section>
 <div class="home-main">
-  <app-recommended-clinic></app-recommended-clinic>
+  <app-recommended-clinic *ngFor="let clinic of clinics  | slice:0:1;" [clinicDetails]="clinic"
+    (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
   <section id="social" class="social">
     <article id="stories" class="stories" horizontalScroll>
       <app-story *ngFor="let story of stories" [name]="story.name" [image]="story.imagePath"
         (click)="openStoryModal(story)"></app-story>
     </article>
     <article id="posts" class="posts">
-      <app-post *ngFor="let post of posts" [postDetails]="post" (click)="openPostModal(post)"></app-post>
+      <app-post *ngFor="let post of posts" [postDetails]="post"></app-post>
     </article>
   </section>
   <div *ngIf="mapOpen" class="map-backdrop" (click)="closeMap()"></div>
   <div id="map" class="map-container" [ngClass]="mapOpen ? 'open' : 'close'">
-    <iframe class="map-iframe"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1481.438348792034!2d15.44272676620767!3d47.08005476629025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476e3585e4a648fb%3A0xfe04c5eb224de5e4!2sClinic%20im%20Centrum%20%2F%20Dr.%20Ensat!5e0!3m2!1sen!2s!4v1680195213995!5m2!1sen!2s"
-      allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-    <div class="iframe-mask" (click)="openMap()" (keydown.esc)="closeMap()">
-      Click to expand
+    <div class="map-content">
+      <iframe class="map-iframe"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1481.438348792034!2d15.44272676620767!3d47.08005476629025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476e3585e4a648fb%3A0xfe04c5eb224de5e4!2sClinic%20im%20Centrum%20%2F%20Dr.%20Ensat!5e0!3m2!1sen!2s!4v1680195213995!5m2!1sen!2s"
+        allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="iframe-mask" (click)="openMap()" (keydown.esc)="closeMap()">
+        Click to expand
+      </div>
     </div>
+
   </div>
 </div>
