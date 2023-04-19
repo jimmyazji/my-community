@@ -1,0 +1,63 @@
+<div class="register-dialog-container">
+    <div class="login-form-container">
+        <form class="register-form" [formGroup]="appointmentForm">
+
+            <mat-error class="error-response" *ngIf="errorResponse">{{
+                errorResponse
+                }}</mat-error>
+
+            <mat-form-field appearance="fill">
+                <mat-select matInput placeholder="Choose Doctor" formControlName="doctor" autocomplete="nope">
+                    <mat-option *ngFor="let doctor of doctorsList" [value]="doctor.id">{{doctor.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-select matInput placeholder="Choose Clinic Location" formControlName="location"
+                    autocomplete="nope">
+                    <mat-option *ngFor="let location of locationsList"
+                        [value]="location.id">{{location.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="First Name" formControlName="fname" autocomplete="nope" required />
+                <mat-error class="input-error" *ngIf="validationErrors['FirstName']">{{
+                    validationErrors["FirstName"]
+                    }}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Last Name" formControlName="lname" autocomplete="nope" required />
+                <mat-error class="input-error" *ngIf="validationErrors['LastName']">{{
+                    validationErrors["LastName"]
+                    }}</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Email" formControlName="email" autocomplete="nope" required />
+                <mat-error class="input-error" *ngIf="validationErrors['Email']">{{
+                    validationErrors["Email"]
+                    }}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Phone Number" formControlName="phoneNumber" autocomplete="nope" required />
+                <mat-error class="input-error" *ngIf="validationErrors['PhoneNumber']">{{
+                    validationErrors["PhoneNumber"]
+                    }}</mat-error>
+            </mat-form-field>
+
+
+            <div class="input-wrapper">
+                <input type="file" id="file-upload" name="file-upload" formControlName="image">
+                <label for="file-upload" class="upload-label">Choose a file</label>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Notes" formControlName="notes" autocomplete="nope" required />
+            </mat-form-field>
+
+            <app-button class="submit-button" (click)="reqAnAppointment()">Request An
+                Appointment</app-button>
+        </form>
+    </div>
+</div>

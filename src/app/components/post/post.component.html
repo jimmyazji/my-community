@@ -1,5 +1,5 @@
 <div class="post-container">
-  <div class="post-head">
+  <div class="post-head" (click)="goToPostDetails()">
     <img [src]="clinicImagePath" alt="doctor" class="avatar" />
     <div class="publisher-info">
       <h3 class="publisher-name">{{clinicName? clinicName : 'ClinicName'}}</h3>
@@ -18,12 +18,13 @@
     <span class="publish-date">{{days ? days +' days' : hours ? hours + 'hours': minutes +
       'minutes' }}</span>
   </div>
-  <div class="post-body">
+  <div class="post-body" (click)="goToPostDetails()">
     <div>
       {{text}}
     </div>
     <div class="image-container">
       <img [src]="imagePath ? imagePath : videoThumbnailPath" alt="">
+      <!-- <ngx-thumbnail-video *ngIf="!imagePath" [url]="videoPath" [options]="options"></ngx-thumbnail-video> -->
     </div>
   </div>
   <div class="post-tail">
@@ -45,6 +46,6 @@
       </svg>
       <span i18n>Share</span>
     </button>
-    <app-button i18n>Request An Appointment</app-button>
+    <app-button i18n (click)="reqAnAppointment()">Request An Appointment</app-button>
   </div>
 </div>

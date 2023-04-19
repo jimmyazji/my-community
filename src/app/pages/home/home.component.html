@@ -102,17 +102,18 @@
 </section>
 <section id="clinics" class="clinics">
   <div class="clinics-container">
-    <!-- <app-clinic-card
+    <app-clinic-card
       *ngFor="let clinic of clinics"
       [clinic]="clinic"
-    ></app-clinic-card> -->
+    ></app-clinic-card>
     <app-button class="more-button" (click)="moreClinics()" i18n
       >Show more</app-button
     >
   </div>
 </section>
 <div class="home-main">
-  <app-recommended-clinic></app-recommended-clinic>
+  <app-recommended-clinic *ngFor="let clinic of clinics  | slice:0:1;" [clinicDetails]="clinic"
+    (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
   <section id="social" class="social">
     <article id="stories" class="stories" horizontalScroll>
       <app-story

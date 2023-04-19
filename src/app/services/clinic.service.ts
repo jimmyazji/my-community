@@ -35,7 +35,7 @@ export class ClinicService {
   searchClinicByName(text: any): Observable<any> {
     return this.http.get(this.baseApiKey + `clinics?Search=${text}`)
   }
-  
+
   getAllClinics(search?: string, category?: number): Observable<Clinic[]> {
     return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(search && { search }), ...(category && { category }) } }) }).pipe(
       map((res: any) =>
@@ -74,5 +74,17 @@ export class ClinicService {
     return this.http.get(this.baseApiKey + 'clinics/reviews/get-clinic-reviews', { params: { clinicId: id } }).pipe(
       map((res: any) =>
         res.value.map((review: Review) => new Review().deserialize(review))));
+  }
+
+  getDoctorsByClinicId(id: number) {
+    return this.http.get(this.baseApiKey + 'doctors/get-doctors-by-clinicId', { params: { clinicId: id } })
+  }
+
+  requestAnAppointment(formValue: any) {
+    return this.http.post(this.baseApiKey + 'clinics/appointments/create-appointment', formValue)
+  }
+
+  getPostDetailsById(id: number) {
+    return this.http.get(this.baseApiKey + 'clinics/posts/get-post-details-by-id', { params: { postId: id } });
   }
 }

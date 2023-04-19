@@ -40,7 +40,7 @@ export class LoginDialogComponent {
         console.log(res);
       } else {
         console.log(res);
-        localStorage.setItem('authToken',res.value.token);
+        localStorage.setItem('authToken', res.value.token);
       }
     }, (err) => {
       console.log(err);

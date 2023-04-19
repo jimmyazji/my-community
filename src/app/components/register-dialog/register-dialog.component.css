@@ -81,10 +81,10 @@
 }
 
 input {
-  background: var(--main-background);
+  background: var(--main-background) !important;
   width: 100% !important;
-  padding: 1rem 2rem;
-  border-radius: 5rem;
+  padding: 1rem 2rem !important;
+  border-radius: 5rem !important;
   border: 1px solid var(--primary-color) !important;
 }
 
@@ -116,4 +116,3 @@ img {
   bottom: -1.75rem;
   right: 0;
 }
-

@@ -46,6 +46,8 @@ import { ProviderComponent } from './pages/provider/provider.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { StoryDetailsComponent } from './components/story-details/story-details.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { RequestAnAppointmentComponent } from './components/appointments/request-an-appointment/request-an-appointment.component';
+import { NgxThumbnailVideoModule } from 'ngx-thumbnail-video';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HomeMapComponent } from './home-map/home-map.component';
 @NgModule({
@@ -81,6 +83,7 @@ import { HomeMapComponent } from './home-map/home-map.component';
     PostDetailsComponent,
     ProviderCardComponent,
     ProviderComponent,
+    RequestAnAppointmentComponent,
     SidenavComponent,
     HomeMapComponent,
   ],
@@ -97,6 +100,7 @@ import { HomeMapComponent } from './home-map/home-map.component';
     HttpClientModule,
     LoadingBarHttpClientModule,
     BrowserAnimationsModule,
+    NgxThumbnailVideoModule,
     StarRatingModule.forRoot()
   ],
   providers: [
