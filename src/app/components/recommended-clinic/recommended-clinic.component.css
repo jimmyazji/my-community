@@ -1,20 +1,12 @@
-:host {
-  max-width: 24rem;
-}
-
 .recommended-clinics {
-  width: 100%;
-  height: 84vh;
   background-color: var(--primary-darker-color);
+  max-width: 22rem;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
   border: 1px solid var(--primary-color);
-  border-left: none;
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.16));
-  overflow: hidden;
   position: sticky;
-  top: 5.6rem;
-  z-index: 11;
+  top: 5.5rem;
 }
 
 .recommended-clinic-container {
@@ -28,7 +20,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.clinic-info>* {
+.clinic-info > * {
   display: flex;
   align-items: center;
 }
@@ -74,7 +66,11 @@
 .recommended-clinics-title {
   color: var(--main-background);
   text-align: center;
-  padding: 0.5rem 0;
+  font-size: 1.25rem;
+  line-height: 3rem;
+  height: 3rem;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .clinic-button {

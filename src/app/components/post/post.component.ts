@@ -54,7 +54,6 @@ export class PostComponent {
   }
 
   goToPostDetails() {
-    console.log(this.postDetails.id)
     this.router.navigate(["post-details", this.postDetails.id])
   }
 }

@@ -28,8 +28,6 @@ export class PaginationService {
     this.currentPage = 1;
   }
   totalPages(): number {
-    console.log(this.items)
-    console.log(this.pageSize)
     return Math.ceil(this.items.length / this.pageSize);
   }
 

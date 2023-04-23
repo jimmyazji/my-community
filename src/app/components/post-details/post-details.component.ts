@@ -29,9 +29,7 @@ export class PostDetailsComponent {
 
 
   constructor(private route: ActivatedRoute, private clinicService: ClinicService, private dialog: MatDialog) {
-    console.log(this.route)
     this.route.params.subscribe((params) => {
-      console.log(params['id'])
       this.clinicService.getPostDetailsById(params['id']).subscribe(
         (res: any) => {
           this.data = res.value
@@ -42,7 +40,6 @@ export class PostDetailsComponent {
           this.hours = Math.trunc(duration.asHours());
           this.minutes = Math.trunc(duration.asMinutes());
           this.days = +duration.days().toFixed(2);
-          console.log(res.value);
         })
     })
   }

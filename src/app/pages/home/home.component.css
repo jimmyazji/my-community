@@ -26,7 +26,7 @@
   margin-right: auto;
 }
 
-.background-container> :not(:first-child) {
+.background-container > :not(:first-child) {
   margin-top: 1.5rem;
 }
 
@@ -154,14 +154,13 @@
 
 .home-main {
   display: flex;
-  padding: 1rem 0;
   background-color: var(--main-darker-background);
+  gap: 1rem;
+  justify-content: space-between;
 }
-
 
 .stories {
   display: flex;
-
   overflow-x: scroll;
   gap: 1.5rem;
   max-width: 40rem;
@@ -173,16 +172,14 @@
   /* Firefox */
 }
 
-.posts {
-  padding: 2rem 0;
-  max-width: 70%;
-}
-
 .stories::-webkit-scrollbar {
   display: none;
 }
 
 .social {
-  padding: 0 2rem;
-  margin: 0 0 0 4rem;
+  margin-left: 1rem;
+}
+
+.posts {
+  padding-top: 1rem;
 }

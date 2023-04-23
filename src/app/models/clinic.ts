@@ -6,7 +6,7 @@ export class Clinic {
     phoneNumber: string = ''
     description?: string
     rate?: number
-    imagePath?: string = '../../../assets/images/clinic.jpeg'
+    imagePath?: string = 'assets/images/clinic.jpeg'
     doctors: Provider[] = []
 
     deserialize(input: any) {

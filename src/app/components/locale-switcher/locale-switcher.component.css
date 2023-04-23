@@ -1,21 +1,4 @@
-.toolbar {
-  position: fixed;
-  background-color: var(--main-background);
-}
-
-.toolbar-list {
-  display: flex;
-  height: 4.5rem;
-  justify-content: space-around;
-  align-items: center;
-  max-width: 42rem;
-  padding: 0.125rem;
-  list-style: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.toolbar-item button {
+.button {
   font-size: 1.125rem;
   font-weight: 400;
   text-transform: capitalize;
@@ -30,7 +13,7 @@
   padding: 0.5rem;
 }
 
-.toolbar-item button:focus {
+.button:focus {
   background-color: #f1f1f1f1;
 }
 
@@ -55,10 +38,11 @@
 }
 
 @media only screen and (min-width: 23rem) {
-  .toolbar-item-description {
-    display: block;
+    .toolbar-item-description {
+      display: block;
+    }
+    .toolbar-list {
+      justify-content: space-between;
+    }
   }
-  .toolbar-list {
-    justify-content: space-between;
-  }
-}
+  

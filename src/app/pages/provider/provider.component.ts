@@ -19,7 +19,6 @@ export class ProviderComponent implements OnInit {
       this.providerService.getProviderDetails(params['id']).subscribe(
         (res) => {
           this.provider = res;
-          console.log(res);
         })
     })
   }

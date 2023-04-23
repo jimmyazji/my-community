@@ -145,3 +145,8 @@ body {
 .rating {
   justify-content: start;
 }
+
+.mat-sidenav-content,
+.mat-drawer-container {
+  overflow: visible !important;
+}
