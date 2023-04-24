@@ -113,11 +113,14 @@
 </section>
 <div class="home-main">
   <ng-container *ngIf="recommendedOpen">
-    <app-recommended-clinic *ngFor="let clinic of clinics  | slice:0:1;" [clinicDetails]="clinic"
-      (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
+    <app-recommended-clinic
+      *ngFor="let clinic of clinics | slice : 0 : 1"
+      [clinicDetails]="clinic"
+      (newItemEvent)="scrollItem($event)"
+    ></app-recommended-clinic>
   </ng-container>
   <section id="social" class="social">
-    <article id="stories" class="stories" horizontalScroll>
+    <article id="stories" class="stories">
       <app-story
         *ngFor="let story of stories"
         [name]="story.name"

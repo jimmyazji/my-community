@@ -87,4 +87,8 @@ export class ClinicService {
   getPostDetailsById(id: number) {
     return this.http.get(this.baseApiKey + 'clinics/posts/get-post-details-by-id', { params: { postId: id } });
   }
+
+  createReview(review: { clinicId: number, rate: number, content: string }) {
+    return this.http.post<any>(this.baseApiKey + 'clinics/reviews/create-clinic-review', review);
+  }
 }

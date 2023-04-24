@@ -26,7 +26,7 @@
     "@ngx-loading-bar/router": "^6.0.2",
     "angular-star-rating": "^6.0.0",
     "css-star-rating": "^1.3.1",
-    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
     "ngx-thumbnail-video": "^0.1.0",
     "rxjs": "~7.8.0",

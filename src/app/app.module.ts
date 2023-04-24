@@ -18,6 +18,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ClinicComponent } from './pages/clinic/clinic.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
@@ -104,6 +105,7 @@ import { LocaleSwitcherComponent } from './components/locale-switcher/locale-swi
     BrowserAnimationsModule,
     NgxThumbnailVideoModule,
     MatMenuModule,
+    MatSnackBarModule,
     StarRatingModule.forRoot()
   ],
   providers: [

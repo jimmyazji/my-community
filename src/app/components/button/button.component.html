@@ -1,3 +1,7 @@
-<button class="button" [ngClass]="[color, fullWidth ? 'full-width' : '', rounded ? 'rounded' : '']">
+<button
+  class="button"
+  [ngClass]="[color, fullWidth ? 'full-width' : '', rounded ? 'rounded' : '']"
+  [type]="type"
+>
   <ng-content></ng-content>
 </button>

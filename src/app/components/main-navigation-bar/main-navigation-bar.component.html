@@ -29,7 +29,22 @@
     <div class="navigation-actions">
       <div class="authentication-container">
         <app-search-bar></app-search-bar>
-        <app-button i18n (click)="login()">log in</app-button>
+        <button
+          class="user-avatar"
+          *ngIf="authenticated"
+          [matMenuTriggerFor]="authMenu"
+        >
+          <img [src]="user?.imagePath" [alt]="user?.name" />
+        </button>
+        <mat-menu #authMenu>
+          <button mat-menu-item><mat-icon>person</mat-icon>Profile</button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon> Logout
+          </button>
+        </mat-menu>
+        <app-button i18n (click)="login()" *ngIf="!authenticated"
+          >log in</app-button
+        >
       </div>
       <button
         class="hamburger hamburger--collapse"

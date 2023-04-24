@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,7 +20,8 @@ export class RegisterDialogComponent {
   constructor(
     public dialog: MatDialog,
     private _fg: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) {
     this.registerForm = this._fg.group({
       gender: [undefined, Validators.required],
@@ -49,6 +51,9 @@ export class RegisterDialogComponent {
 
     this.authService.register(formData).subscribe(res => {
       this.dialog.closeAll()
+      this.snackBar.open('Registration completed successfully', 'Ok', {
+        duration: 3000
+      });
     },
       (err) => {
         if (err instanceof HttpErrorResponse) {

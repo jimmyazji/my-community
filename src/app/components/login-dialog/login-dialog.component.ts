@@ -11,7 +11,6 @@ type ValidationErrors = { [key: string]: string }
   styleUrls: ['./login-dialog.component.css']
 })
 export class LoginDialogComponent {
-
   loginForm!: FormGroup;
   hide = true;
   validationErrors: ValidationErrors = {};
@@ -39,10 +38,10 @@ export class LoginDialogComponent {
         this.errorResponse = res.message;
       } else {
         localStorage.setItem('authToken', res.value.token);
+        this.dialog.closeAll();
       }
     }, (err) => {
       this.validationErrors = err.error.errors;
-
       this.errorResponse = err.error.title;
     })
   }

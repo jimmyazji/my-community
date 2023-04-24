@@ -100,22 +100,25 @@
           </mat-tab-group> -->
         </mat-tab>
         <mat-tab label="Reviews" i18n-label>
-          <div class="review">
+          <form class="review" [formGroup]="reviewFormGroup" (ngSubmit)="submitReview()">
             <div class="rating-input">
               <textarea
                 class="rating-textarea"
                 placeholder="Write a review"
                 rows="4"
+                cols="40"
+                formControlName="content"
               ></textarea>
-              <app-button class="review-submit" [rounded]="false">Submit</app-button>
+              <app-button class="review-submit" [rounded]="false" type="submit">Submit</app-button>
             </div>
-            <star-rating
+            <star-rating-control
               size="large"
               staticColor="ok"
               [rating]="0"
               [hoverEnabled]="true"
-            ></star-rating>
-          </div>
+              formControlName="rate"
+            ></star-rating-control>
+          </form>
           <div class="reviews-container">
             <app-review-card
               *ngFor="let review of reviews"

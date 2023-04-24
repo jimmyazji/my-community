@@ -10,4 +10,5 @@ export class ButtonComponent {
   @Input() link: string | undefined | null
   @Input() fullWidth: Boolean = false;
   @Input() rounded: Boolean = true;
+  @Input() type?: 'submit' | 'button' 
 }

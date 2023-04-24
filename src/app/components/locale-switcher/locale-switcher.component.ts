@@ -19,6 +19,5 @@ export class LocaleSwitcherComponent {
   handleChange(selectedLocale: string) {
     if (this.activeLocale == selectedLocale) return;
     window.location.href = `/${selectedLocale}${this.router.url}`;
-    console.log(`/${selectedLocale}${this.router.url}`);
   }
 }

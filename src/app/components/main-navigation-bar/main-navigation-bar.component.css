@@ -6,7 +6,7 @@
   left: 0;
   z-index: 50;
   justify-content: space-between;
-  padding: .25rem 1rem;
+  padding: 0.25rem 1rem;
   align-items: center;
   text-transform: capitalize;
   transition: top 200ms ease-out, background-color 400ms ease-in-out,
@@ -98,6 +98,16 @@
 
 .search-icon {
   width: 1.5rem;
+}
+
+.user-avatar img {
+  aspect-ratio: 1 / 1;
+  height: 3.5rem;
+  object-fit: cover;
+  border-radius: 99rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--primary-color);
 }
 
 .hamburger {

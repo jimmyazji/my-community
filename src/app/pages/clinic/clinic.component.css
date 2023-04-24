@@ -3,12 +3,23 @@
   margin-left: auto;
   margin-right: auto;
   padding: 2rem 1rem 0 1rem;
-  display: flex;
   gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 70rem) {
+  .clinic-grid {
+    flex-direction: row;
+  }
 }
 
 .img-container {
   min-width: max-content;
+}
+.clinic-img {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .appointment-request {
@@ -167,12 +178,9 @@
 }
 
 .rating-textarea {
-  width: 40rem;
-  display: flex;
-  min-width: 24rem;
   background-color: var(--main-background);
   border: 1px solid transparent;
-  padding: 1rem 2rem;
+  padding: 1rem 8rem 1rem 2rem;
   filter: drop-shadow(0px 1px 0.5px rgba(0, 0, 0, 0.16));
   border-radius: 0.25rem;
   resize: none;

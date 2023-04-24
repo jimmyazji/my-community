@@ -106,10 +106,10 @@
   padding: 1rem 2rem;
 }
 
-::ng-deep .mdc-text-field {
+::ng-deep .login-form .mdc-text-field {
   padding: 0 !important;
 }
 
-::ng-deep .mdc-text-field--invalid input {
+::ng-deep .login-form .mdc-text-field--invalid input {
   border: 1px solid #f44336 !important;
 }

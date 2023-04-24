@@ -22,4 +22,8 @@ export class ProviderService {
       map((res: any) =>
         res.value.map((review: Review) => new Review().deserialize(review))));
   }
+
+  createReview(review: { doctorId: number, rate: number, content: string }) {
+    return this.http.post<any>(this.baseApiKey + 'doctors/reviews/create-review', review);
+  }
 }
