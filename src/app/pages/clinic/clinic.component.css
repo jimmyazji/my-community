@@ -16,7 +16,7 @@
 }
 
 .clinic-img {
-  height: 24rem;
+  height: 20rem;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 0.25rem;

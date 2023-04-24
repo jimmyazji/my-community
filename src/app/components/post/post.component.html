@@ -1,5 +1,5 @@
 <div class="post-container">
-  <div class="post-head" (click)="goToPostDetails()">
+  <div class="post-head">
     <img [src]="clinicImagePath" alt="doctor" class="avatar" />
     <div class="publisher-info">
       <h3 class="publisher-name">{{clinicName? clinicName : 'ClinicName'}}</h3>
@@ -18,16 +18,28 @@
     <span class="publish-date">{{days ? days +' days' : hours ? hours + 'hours': minutes +
       'minutes' }}</span>
   </div>
-  <div class="post-body" (click)="goToPostDetails()">
+  <div class="post-body">
     <div>
       {{text}}
     </div>
-    <div class="image-container">
+    <div class="image-container" (click)="goToPostDetails()">
       <img [src]="imagePath ? imagePath : videoThumbnailPath" alt="">
+
       <!-- <ngx-thumbnail-video *ngIf="!imagePath" [url]="videoPath" [options]="options"></ngx-thumbnail-video> -->
     </div>
   </div>
   <div class="post-tail">
+    <button>
+      <div class="toolbar-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.8" viewBox="238 191.1 20 17.8">
+          <g data-name="heart">
+            <path fill="red" fill-rule="evenodd"
+              d="M252.44 191.1c-1.81 0-3.43.88-4.44 2.23a5.55 5.55 0 0 0-4.44-2.23 5.57 5.57 0 0 0-5.56 5.59c0 1.19.19 2.29.52 3.31 1.58 5 6.45 7.99 8.86 8.81.34.12.9.12 1.24 0 2.41-.82 7.28-3.81 8.86-8.81.33-1.02.52-2.12.52-3.31a5.57 5.57 0 0 0-5.56-5.59Z"
+              data-name="Vector" />
+          </g>
+        </svg>
+      </div>
+    </button>
     <button class="button view-instagram">
       <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="687.517 2438 28.333 28.317">
         <path fill="currentColor" fill-rule="evenodd"

@@ -1,53 +1,62 @@
 <div class="post-container">
-    <div class="post-head">
-        <img [src]="data.clinicImagePath" alt="doctor" class="avatar" />
-        <div class="publisher-info">
-            <h3 class="publisher-name">{{data.clinicName? data.clinicName : 'ClinicName'}}</h3>
-            <h4 class="publisher-phone">
-                <svg class="call-icon" xmlns="http://www.w3.org/2000/svg" viewBox="1.05 1.05 27.617 27.617">
-                    <g data-name="call-calling">
-                        <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M27.206 22.699c0 .445-.099.904-.31 1.35a5.11 5.11 0 0 1-.841 1.263c-.607.668-1.276 1.151-2.031 1.46-.743.31-1.548.471-2.415.471-1.263 0-2.613-.297-4.037-.904-1.424-.606-2.848-1.424-4.26-2.452A35.602 35.602 0 0 1 9.25 20.42a35.186 35.186 0 0 1-3.455-4.05c-1.015-1.41-1.832-2.823-2.427-4.222-.594-1.412-.891-2.761-.891-4.05 0-.841.148-1.646.445-2.39a5.7 5.7 0 0 1 1.425-2.067c.792-.78 1.659-1.164 2.575-1.164.347 0 .694.074 1.003.223.322.148.607.371.83.693l2.873 4.05c.223.309.384.594.495.866.112.26.174.52.174.756 0 .297-.087.594-.26.879a4.212 4.212 0 0 1-.694.879l-.941.978a.663.663 0 0 0-.198.496c0 .099.012.185.037.284.037.1.074.174.1.248.222.409.606.941 1.15 1.585.558.644 1.152 1.3 1.796 1.957a37.25 37.25 0 0 0 1.97 1.82c.643.545 1.176.916 1.597 1.14.062.024.136.061.223.098.099.038.198.05.31.05.21 0 .37-.074.507-.21l.941-.93c.31-.309.607-.544.892-.693.284-.173.57-.26.879-.26.235 0 .483.05.755.161.273.112.557.273.867.483l4.099 2.91c.322.223.545.483.681.793.124.31.198.619.198.966ZM22.91 11.145c0-.743-.583-1.882-1.45-2.811-.792-.854-1.845-1.523-2.885-1.523m8.668 4.334a8.662 8.662 0 0 0-8.668-8.668"
-                            data-name="Vector" />
-                    </g>
-                </svg>
-                {{data.clinicPhoneNumber}}
-            </h4>
-        </div>
-        <span class="publish-date">{{days ? days +' days' : hours ? hours + 'hours': minutes +
+  <div class="post-head">
+    <img [src]="data.clinicImagePath" alt="doctor" class="avatar" />
+    <div class="publisher-info">
+      <h3 class="publisher-name">{{data.clinicName? data.clinicName : 'ClinicName'}}</h3>
+      <h4 class="publisher-phone">
+        <svg class="call-icon" xmlns="http://www.w3.org/2000/svg" viewBox="1.05 1.05 27.617 27.617">
+          <g data-name="call-calling">
+            <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2"
+              d="M27.206 22.699c0 .445-.099.904-.31 1.35a5.11 5.11 0 0 1-.841 1.263c-.607.668-1.276 1.151-2.031 1.46-.743.31-1.548.471-2.415.471-1.263 0-2.613-.297-4.037-.904-1.424-.606-2.848-1.424-4.26-2.452A35.602 35.602 0 0 1 9.25 20.42a35.186 35.186 0 0 1-3.455-4.05c-1.015-1.41-1.832-2.823-2.427-4.222-.594-1.412-.891-2.761-.891-4.05 0-.841.148-1.646.445-2.39a5.7 5.7 0 0 1 1.425-2.067c.792-.78 1.659-1.164 2.575-1.164.347 0 .694.074 1.003.223.322.148.607.371.83.693l2.873 4.05c.223.309.384.594.495.866.112.26.174.52.174.756 0 .297-.087.594-.26.879a4.212 4.212 0 0 1-.694.879l-.941.978a.663.663 0 0 0-.198.496c0 .099.012.185.037.284.037.1.074.174.1.248.222.409.606.941 1.15 1.585.558.644 1.152 1.3 1.796 1.957a37.25 37.25 0 0 0 1.97 1.82c.643.545 1.176.916 1.597 1.14.062.024.136.061.223.098.099.038.198.05.31.05.21 0 .37-.074.507-.21l.941-.93c.31-.309.607-.544.892-.693.284-.173.57-.26.879-.26.235 0 .483.05.755.161.273.112.557.273.867.483l4.099 2.91c.322.223.545.483.681.793.124.31.198.619.198.966ZM22.91 11.145c0-.743-.583-1.882-1.45-2.811-.792-.854-1.845-1.523-2.885-1.523m8.668 4.334a8.662 8.662 0 0 0-8.668-8.668"
+              data-name="Vector" />
+          </g>
+        </svg>
+        {{data.clinicPhoneNumber}}
+      </h4>
+    </div>
+    <span class="publish-date">{{days ? days +' days' : hours ? hours + 'hours': minutes +
             'minutes' }}</span>
+  </div>
+  <div class="post-body">
+    <div>
+      {{data.text}}
     </div>
-    <div class="post-body">
-        <div>
-            {{data.text}}
-        </div>
-        <div class="image-container">
-            <img *ngIf="data.imagePath" [src]="data.imagePath ? data.imagePath : data.videoThumbnailPath" alt="">
-            <ngx-thumbnail-video *ngIf="!data.imagePath" [url]="data.videoPath"
-                [options]="options"></ngx-thumbnail-video>
-        </div>
+    <div class="image-container">
+      <img *ngIf="data.imagePath" [src]="data.imagePath ? data.imagePath : data.videoThumbnailPath" alt="">
+      <video *ngIf="!data.imagePath" [src]="data.videoPath" controls></video>
     </div>
-    <div class="post-tail">
-        <button class="button view-instagram">
-            <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="687.517 2438 28.333 28.317">
-                <path fill="currentColor" fill-rule="evenodd"
-                    d="M695.777 2438c-4.552 0-8.256 3.707-8.256 8.26v11.798c0 4.553 3.707 8.256 8.261 8.256h11.798c4.552 0 8.256-3.707 8.256-8.26v-11.798c0-4.553-3.707-8.256-8.261-8.256h-11.798Zm14.16 4.719a1.18 1.18 0 1 1-.001 2.36 1.18 1.18 0 0 1 0-2.36Zm-8.258 2.36a7.086 7.086 0 0 1 7.078 7.078 7.086 7.086 0 0 1-7.078 7.079 7.086 7.086 0 0 1-7.079-7.079 7.086 7.086 0 0 1 7.079-7.078Zm0 2.36a4.719 4.719 0 1 0 0 9.437 4.719 4.719 0 0 0 0-9.438Z"
-                    data-name="icons8-instagram" />
-            </svg>
-            <span i18n>View Instagram</span>
-        </button>
-        <button class="button share-button">
-            <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="304.317 320.317 35.533 35.55">
-                <g>
-                    <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m313.618 327.63 15.623-5.208c7.011-2.337 10.82 1.49 8.502 8.502l-5.208 15.623c-3.497 10.508-9.238 10.508-12.734 0l-1.546-4.637-4.637-1.546c-10.508-3.496-10.508-9.22 0-12.734Zm4.986 13.489 6.588-6.607"
-                        data-name="Vector" />
-                </g>
-            </svg>
-            <span i18n>Share</span>
-        </button>
-        <app-button i18n (click)="reqAnAppointment()">Request An Appointment</app-button>
-    </div>
+  </div>
+  <div class="post-tail">
+    <button>
+      <div class="toolbar-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.8" viewBox="238 191.1 20 17.8">
+          <g data-name="heart">
+            <path fill="red" fill-rule="evenodd"
+              d="M252.44 191.1c-1.81 0-3.43.88-4.44 2.23a5.55 5.55 0 0 0-4.44-2.23 5.57 5.57 0 0 0-5.56 5.59c0 1.19.19 2.29.52 3.31 1.58 5 6.45 7.99 8.86 8.81.34.12.9.12 1.24 0 2.41-.82 7.28-3.81 8.86-8.81.33-1.02.52-2.12.52-3.31a5.57 5.57 0 0 0-5.56-5.59Z"
+              data-name="Vector" />
+          </g>
+        </svg>
+      </div>
+    </button>
+    <button class="button view-instagram">
+      <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="687.517 2438 28.333 28.317">
+        <path fill="currentColor" fill-rule="evenodd"
+          d="M695.777 2438c-4.552 0-8.256 3.707-8.256 8.26v11.798c0 4.553 3.707 8.256 8.261 8.256h11.798c4.552 0 8.256-3.707 8.256-8.26v-11.798c0-4.553-3.707-8.256-8.261-8.256h-11.798Zm14.16 4.719a1.18 1.18 0 1 1-.001 2.36 1.18 1.18 0 0 1 0-2.36Zm-8.258 2.36a7.086 7.086 0 0 1 7.078 7.078 7.086 7.086 0 0 1-7.078 7.079 7.086 7.086 0 0 1-7.079-7.079 7.086 7.086 0 0 1 7.079-7.078Zm0 2.36a4.719 4.719 0 1 0 0 9.437 4.719 4.719 0 0 0 0-9.438Z"
+          data-name="icons8-instagram" />
+      </svg>
+      <span i18n>View Instagram</span>
+    </button>
+    <button class="button share-button">
+      <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="304.317 320.317 35.533 35.55">
+        <g>
+          <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m313.618 327.63 15.623-5.208c7.011-2.337 10.82 1.49 8.502 8.502l-5.208 15.623c-3.497 10.508-9.238 10.508-12.734 0l-1.546-4.637-4.637-1.546c-10.508-3.496-10.508-9.22 0-12.734Zm4.986 13.489 6.588-6.607"
+            data-name="Vector" />
+        </g>
+      </svg>
+      <span i18n>Share</span>
+    </button>
+    <app-button i18n (click)="reqAnAppointment()">Request An Appointment</app-button>
+  </div>
 </div>

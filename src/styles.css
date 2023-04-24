@@ -120,10 +120,8 @@ body {
   display: none !important;
 }
 
-.mdc-text-field--outlined:not(.mdc-text-field--disabled)
-  .mdc-notched-outline__trailing,
-.mdc-text-field--outlined:not(.mdc-text-field--disabled)
-  .mdc-notched-outline__leading {
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading {
   display: none !important;
 }
 
@@ -145,3 +143,11 @@ body {
 .rating {
   justify-content: start;
 }
+
+/* .cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+  overflow: auto;
+  pointer-events: auto !important;
+} */

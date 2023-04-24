@@ -54,10 +54,8 @@ export class ClinicService {
         res.value = new Clinic().deserialize(res.value)));
   }
 
-  getClinicLocations(id: number): Observable<Location[]> {
-    return this.http.get(this.baseApiKey + 'clinics/get-clinic-locations', { params: { clinicId: id } }).pipe(
-      map((res: any) =>
-        res.value.map((location: Location) => new Location().deserialize(location))));
+  getClinicLocations(id: number): Observable<any[]> {
+    return this.http.get<any>(this.baseApiKey + 'clinics/get-clinic-locations', { params: { clinicId: id } })
   }
 
   getClinicServices(id: number): Observable<Service[]> {

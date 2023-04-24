@@ -7,7 +7,7 @@ import { MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { MaterialModule } from './material/material.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { StarRatingModule } from 'angular-star-rating';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -50,6 +50,8 @@ import { RequestAnAppointmentComponent } from './components/appointments/request
 import { NgxThumbnailVideoModule } from 'ngx-thumbnail-video';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HomeMapComponent } from './home-map/home-map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +88,7 @@ import { HomeMapComponent } from './home-map/home-map.component';
     RequestAnAppointmentComponent,
     SidenavComponent,
     HomeMapComponent,
+    MapDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,10 +100,12 @@ import { HomeMapComponent } from './home-map/home-map.component';
     MatTabsModule,
     MatSelectModule,
     MaterialModule,
-    HttpClientModule,
     LoadingBarHttpClientModule,
     BrowserAnimationsModule,
     NgxThumbnailVideoModule,
+    GoogleMapsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     StarRatingModule.forRoot()
   ],
   providers: [
