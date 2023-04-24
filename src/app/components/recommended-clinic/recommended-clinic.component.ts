@@ -29,11 +29,6 @@ export class RecommendedClinicComponent {
   ) {
   }
 
-  ngOnInit() {
-    console.log(this.clinicDetails)
-  }
-
-
   requestAnAppointment() {
     this.dialog.closeAll()
     timer(300).subscribe(

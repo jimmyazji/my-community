@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { MaterialModule } from './material/material.module';
@@ -17,6 +17,7 @@ import { InsurancesComponent } from './pages/insurances/insurances.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ClinicComponent } from './pages/clinic/clinic.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
 import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
@@ -43,15 +44,18 @@ import { RecommendedClinicComponent } from './components/recommended-clinic/reco
 import { ProviderCardComponent } from './provider-card/provider-card.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ProviderComponent } from './pages/provider/provider.component';
-import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { StoryDetailsComponent } from './components/story-details/story-details.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { RequestAnAppointmentComponent } from './components/appointments/request-an-appointment/request-an-appointment.component';
 import { NgxThumbnailVideoModule } from 'ngx-thumbnail-video';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HomeMapComponent } from './home-map/home-map.component';
+
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
+
+import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +93,7 @@ import { MapDialogComponent } from './components/map-dialog/map-dialog.component
     SidenavComponent,
     HomeMapComponent,
     MapDialogComponent,
+    LocaleSwitcherComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,6 +111,7 @@ import { MapDialogComponent } from './components/map-dialog/map-dialog.component
     GoogleMapsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    MatMenuModule,
     StarRatingModule.forRoot()
   ],
   providers: [

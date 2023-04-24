@@ -21,8 +21,13 @@
   <h2 class="recommended-clinics-title" i18n>Recommended Clinics</h2>
   <div class="recommended-clinic-container">
     <div class="image-container">
-      <img src="../../assets/images/clinic.jpeg" alt="clinic" class="clinic-img" />
+      <img
+      [src]="clinicDetails.imagePath"
+      alt="clinic"
+      class="clinic-img"
+    />
     </div>
+    
     <div class="clinic-info">
       <div class="clinic-name">
         <svg class="crown" xmlns="http://www.w3.org/2000/svg" viewBox="168.467 382.817 43.05 42.85">

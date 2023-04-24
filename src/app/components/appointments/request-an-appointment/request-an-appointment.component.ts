@@ -63,7 +63,6 @@ export class RequestAnAppointmentComponent {
     formData.set('PatientPhoneNumber', this.appointmentForm.value.phoneNumber);
     formData.set('PatientEmail', this.appointmentForm.value.email);
     this.clinicService.requestAnAppointment(formData).subscribe(res => {
-      console.log(res)
       this.dialog.closeAll();
     })
   }

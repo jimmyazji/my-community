@@ -1,10 +1,10 @@
 .map-container {
-  position: absolute;
+  position: sticky;
+  top: 5.5rem;
   overflow: hidden;
   border-radius: 0.25rem;
-  width: 12rem;
+  width: 18rem;
   transition: width 200ms ease-out;
-  height: 85vh;
   right: 0;
   z-index: 40;
   border: 2px solid var(--primary-color);
@@ -13,12 +13,11 @@
 .map-iframe {
   width: 64rem;
   height: 40rem;
-
   z-index: 40;
 }
 
 .map-container:hover {
-  width: 18rem;
+  width: 24rem;
 }
 
 .map-container.close:hover .iframe-mask {
@@ -42,7 +41,7 @@
 }
 
 .map-container.open {
-  width: 63.75rem;
+  width: 52rem;
 }
 
 .map-container.open:hover .iframe-mask {
@@ -53,7 +52,6 @@
   top: 0;
   left: 0;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;
   z-index: 30;

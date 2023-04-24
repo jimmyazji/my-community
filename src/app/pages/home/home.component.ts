@@ -18,7 +18,9 @@ import { PaginationService } from 'src/app/services/pagination.service';
 })
 export class HomeComponent implements OnInit {
 
-
+  recommendedOpen: boolean = true;
+  startIndex = 0;
+  endIndex = 4;
   stories: any[] = []
   posts = []
   categories: Category[] = [];
@@ -75,7 +77,6 @@ export class HomeComponent implements OnInit {
     })
   }
   prevIndex(length: number) {
-    console.log(this.pagination.hasPreviousPage())
     this.pagination.previousPage();
     this.categories = this.pagination.currentItems();
   }
@@ -101,14 +102,12 @@ export class HomeComponent implements OnInit {
   afterIndex() {
     this.clinicPagination.nextPage();
     this.clinics = this.clinicPagination.currentItems();
-    console.log(this.clinics)
   }
 
 
   getStories() {
     this.clinicService.getStories().subscribe((res: any) => {
       this.stories = res.value;
-      console.log(this.stories)
     })
   }
 
@@ -121,7 +120,6 @@ export class HomeComponent implements OnInit {
   getPosts() {
     this.clinicService.getPosts().subscribe((res: any) => {
       this.posts = res.value;
-      console.log(this.posts)
     })
   }
 
@@ -129,10 +127,14 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['clinics']);
   }
 
+
   openMapForSearch() {
     const dialogRef = this.dialog.open(MapDialogComponent, {
       autoFocus: true,
       maxHeight: '90vh'
     });
+  handleMapToggle(e: boolean) {
+    this.recommendedOpen = !e;
+
   }
 }

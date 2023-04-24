@@ -2,8 +2,8 @@ import { Insurance } from './Insurance';
 export class Provider {
     id?: number
     name: string | null = null
-    imagePath?: string = '../../../assets/images/clinic.jpeg'
-    iconPath?: string = '../../../assets/images/clinic.jpeg'
+    imagePath?: string = 'assets/images/clinic.jpeg'
+    iconPath?: string = 'assets/images/clinic.jpeg'
     jurisdiction?: string
     description: string = ''
     workStartHour: Date = new Date

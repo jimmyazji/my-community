@@ -41,6 +41,7 @@
           <img
             *ngIf="category.iconPath; else defaultIcon"
             [src]="category.iconPath"
+            class="category-icon"
             alt=""
           />
           {{ category.name }}

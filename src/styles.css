@@ -151,3 +151,7 @@ body {
   overflow: auto;
   pointer-events: auto !important;
 } */
+.mat-sidenav-content,
+.mat-drawer-container {
+  overflow: visible !important;
+}

@@ -37,13 +37,10 @@ export class LoginDialogComponent {
     this.authService.login(formData).subscribe(res => {
       if (!res.status) {
         this.errorResponse = res.message;
-        console.log(res);
       } else {
-        console.log(res);
         localStorage.setItem('authToken', res.value.token);
       }
     }, (err) => {
-      console.log(err);
       this.validationErrors = err.error.errors;
 
       this.errorResponse = err.error.title;

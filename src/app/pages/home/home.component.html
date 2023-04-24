@@ -53,7 +53,11 @@
     </div>
   </div>
 </section>
+
 <section id="clinics" class="clinics" *ngIf="clinicsByFilter">
+
+<section id="clinics" class="clinics" *ngIf="clinics.length">
+
   <div class="clinics-container">
     <app-clinic-card *ngFor="let clinic of clinicsByFilter" [clinic]="clinic" (click)="getClinicLocation(clinic)">
     </app-clinic-card>
@@ -61,8 +65,10 @@
   </div>
 </section>
 <div class="home-main">
-  <app-recommended-clinic *ngFor="let clinic of clinics  | slice:0:1;" [clinicDetails]="clinic"
-    (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
+  <ng-container *ngIf="recommendedOpen">
+    <app-recommended-clinic *ngFor="let clinic of clinics  | slice:0:1;" [clinicDetails]="clinic"
+      (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
+  </ng-container>
   <section id="social" class="social">
     <article id="stories" class="stories" horizontalScroll>
       <app-story *ngFor="let story of stories" [name]="story.name" [image]="story.imagePath"
@@ -72,5 +78,6 @@
       <app-post *ngFor="let post of posts" [postDetails]="post"></app-post>
     </article>
   </section>
-  <app-home-map [clinicLocations]="clinicLocations"></app-home-map>
+  <app-home-map [clinicLocations]="clinicLocations" (mapToggled)="handleMapToggle($event)"></app-home-map>
+
 </div>

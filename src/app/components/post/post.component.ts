@@ -59,7 +59,6 @@ export class PostComponent {
 
   goToPostDetails() {
     this.dialog.closeAll();
-    console.log(this.postDetails.id)
     this.router.navigate(["post-details", this.postDetails.id])
   }
 }

@@ -1,7 +1,7 @@
 .arch {
   overflow: hidden;
-  margin-top: 5.25rem;
   background-color: var(--main-darker-background);
+  margin-bottom: 5rem;
 }
 
 .arch::before {
@@ -19,7 +19,7 @@
   display: block;
   position: absolute;
   background-color: var(--primary-color);
-  width: 72rem;
+  width: min(72rem, 100%);
   top: 0rem;
   right: 50%;
   transform: translateX(50%);
@@ -29,11 +29,14 @@
 }
 
 .arch-content {
+  margin-top: 7.75rem;
   position: absolute;
   display: flex;
-  padding-top: 2rem;
   gap: 1rem;
   z-index: 1;
   right: 50%;
   transform: translateX(50%);
+  width: min(100%, 32rem);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
