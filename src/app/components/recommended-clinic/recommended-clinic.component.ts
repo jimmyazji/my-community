@@ -34,7 +34,9 @@ export class RecommendedClinicComponent {
     timer(300).subscribe(
       () => {
         const dialogRef = this.dialog.open(RequestAnAppointmentComponent, {
-          data: this.clinicDetails
+          data: this.clinicDetails,
+          autoFocus: false,
+          maxHeight: '90vh'
         });
       }
     )

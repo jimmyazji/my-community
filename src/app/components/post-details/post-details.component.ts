@@ -51,6 +51,7 @@ export class PostDetailsComponent {
 
 
   reqAnAppointment() {
+    this.dialog.closeAll();
     this.dialog.open(RequestAnAppointmentComponent)
   }
 }

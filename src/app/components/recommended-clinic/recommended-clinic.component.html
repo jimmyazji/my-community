@@ -1,106 +1,68 @@
 <article class="recommended-clinics">
   <div class="recommended-clinic-navigator">
-    <button
-      class="pagination-button"
-      (click)="paginateOverRecommendedClinics('before')"
-    >
+    <button class="pagination-button" (click)="paginateOverRecommendedClinics('before')">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.967 3.967 39.8 39.8">
         <g data-name="arrow-circle-right">
-          <path
-            fill="currentColor"
-            fill-rule="evenodd"
+          <path fill="currentColor" fill-rule="evenodd"
             d="M23.865 3.978c10.958 0 19.887 8.93 19.887 19.888 0 10.959-8.93 19.888-19.887 19.888-10.958 0-19.887-8.93-19.887-19.888 0-10.958 8.93-19.888 19.887-19.888ZM18.316 24.92l7.02 7.02c.299.299.677.438 1.055.438.378 0 .755-.139 1.054-.437a1.5 1.5 0 0 0 0-2.108l-5.966-5.967 5.966-5.966a1.5 1.5 0 0 0 0-2.109 1.5 1.5 0 0 0-2.108 0l-7.02 7.02a1.465 1.465 0 0 0 0 2.11Z"
-            data-name="Vector"
-          />
+            data-name="Vector" />
         </g>
       </svg>
     </button>
-    <button
-      class="pagination-button"
-      (click)="paginateOverRecommendedClinics('after')"
-    >
+    <button class="pagination-button" (click)="paginateOverRecommendedClinics('after')">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.967 3.967 39.8 39.8">
         <g data-name="arrow-circle-right">
-          <path
-            fill="currentColor"
-            fill-rule="evenodd"
-            d="M23.866 3.978c-10.958 0-19.888 8.93-19.888 19.888 0 10.959 8.93 19.888 19.888 19.888 10.959 0 19.888-8.93 19.888-19.888 0-10.958-8.93-19.888-19.888-19.888Zm5.549 20.942-7.02 7.02a1.475 1.475 0 0 1-1.055.438c-.378 0-.756-.139-1.054-.437a1.5 1.5 0 0 1 0-2.108l5.967-5.967-5.967-5.966a1.5 1.5 0 0 1 0-2.109 1.5 1.5 0 0 1 2.108 0l7.02 7.02a1.465 1.465 0 0 1 0 2.11Z"
-          />
+          <path fill="currentColor" fill-rule="evenodd"
+            d="M23.866 3.978c-10.958 0-19.888 8.93-19.888 19.888 0 10.959 8.93 19.888 19.888 19.888 10.959 0 19.888-8.93 19.888-19.888 0-10.958-8.93-19.888-19.888-19.888Zm5.549 20.942-7.02 7.02a1.475 1.475 0 0 1-1.055.438c-.378 0-.756-.139-1.054-.437a1.5 1.5 0 0 1 0-2.108l5.967-5.967-5.967-5.966a1.5 1.5 0 0 1 0-2.109 1.5 1.5 0 0 1 2.108 0l7.02 7.02a1.465 1.465 0 0 1 0 2.11Z" />
         </g>
       </svg>
     </button>
   </div>
   <h2 class="recommended-clinics-title" i18n>Recommended Clinics</h2>
   <div class="recommended-clinic-container">
-    <img
+    <div class="image-container">
+      <img
       [src]="clinicDetails.imagePath"
       alt="clinic"
       class="clinic-img"
     />
+    </div>
+    
     <div class="clinic-info">
       <div class="clinic-name">
-        <svg
-          class="crown"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="168.467 382.817 43.05 42.85"
-        >
+        <svg class="crown" xmlns="http://www.w3.org/2000/svg" viewBox="168.467 382.817 43.05 42.85">
           <g>
-            <path
-              fill="currentColor"
-              fill-rule="evenodd"
+            <path fill="currentColor" fill-rule="evenodd"
               d="M200.833 425.667h-21.666a1.637 1.637 0 0 1-1.625-1.625c0-.889.736-1.625 1.625-1.625h21.666c.889 0 1.625.736 1.625 1.625 0 .888-.736 1.625-1.625 1.625Zm7.259-35.707-8.667 6.197c-1.148.823-2.795.325-3.293-.997l-4.095-10.92c-.694-1.885-3.359-1.885-4.052 0l-4.117 10.898c-.498 1.344-2.123 1.842-3.271.997l-8.667-6.197c-1.733-1.213-4.03.499-3.315 2.514l9.013 25.241a2.15 2.15 0 0 0 2.037 1.43h20.648a2.18 2.18 0 0 0 2.037-1.43l9.013-25.241c.737-2.015-1.56-3.727-3.271-2.492Zm-12.675 19.998h-10.834a1.637 1.637 0 0 1-1.625-1.625c0-.888.737-1.625 1.625-1.625h10.834c.888 0 1.625.737 1.625 1.625 0 .889-.737 1.625-1.625 1.625Z"
-              data-name="Vector"
-            />
+              data-name="Vector" />
           </g>
         </svg>
         {{ clinicDetails.name ? clinicDetails.name : "clinic name" }}
       </div>
-      <star-rating
-        staticColor="ok"
-        [showHalfStars]="true"
-        [readOnly]="true"
-        [rating]="clinicDetails?.rate ?? 0"
-      ></star-rating>
+      <star-rating staticColor="ok" [showHalfStars]="true" [readOnly]="true" [rating]="clinicDetails?.rate ?? 0">
+      </star-rating>
       <div class="clinic-style">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="51.967 1709.983 32.733 35.767"
-          class="vaccine"
-        >
-          <path
-            fill="currentColor"
-            fill-rule="evenodd"
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="51.967 1709.983 32.733 35.767" class="vaccine">
+          <path fill="currentColor" fill-rule="evenodd"
             d="m61.583 1745.72-2.613-1.96v-8.06h-2.614c-.697 0-1.307-.26-1.83-.783-.522-.523-.784-1.133-.784-1.83v-13.94h-.435c-.378 0-.69-.123-.937-.37-.247-.246-.37-.559-.37-.936 0-.378.123-.69.37-.937.247-.246.56-.37.937-.37h5.663v-3.92h-1.307c-.378 0-.69-.124-.937-.37-.246-.247-.37-.56-.37-.937 0-.378.124-.69.37-.937.247-.247.56-.37.937-.37h5.227c.378 0 .69.123.937.37.247.247.37.56.37.937s-.123.69-.37.936c-.247.247-.56.37-.937.37h-1.307v3.921h5.663c.378 0 .69.124.937.37.247.247.37.56.37.937s-.123.69-.37.937c-.247.246-.56.37-.937.37h-.435v13.94c0 .696-.262 1.306-.784 1.829-.523.523-1.133.784-1.83.784h-2.614v10.019Zm-5.227-12.633h7.841v-3.485h-3.485a.836.836 0 0 1-.61-.26.836.836 0 0 1-.261-.61c0-.233.087-.436.261-.61a.836.836 0 0 1 .61-.262h3.485v-3.485h-3.485a.836.836 0 0 1-.61-.261.836.836 0 0 1-.261-.61c0-.232.087-.436.261-.61a.836.836 0 0 1 .61-.261h3.485v-3.485h-7.84v13.94Zm17.86 11.762c-.697 0-1.307-.262-1.83-.784-.522-.523-.784-1.133-.784-1.83v-11.587c0-.93.117-1.634.349-2.113.232-.479.537-.922.915-1.328.551-.581.914-1.031 1.089-1.35.174-.32.261-.669.261-1.046v-1.307h-.436c-.377 0-.69-.124-.936-.37-.247-.247-.37-.56-.37-.937s.13-.69.392-.937a1.29 1.29 0 0 1 .914-.37h8.713c.377 0 .69.124.936.37.247.247.37.56.37.937 0 .378-.123.69-.37.937-.247.246-.559.37-.936.37h-.436v1.307c0 .348.109.711.327 1.089.218.377.602.856 1.154 1.437.378.407.66.828.85 1.264.188.435.283 1.118.283 2.047v11.587c0 .697-.262 1.307-.784 1.83-.523.522-1.133.784-1.83.784h-7.84Zm0-13.069h7.841v-1.132c0-.523-.145-.988-.436-1.394-.29-.407-.61-.828-.958-1.263-.436-.552-.748-1.06-.936-1.525-.19-.465-.284-1.016-.284-1.655v-1.307H76.83v1.307c0 .61-.087 1.147-.262 1.611-.174.465-.479.973-.914 1.525-.349.436-.676.864-.98 1.285a2.356 2.356 0 0 0-.458 1.416v1.132Zm0 5.228h7.841v-3.485h-7.84v3.485Zm0 5.227h7.841v-3.485h-7.84v3.485Zm0-5.227h7.841-7.84Z"
-            data-name="vaccines_FILL0_wght400_GRAD0_opsz48"
-          />
+            data-name="vaccines_FILL0_wght400_GRAD0_opsz48" />
         </svg>
         Clinic Style
       </div>
       <div class="clinic-number">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox=".783 .783 20.65 20.683"
-          class="call-icon"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox=".783 .783 20.65 20.683" class="call-icon">
           <g data-name="call">
-            <path
-              fill="transparent"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+            <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
               stroke-width="1.5"
               d="M20.35 16.978c0 .334-.074.676-.232 1.01a3.822 3.822 0 0 1-.63.945c-.454.5-.954.86-1.519 1.093a4.651 4.651 0 0 1-1.806.351c-.945 0-1.954-.222-3.02-.676a16.269 16.269 0 0 1-3.186-1.834 26.63 26.63 0 0 1-3.038-2.593 26.318 26.318 0 0 1-2.584-3.029c-.76-1.056-1.371-2.112-1.816-3.158-.444-1.056-.667-2.066-.667-3.03 0-.63.112-1.231.334-1.787A4.263 4.263 0 0 1 3.25 2.723c.593-.583 1.241-.87 1.927-.87.26 0 .518.055.75.166.24.111.454.278.62.519l2.15 3.029c.166.231.287.444.37.648.083.195.13.39.13.565 0 .222-.065.445-.195.658a3.15 3.15 0 0 1-.519.657l-.704.732a.496.496 0 0 0-.148.37c0 .075.01.14.028.214.028.074.056.13.074.185.167.306.454.704.862 1.186.416.481.861.972 1.343 1.463.5.49.981.945 1.472 1.362.482.407.88.685 1.195.852.047.018.102.046.167.074a.64.64 0 0 0 .232.037.51.51 0 0 0 .38-.158l.703-.694c.232-.232.454-.408.667-.519.213-.13.426-.194.658-.194.176 0 .361.037.565.12.204.083.417.204.648.361l3.066 2.177c.24.167.408.361.51.593a1.9 1.9 0 0 1 .148.722Z"
-              data-name="Vector"
-            />
-          </g></svg
-        >{{ clinicDetails.phone ? clinicDetails.phone : "0978456123" }}
+              data-name="Vector" />
+          </g>
+        </svg>{{ clinicDetails.phone ? clinicDetails.phone : "0978456123" }}
       </div>
     </div>
     <app-button class="clinic-button" i18n (click)="requestAnAppointment()">
       Request An Appointment
     </app-button>
-    <app-button class="clinic-button visit-button" i18n (click)="goToClinic()"
-      >Visit Clinic</app-button
-    >
+    <app-button class="clinic-button visit-button" i18n (click)="goToClinic()">Visit Clinic</app-button>
   </div>
 </article>

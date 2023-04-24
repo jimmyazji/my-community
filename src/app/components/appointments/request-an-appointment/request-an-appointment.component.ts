@@ -14,16 +14,8 @@ export class RequestAnAppointmentComponent {
   hide = true;
   errorResponse: string | null = null;
   validationErrors: ValidationErrors = {};
-  doctorsList: any[] = [
-    { id: 1, name: 'ali' },
-    { id: 2, name: 'sewar' },
-    { id: 3, name: 'mostafa' },
-  ]
-  locationsList: any[] = [
-    { id: 1, name: 'ali' },
-    { id: 2, name: 'sewar' },
-    { id: 3, name: 'mostafa' }
-  ]
+  doctorsList: any[] = [];
+  locationsList: any[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -74,6 +66,4 @@ export class RequestAnAppointmentComponent {
       this.dialog.closeAll();
     })
   }
-
-
 }

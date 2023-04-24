@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { MapDialogComponent } from 'src/app/components/map-dialog/map-dialog.component';
 import { PostDetailsComponent } from 'src/app/components/post-details/post-details.component';
 import { PostComponent } from 'src/app/components/post/post.component';
 import { StoryDetailsComponent } from 'src/app/components/story-details/story-details.component';
@@ -15,6 +17,7 @@ import { PaginationService } from 'src/app/services/pagination.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   recommendedOpen: boolean = true;
   startIndex = 0;
   endIndex = 4;
@@ -22,6 +25,10 @@ export class HomeComponent implements OnInit {
   posts = []
   categories: Category[] = [];
   clinics: Clinic[] = [];
+  clinicsByFilter: Clinic[] = [];
+
+  // categories!: Category[];
+
   pagination: any;
   clinicPagination: any;
   constructor(private router: Router, private clinicService: ClinicService, public dialog: MatDialog) {
@@ -40,7 +47,19 @@ export class HomeComponent implements OnInit {
   getAllCategories() {
     this.clinicService.getAllCategories().subscribe((res: any) => {
       this.categories = res;
+      console.log(this.categories)
       this.pagination.buildArray({ items: this.categories, pageSize: 4 });
+    })
+  }
+
+  categoryClickedProp: boolean = false;
+  categoryClicked(category: Category) {
+    this.categoryClickedProp = !this.categoryClickedProp;
+    console.log(category)
+    this.clinicService.getAllClinics('', +category.id!).subscribe((res: any) => {
+      this.clinicsByFilter = res;
+      console.log(res)
+      // this.pagination.buildArray({ items: this.categories, pageSize: 4 });
     })
   }
 
@@ -51,6 +70,12 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  clinicLocations!: Observable<any>;
+  getClinicLocation(clinic: Clinic) {
+    this.clinicService.getClinicLocations(clinic.id!).subscribe((res: any) => {
+      this.clinicLocations = res.value
+    })
+  }
   prevIndex(length: number) {
     this.pagination.previousPage();
     this.categories = this.pagination.currentItems();
@@ -98,17 +123,18 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  openPostModal(post: any) {
-    const dialogRef = this.dialog.open(PostDetailsComponent, {
-      data: post
-    });
-  }
-
   moreClinics() {
     this.router.navigate(['clinics']);
   }
 
+
+  openMapForSearch() {
+    const dialogRef = this.dialog.open(MapDialogComponent, {
+      autoFocus: true,
+      maxHeight: '90vh'
+    });
   handleMapToggle(e: boolean) {
     this.recommendedOpen = !e;
+
   }
 }

@@ -50,10 +50,15 @@ export class PostComponent {
   }
 
   reqAnAppointment() {
-    this.dialog.open(RequestAnAppointmentComponent)
+    this.dialog.closeAll();
+    this.dialog.open(RequestAnAppointmentComponent, {
+      autoFocus: true,
+      maxHeight: '90vh'
+    })
   }
 
   goToPostDetails() {
+    this.dialog.closeAll();
     this.router.navigate(["post-details", this.postDetails.id])
   }
 }
