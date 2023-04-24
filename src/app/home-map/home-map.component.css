@@ -1,6 +1,6 @@
 .map-container {
   position: sticky;
-  top: 5.5rem;
+  top: 6.5rem;
   overflow: hidden;
   border-radius: 0.25rem;
   width: 18rem;
@@ -12,8 +12,9 @@
 
 .map-iframe {
   width: 64rem;
-  height: 40rem;
+  height: 37rem;
   z-index: 40;
+  display: block;
 }
 
 .map-container:hover {
@@ -21,7 +22,7 @@
 }
 
 .map-container.close:hover .iframe-mask {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.4);
   color: var(--primary-color);
 }
 

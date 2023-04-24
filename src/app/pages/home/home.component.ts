@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
   getAllCategories() {
     this.clinicService.getAllCategories().subscribe((res: any) => {
       this.categories = res;
-      console.log(this.categories)
       this.pagination.buildArray({ items: this.categories, pageSize: 4 });
     })
   }
@@ -55,10 +54,8 @@ export class HomeComponent implements OnInit {
   categoryClickedProp: boolean = false;
   categoryClicked(category: Category) {
     this.categoryClickedProp = !this.categoryClickedProp;
-    console.log(category)
     this.clinicService.getAllClinics('', +category.id!).subscribe((res: any) => {
       this.clinicsByFilter = res;
-      console.log(res)
       // this.pagination.buildArray({ items: this.categories, pageSize: 4 });
     })
   }
@@ -133,8 +130,9 @@ export class HomeComponent implements OnInit {
       autoFocus: true,
       maxHeight: '90vh'
     });
+  }
+
   handleMapToggle(e: boolean) {
     this.recommendedOpen = !e;
-
   }
 }

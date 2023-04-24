@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 
 @Component({
@@ -8,7 +8,8 @@ import { Observable, catchError, map, of } from 'rxjs';
   styleUrls: ['./home-map.component.css']
 })
 export class HomeMapComponent {
-
+  @Input() clinicLocations!: Observable<any>;
+  @Output() mapToggled: EventEmitter<boolean> = new EventEmitter;
   display: any;
   center: google.maps.LatLngLiteral = {
     lat: 22.2736308,
@@ -24,7 +25,6 @@ export class HomeMapComponent {
 
 
   apiLoaded: Observable<boolean>;
-  @Input() clinicLocations!: Observable<any>;
 
   constructor(httpClient: HttpClient) {
     this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyDjlhzM0qKRN-bq-fE5JHDZBot4YGdDoZc&libraries=visualization', 'callback')
@@ -49,9 +49,6 @@ export class HomeMapComponent {
     }
   }
 
-
-
-
   moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.center = (event.latLng.toJSON());
   }
@@ -68,17 +65,16 @@ export class HomeMapComponent {
 
   openMap(): void {
     this.mapOpen = true;
+    this.mapToggled.emit(this.mapOpen);
   }
 
   closeMap(): void {
     this.mapOpen = false;
+    this.mapToggled.emit(this.mapOpen);
   }
 
   addMarker(event: google.maps.MapMouseEvent) {
-    console.log(event.latLng)
     this.markerPositions.push(event.latLng!.toJSON());
-    console.log(event.latLng!.toJSON())
-
   }
 
 }
