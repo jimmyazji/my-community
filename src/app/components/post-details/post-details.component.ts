@@ -52,6 +52,13 @@ export class PostDetailsComponent {
 
   reqAnAppointment() {
     this.dialog.closeAll();
-    this.dialog.open(RequestAnAppointmentComponent)
+    this.dialog.open(RequestAnAppointmentComponent, {
+      autoFocus: true,
+      maxHeight: '90vh'
+    })
+  }
+
+  copyPostPath() {
+    return window.location.href
   }
 }

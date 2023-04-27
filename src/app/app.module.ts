@@ -56,7 +56,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
 
 import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
-
+import { ClipboardModule } from '@angular/cdk/clipboard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,6 +114,7 @@ import { LocaleSwitcherComponent } from './components/locale-switcher/locale-swi
     HttpClientJsonpModule,
     MatMenuModule,
     MatSnackBarModule,
+    ClipboardModule,
     StarRatingModule.forRoot()
   ],
   providers: [

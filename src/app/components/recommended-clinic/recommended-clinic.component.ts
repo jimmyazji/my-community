@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { timer } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { RequestAnAppointmentComponent } from '../appointments/request-an-appointment/request-an-appointment.component';
 import { ClinicService } from 'src/app/services/clinic.service';
 import { PaginationService } from 'src/app/services/pagination.service';
@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 })
 export class RecommendedClinicComponent {
 
-  @Input() clinicDetails: any;
+  @Input() clinicDetails1!: Observable<any>;
+  clinicDetails!: any;
   @Output() newItemEvent = new EventEmitter<string>();
 
   paginateOverRecommendedClinics(value: string) {
@@ -27,6 +28,13 @@ export class RecommendedClinicComponent {
     private clinicService: ClinicService,
     private router: Router
   ) {
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnChanges(changes: any) {
+    this.clinicDetails = changes.clinicDetails1.currentValue;
   }
 
   requestAnAppointment() {

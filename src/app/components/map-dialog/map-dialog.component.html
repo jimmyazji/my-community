@@ -1,6 +1,7 @@
 <div class="main-container">
   <div class="search">
-    <input class="search-input" placeholder="Search Locatoins..." type="text" i18n-placeholder />
+    <input class="search-input" (keydown.enter)="$event.preventDefault()" #search placeholder="Search Locatoins..."
+      type="text" i18n-placeholder />
     <div class="search-icons">
       <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="1.2 1.2 29.05 29.083">
         <g data-name="search-normal">
@@ -13,13 +14,11 @@
   </div>
 
   <div class="map-container">
-    <div *ngIf="apiLoaded | async" id="map" class="map-container">
-      <google-map height="100%" width="100%" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
-        <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
-          [options]="markerOptions">
-        </map-marker>
-      </google-map>
-    </div>
+    <app-home-map [mapDialog]="true" [lat]="latitude" [lng]="longitude" (newMarkerPositions)="update($event)">
+    </app-home-map>
   </div>
 
+  <div class="button-container">
+    <app-button i18n (click)="searchForClinics()">Search</app-button>
+  </div>
 </div>

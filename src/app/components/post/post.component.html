@@ -48,7 +48,7 @@
       </svg>
       <span i18n>View Instagram</span>
     </button>
-    <button class="button share-button">
+    <button class="button share-button" [cdkCopyToClipboard]="copyPostPath()">
       <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="304.317 320.317 35.533 35.55">
         <g>
           <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -56,7 +56,7 @@
             data-name="Vector" />
         </g>
       </svg>
-      <span i18n>Share</span>
+      <button i18n>Share</button>
     </button>
     <app-button i18n (click)="reqAnAppointment()">Request An Appointment</app-button>
   </div>
