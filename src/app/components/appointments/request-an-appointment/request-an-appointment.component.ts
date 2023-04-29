@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Clinic } from 'src/app/models/clinic';
 import { ClinicService } from 'src/app/services/clinic.service';
 @Component({
   selector: 'app-request-an-appointment',
@@ -19,7 +20,7 @@ export class RequestAnAppointmentComponent {
 
   constructor(
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: { clinic: Clinic, providerId: number },
     private _fg: FormBuilder,
     private clinicService: ClinicService
   ) {
@@ -27,7 +28,7 @@ export class RequestAnAppointmentComponent {
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      doctor: ['', Validators.required],
+      doctor: [this.data.providerId, Validators.required],
       location: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       image: File,
@@ -37,13 +38,13 @@ export class RequestAnAppointmentComponent {
   }
 
   getClinicLocations() {
-    this.clinicService.getClinicLocations(this.data.id).subscribe(res => {
+    this.clinicService.getClinicLocations(this.data.clinic.id).subscribe(res => {
       this.locationsList = res;
     })
   }
 
   getDoctorsByClinicId() {
-    this.clinicService.getDoctorsByClinicId(this.data.id).subscribe((res: any) => {
+    this.clinicService.getDoctorsByClinicId(this.data.clinic.id).subscribe((res: any) => {
       this.doctorsList = res.value;
     })
   }

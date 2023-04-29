@@ -68,7 +68,7 @@
   <ng-container *ngIf="recommendedOpen">
     <app-recommended-clinic
       *ngFor="let clinic of clinics | slice : 0 : 1"
-      [clinicDetails]="clinic"
+      [clinic]="clinic"
       (newItemEvent)="scrollItem($event)"
     ></app-recommended-clinic>
   </ng-container>

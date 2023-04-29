@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Clinic } from 'src/app/models/clinic';
 
 @Component({
@@ -8,4 +9,11 @@ import { Clinic } from 'src/app/models/clinic';
 })
 export class ClinicCardComponent {
   @Input() clinic?: Clinic
+  @Input() withNavigation: boolean = false;
+  constructor(private router: Router) { }
+  handleClick() {
+    if (this.withNavigation) {
+      this.router.navigate(['/clinics', this.clinic?.id])
+    }
+  }
 }

@@ -1,0 +1,16 @@
+<div class="notification-container">
+  <img
+    [src]="notification.imagePath"
+    [alt]="notification.title"
+    class="notification-source-image"
+  />
+  <article class="notification-content">
+    <div class="notification-header">
+      <h3 class="notification-source-name">{{ notification.title }}</h3>
+      <span class="notification-date">{{
+        notification.creationTime | date : "MMM d, h:mm a"
+      }}</span>
+    </div>
+    <p>{{ notification.body }}</p>
+  </article>
+</div>

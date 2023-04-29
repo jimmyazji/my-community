@@ -18,6 +18,7 @@
         class="appointment-request"
         [fullWidth]="true"
         [rounded]="false"
+        (click)="requestAnAppointment()"
         i18n
         >Request an Appointment</app-button
       >
@@ -25,15 +26,66 @@
     <mat-tab-group dynamicHeight class="primary-tabs">
       <mat-tab label="Description">{{ provider.description }}</mat-tab>
       <mat-tab label="Recommendation">
-        <div class="recommendation-container">
+        <div
+          *ngIf="provider.recommendedByUser == null"
+          class="recommendation-container"
+        >
           <h2 class="recommend-question" i18n>Do you recommend this clinic?</h2>
           <div class="recommend-actions">
-            <app-button [rounded]="false" i18n>Yes</app-button>
-            <app-button [rounded]="false" color="transparent" i18n
+            <app-button [rounded]="false" (click)="recommendProvider(true)" i18n
+              >Yes</app-button
+            >
+            <app-button
+              [rounded]="false"
+              color="transparent"
+              (click)="recommendProvider(false)"
+              i18n
               >No</app-button
             >
           </div>
         </div>
+        <div *ngIf="provider.recommendedByUser != null">
+          <h2 class="recommendation-result">
+            You
+            {{
+              provider.recommendedByUser ? "recommended" : "didn't recommend"
+            }}
+            this doctor!
+          </h2>
+          <div class="recommend-bar">
+            Recommended:
+            <div class="recommendation-buffer">
+              <div
+                class="recommendation-fill"
+                *ngIf="recommendation.upVotesPercentage != 0"
+                [style.width]="recommendation.upVotesPercentage + '%'"
+              >
+                {{ recommendation.upVotesPercentage + "%" }}
+              </div>
+              <div
+                class="recommendation-empty"
+                *ngIf="recommendation.upVotesPercentage == 0"
+              >
+                {{ recommendation.upVotesPercentage + "%" }}
+              </div>
+            </div>
+          </div>
+          <div class="recommend-bar">
+            Not recommended:
+            <div class="recommendation-buffer">
+              <div
+                class="recommendation-fill"
+                *ngIf="recommendation.downVotesPercentage != 0"
+                [style.width]="recommendation.downVotesPercentage + '%'"
+              >
+                {{ recommendation.downVotesPercentage + "%" }}
+              </div>
+              <div class="recommendation-empty" *ngIf="recommendation.downVotesPercentage == 0">
+                {{ recommendation.downVotesPercentage + "%" }}
+              </div>
+            </div>
+                    </div>
+          </div>
       </mat-tab>
       <mat-tab label="Reviews">
         <form

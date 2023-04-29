@@ -7,6 +7,7 @@
         [fullWidth]="true"
         [rounded]="false"
         i18n
+        (click)="requestAnAppointment()"
         >Request an Appointment</app-button
       >
     </div>
@@ -124,19 +125,6 @@
               *ngFor="let review of reviews"
               [review]="review"
             ></app-review-card>
-          </div>
-        </mat-tab>
-        <mat-tab label="Recommendation" i18n-label>
-          <div class="recommendation-container">
-            <h2 class="recommend-question" i18n>
-              Do you recommend this clinic?
-            </h2>
-            <div class="recommend-actions">
-              <app-button [rounded]="false" i18n>Yes</app-button>
-              <app-button [rounded]="false" color="transparent" i18n
-                >No</app-button
-              >
-            </div>
           </div>
         </mat-tab>
       </mat-tab-group>

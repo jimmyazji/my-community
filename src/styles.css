@@ -144,13 +144,6 @@ body {
   justify-content: start;
 }
 
-/* .cdk-global-overlay-wrapper {
-  display: flex;
-  position: absolute;
-  z-index: 1000;
-  overflow: auto;
-  pointer-events: auto !important;
-} */
 .mat-sidenav-content,
 .mat-drawer-container {
   overflow: visible !important;

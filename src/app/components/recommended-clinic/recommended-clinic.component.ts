@@ -4,8 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { timer } from 'rxjs';
 import { RequestAnAppointmentComponent } from '../appointments/request-an-appointment/request-an-appointment.component';
 import { ClinicService } from 'src/app/services/clinic.service';
-import { PaginationService } from 'src/app/services/pagination.service';
 import { Router } from '@angular/router';
+import { Clinic } from 'src/app/models/clinic';
 
 @Component({
   selector: 'app-recommended-clinic',
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class RecommendedClinicComponent {
 
-  @Input() clinicDetails: any;
+  @Input() clinic: Clinic = new Clinic;
   @Output() newItemEvent = new EventEmitter<string>();
 
   paginateOverRecommendedClinics(value: string) {
@@ -23,8 +23,6 @@ export class RecommendedClinicComponent {
 
   constructor(
     public dialog: MatDialog,
-    private _fg: FormBuilder,
-    private clinicService: ClinicService,
     private router: Router
   ) {
   }
@@ -34,15 +32,15 @@ export class RecommendedClinicComponent {
     timer(300).subscribe(
       () => {
         const dialogRef = this.dialog.open(RequestAnAppointmentComponent, {
-          data: this.clinicDetails,
+          data: { clinic: this.clinic },
           autoFocus: false,
-          maxHeight: '90vh'
+          maxHeight: '40rem'
         });
       }
     )
   }
 
   goToClinic() {
-    this.router.navigate(["clinics", this.clinicDetails.id]);
+    this.router.navigate(["clinics", this.clinic.id]);
   }
 }

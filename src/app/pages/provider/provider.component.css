@@ -127,3 +127,33 @@
   grid-template-columns: repeat(auto-fit, min(100%, 8rem));
   gap: 1rem;
 }
+
+.recommendation-buffer {
+  width: 100%;
+  background-color: var(--primary-placeholder);
+  border-radius: 99rem;
+  color: var(--primary-content);
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 500;
+}
+
+.recommendation-result {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.recommendation-fill {
+  background-color: var(--primary-color);
+  padding: 0.25rem;
+  border-radius: 99rem;
+}
+
+.recommendation-empty {
+  padding: 0.25rem;
+}
+
+.recommend-bar {
+  margin-bottom: 0.5rem;
+}

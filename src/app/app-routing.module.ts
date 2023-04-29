@@ -7,8 +7,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ProviderComponent } from './pages/provider/provider.component';
-import { RequestAnAppointmentComponent } from './components/appointments/request-an-appointment/request-an-appointment.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { NotificationsComponent } from './page/notifications/notifications.component';
+import { FavoriteComponent } from './page/favorite/favorite.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path: 'insurances', component: InsurancesComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
+  { path: 'notifications', component: NotificationsComponent },
+  { path: 'favorite', component: FavoriteComponent }
 ];
 
 @NgModule({

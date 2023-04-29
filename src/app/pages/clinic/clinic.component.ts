@@ -9,6 +9,9 @@ import { Service } from 'src/app/models/service';
 import { Review } from 'src/app/models/review';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { timer } from 'rxjs';
+import { RequestAnAppointmentComponent } from 'src/app/components/appointments/request-an-appointment/request-an-appointment.component';
 
 @Component({
   selector: 'app-clinic',
@@ -16,7 +19,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./clinic.component.css']
 })
 export class ClinicComponent implements OnInit {
-  constructor(private clinicService: ClinicService, private route: ActivatedRoute, private snackBar: MatSnackBar, private authService: AuthService) { }
+  constructor(
+    private clinicService: ClinicService,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private authService: AuthService,
+    private dialog: MatDialog,
+  ) { }
   clinic: Clinic = new Clinic;
   locations: Location[] = [];
   services: Service[] = [];
@@ -72,7 +81,7 @@ export class ClinicComponent implements OnInit {
     })
   }
 
-  
+
   submitReview() {
     if (!this.authService.isAuthenticated()) {
       this.authService.loginAcquired.next(true);
@@ -95,6 +104,19 @@ export class ClinicComponent implements OnInit {
     }
   }
 
+  requestAnAppointment() {
+    this.dialog.closeAll()
+    timer(300).subscribe(
+      () => {
+        const dialogRef = this.dialog.open(RequestAnAppointmentComponent, {
+          data: { clinic: this.clinic, providerId: undefined },
+          autoFocus: false,
+          maxHeight: '40rem'
+        });
+      }
+    )
+  }
+
   ngOnInit(): void {
     this.getClinicDetails();
     this.getClinicLocations();
@@ -102,4 +124,6 @@ export class ClinicComponent implements OnInit {
     this.getClinicInsurances();
     this.getClinicReviews();
   }
+
+
 }

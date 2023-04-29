@@ -22,7 +22,7 @@
   <div class="recommended-clinic-container">
     <div class="image-container">
       <img
-      [src]="clinicDetails.imagePath"
+      [src]="clinic.imagePath"
       alt="clinic"
       class="clinic-img"
     />
@@ -37,9 +37,9 @@
               data-name="Vector" />
           </g>
         </svg>
-        {{ clinicDetails.name ? clinicDetails.name : "clinic name" }}
+        {{ clinic.name ? clinic.name : "clinic name" }}
       </div>
-      <star-rating staticColor="ok" [showHalfStars]="true" [readOnly]="true" [rating]="clinicDetails?.rate ?? 0">
+      <star-rating staticColor="ok" [showHalfStars]="true" [readOnly]="true" [rating]="clinic.rate ?? 0">
       </star-rating>
       <div class="clinic-style">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="51.967 1709.983 32.733 35.767" class="vaccine">
@@ -57,7 +57,7 @@
               d="M20.35 16.978c0 .334-.074.676-.232 1.01a3.822 3.822 0 0 1-.63.945c-.454.5-.954.86-1.519 1.093a4.651 4.651 0 0 1-1.806.351c-.945 0-1.954-.222-3.02-.676a16.269 16.269 0 0 1-3.186-1.834 26.63 26.63 0 0 1-3.038-2.593 26.318 26.318 0 0 1-2.584-3.029c-.76-1.056-1.371-2.112-1.816-3.158-.444-1.056-.667-2.066-.667-3.03 0-.63.112-1.231.334-1.787A4.263 4.263 0 0 1 3.25 2.723c.593-.583 1.241-.87 1.927-.87.26 0 .518.055.75.166.24.111.454.278.62.519l2.15 3.029c.166.231.287.444.37.648.083.195.13.39.13.565 0 .222-.065.445-.195.658a3.15 3.15 0 0 1-.519.657l-.704.732a.496.496 0 0 0-.148.37c0 .075.01.14.028.214.028.074.056.13.074.185.167.306.454.704.862 1.186.416.481.861.972 1.343 1.463.5.49.981.945 1.472 1.362.482.407.88.685 1.195.852.047.018.102.046.167.074a.64.64 0 0 0 .232.037.51.51 0 0 0 .38-.158l.703-.694c.232-.232.454-.408.667-.519.213-.13.426-.194.658-.194.176 0 .361.037.565.12.204.083.417.204.648.361l3.066 2.177c.24.167.408.361.51.593a1.9 1.9 0 0 1 .148.722Z"
               data-name="Vector" />
           </g>
-        </svg>{{ clinicDetails.phone ? clinicDetails.phone : "0978456123" }}
+        </svg>{{ clinic.phoneNumber ? clinic.phoneNumber : "0978456123" }}
       </div>
     </div>
     <app-button class="clinic-button" i18n (click)="requestAnAppointment()">

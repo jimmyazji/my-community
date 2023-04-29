@@ -1,7 +1,7 @@
 import { Provider } from "./provider"
 
 export class Clinic {
-    id: number | undefined
+    id!: number
     name: string | null = null
     phoneNumber: string = ''
     description?: string

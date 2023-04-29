@@ -1,3 +1,4 @@
+import { Recommendation } from './../models/recommendation';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
@@ -10,7 +11,7 @@ import { Review } from '../models/review';
 export class ProviderService {
   baseApiKey = 'https://mycommunity-api.solutions-it.net/app/api/'
   constructor(private http: HttpClient) { }
-  
+
   getProviderDetails(id: number): Observable<Provider> {
     return this.http.get(this.baseApiKey + 'doctors/get-doctor-details', { params: { doctorId: id } }).pipe(
       map((res: any) =>
@@ -25,5 +26,15 @@ export class ProviderService {
 
   createReview(review: { doctorId: number, rate: number, content: string }) {
     return this.http.post<any>(this.baseApiKey + 'doctors/reviews/create-review', review);
+  }
+
+  recommendProvider(recommendation: { value: boolean, doctorId: number }) {
+    return this.http.post<any>(this.baseApiKey + 'doctors/recommendations/recommend-doctor', recommendation);
+  }
+
+  getProviderRecommendation(id: number): Observable<Recommendation> {
+    return this.http.get(this.baseApiKey + 'doctors/recommendations/get-doctor-recommendations', { params: { doctorId: id } }).pipe(
+      map((res: any) =>
+        res.value.map((recommendation: Recommendation) => new Recommendation().deserialize(recommendation))));
   }
 }
