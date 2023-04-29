@@ -10,6 +10,7 @@ import jwt_decode from 'jwt-decode';
 export class AuthService {
   baseApiKey = 'https://mycommunity-api.solutions-it.net/app/api/'
   loginAcquired = new Subject();
+  authChange = new Subject();
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +18,7 @@ export class AuthService {
     return this.http.post<any>(this.baseApiKey + 'users/login', formData).pipe(
       tap(res => {
         localStorage.setItem('authToken', res.value.token);
+        this.authChange.next(true);
       }), shareReplay());
   }
 
@@ -26,11 +28,13 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('authToken');
+    this.authChange.next(true);
   }
 
   getToken(): string | null {
     return localStorage.getItem('authToken');
   }
+
 
   getUser(): User | null {
     const decodedToken = this.decodeToken(this.getToken());
@@ -46,6 +50,10 @@ export class AuthService {
 
   decodeToken(token: string | null): { [key: string]: string } | null {
     return token ? jwt_decode(token) : null;
+  }
+
+  getAuthChange() {
+    return this.authChange.asObservable();
   }
 
   getLoginAcquired() {

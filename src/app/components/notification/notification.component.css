@@ -1,0 +1,27 @@
+.notification-container {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.notification-source-image {
+  height: 5rem;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--primary-color);
+  border-radius: 99rem;
+}
+
+.notification-content {
+  width: 100%;
+}
+
+.notification-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.notification-date {
+  font-size: 0.875 rem;
+  color: var(--primary-darker-placeholder);
+}

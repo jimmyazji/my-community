@@ -54,6 +54,7 @@
   display: none;
 }
 
+
 @media only screen and (min-width: 23rem) {
   .toolbar-item-description {
     display: block;

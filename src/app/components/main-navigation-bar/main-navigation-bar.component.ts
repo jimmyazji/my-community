@@ -5,6 +5,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { User } from 'src/app/models/user';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-main-navigation-bar',
   templateUrl: './main-navigation-bar.component.html',
@@ -18,7 +19,13 @@ export class MainNavigationBarComponent implements OnInit, OnDestroy {
   user: User | null = new User;
   loginAcquiredSubscription: Subscription = new Subscription;
 
-  constructor(public dialog: MatDialog, private authService: AuthService, private snackBar: MatSnackBar) { }
+  constructor(
+    public dialog: MatDialog,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.loginAcquiredSubscription = this.authService.getLoginAcquired().subscribe(() => this.login());

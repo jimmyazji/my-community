@@ -1,3 +1,7 @@
+:host {
+  flex-shrink: 0;
+}
+
 .recommended-clinics {
   width: 700px;
   background-color: var(--primary-darker-color);
@@ -108,7 +112,7 @@
   cursor: pointer;
   pointer-events: all;
 }
-.image-container img{
+.image-container img {
   height: 18rem !important;
   width: 100% !important;
 }

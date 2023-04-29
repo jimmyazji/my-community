@@ -1,10 +1,8 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MapDialogComponent } from 'src/app/components/map-dialog/map-dialog.component';
-import { PostDetailsComponent } from 'src/app/components/post-details/post-details.component';
-import { PostComponent } from 'src/app/components/post/post.component';
 import { StoryDetailsComponent } from 'src/app/components/story-details/story-details.component';
 import { Category } from 'src/app/models/category';
 import { Clinic } from 'src/app/models/clinic';
@@ -53,9 +51,6 @@ export class HomeComponent implements OnInit {
     }
   ];
   clinicsByFilter: Clinic[] = [];
-
-  // categories!: Category[];
-
   pagination: any;
   clinicPagination: any;
   constructor(private router: Router, private clinicService: ClinicService, public dialog: MatDialog) {
@@ -84,7 +79,6 @@ export class HomeComponent implements OnInit {
     this.categoryClickedProp = !this.categoryClickedProp;
     this.clinicService.getAllClinics('', +category.id!).subscribe((res: any) => {
       this.clinicsByFilter = res;
-      // this.pagination.buildArray({ items: this.categories, pageSize: 4 });
     })
   }
 

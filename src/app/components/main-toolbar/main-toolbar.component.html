@@ -1,7 +1,7 @@
 <div class="main-toolbar" role="banner">
   <ul class="toolbar-list">
     <li class="toolbar-item">
-      <button>
+      <button (click)="openNotifications()">
         <div class="toolbar-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,9 +21,10 @@
         </div>
         <span i18n class="toolbar-item-description">notification</span>
       </button>
+        
     </li>
     <li class="toolbar-item">
-      <button>
+      <button (click)="openFavorite()">
         <div class="toolbar-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -19,6 +19,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ClinicComponent } from './pages/clinic/clinic.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppComponent } from './app.component';
 import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
@@ -57,6 +58,10 @@ import { MapDialogComponent } from './components/map-dialog/map-dialog.component
 
 import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { NotificationsComponent } from './page/notifications/notifications.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { FavoriteComponent } from './page/favorite/favorite.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,6 +100,10 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     HomeMapComponent,
     MapDialogComponent,
     LocaleSwitcherComponent,
+    NotificationsComponent,
+    NotificationComponent,
+    FavoriteComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -115,6 +124,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     MatMenuModule,
     MatSnackBarModule,
     ClipboardModule,
+    MatProgressBarModule,
     StarRatingModule.forRoot()
   ],
   providers: [

@@ -59,12 +59,32 @@
 
   <section id="clinics" class="clinics" *ngIf="clinics.length">
 
-    <div class="clinics-container">
-      <app-clinic-card *ngFor="let clinic of clinicsByFilter" [clinic]="clinic"
-        (click)="getClinicLocation(clinic);scroll()">
-      </app-clinic-card>
-      <!-- <app-button class="more-button" (click)="moreClinics()" i18n>Show more</app-button> -->
-    </div>
+  <div class="clinics-container">
+    <app-clinic-card *ngFor="let clinic of clinicsByFilter" [clinic]="clinic" (click)="getClinicLocation(clinic)">
+    </app-clinic-card>
+    <app-button class="more-button" (click)="moreClinics()" i18n>Show more</app-button>
+  </div>
+</section>
+<div class="home-main">
+  <ng-container *ngIf="recommendedOpen">
+    <app-recommended-clinic
+      *ngFor="let clinic of clinics | slice : 0 : 1"
+      [clinic]="clinic"
+      (newItemEvent)="scrollItem($event)"
+    ></app-recommended-clinic>
+  </ng-container>
+  <section id="social" class="social">
+    <article id="stories" class="stories">
+      <app-story
+        *ngFor="let story of stories"
+        [name]="story.name"
+        [image]="story.imagePath"
+        (click)="openStoryModal(story)"
+      ></app-story>
+    </article>
+    <article id="posts" class="posts">
+      <app-post *ngFor="let post of posts" [postDetails]="post"></app-post>
+    </article>
   </section>
   <div class="home-main">
     <ng-container *ngIf="recommendedOpen">

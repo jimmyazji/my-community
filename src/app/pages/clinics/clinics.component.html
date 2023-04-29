@@ -54,6 +54,7 @@
   <app-clinic-card
     *ngFor="let clinic of clinics"
     [clinic]="clinic"
+    [withNavigation]="true"
   ></app-clinic-card>
 </div>
 <ng-template #defaultIcon>

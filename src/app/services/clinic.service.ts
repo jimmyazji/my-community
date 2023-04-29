@@ -16,10 +16,6 @@ export class ClinicService {
   baseApiKey = 'https://mycommunity-api.solutions-it.net/app/api/'
   constructor(private http: HttpClient) { }
 
-  // getAllCategories(): Observable<Category[]> {
-  //   return this.http.get<Category[]>(this.baseApiKey + 'categories/get-all')
-  // }
-
   getStories(): Observable<any[]> {
     return this.http.get<any>(this.baseApiKey + 'clinics/stories/get-storyline-cards')
   }
@@ -55,7 +51,10 @@ export class ClinicService {
   }
 
   getClinicLocations(id: number): Observable<any[]> {
-    return this.http.get<any>(this.baseApiKey + 'clinics/get-clinic-locations', { params: { clinicId: id } })
+    return this.http.get<any>(this.baseApiKey + 'clinics/get-clinic-locations', { params: { clinicId: id } }).pipe(
+      map((res: any) =>
+        res.value.map((location: Location) => new Location().deserialize(location)))
+    )
   }
 
   getNearestClinicLocation(lng: number, lat: number) {

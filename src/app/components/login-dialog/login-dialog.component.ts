@@ -25,8 +25,8 @@ export class LoginDialogComponent {
       Password: ''
     })
   }
-
   errorResponse: string | null = null;
+
   login() {
     this.errorResponse = null;
     const formData = new FormData();
