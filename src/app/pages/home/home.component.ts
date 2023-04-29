@@ -8,7 +8,7 @@ import { Category } from 'src/app/models/category';
 import { Clinic } from 'src/app/models/clinic';
 import { ClinicService } from 'src/app/services/clinic.service';
 import { PaginationService } from 'src/app/services/pagination.service';
-
+window.HTMLElement.prototype.scrollIntoView = function () { };
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,7 +22,34 @@ export class HomeComponent implements OnInit {
   stories: any[] = []
   posts = []
   categories: Category[] = [];
-  clinics: Clinic[] = [];
+  clinics: any[] = [
+    {
+      name: 'clinic1'
+    },
+    {
+      name: 'clinic9'
+    },
+    {
+      name: 'clinic8'
+    },
+    {
+      name: 'clinic7'
+    },
+    {
+      name: 'clinic6'
+    },
+    {
+      name: 'clinic5'
+    },
+    {
+      name: 'clinic4'
+    },
+    {
+      name: 'clinic3'
+    }, {
+      name: 'clinic2'
+    }
+  ];
   clinicsByFilter: Clinic[] = [];
   pagination: any;
   clinicPagination: any;
@@ -31,6 +58,7 @@ export class HomeComponent implements OnInit {
     this.clinicPagination = new PaginationService();
   }
 
+  selectedCardIndex: number = -1;
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -58,15 +86,26 @@ export class HomeComponent implements OnInit {
     this.clinicService.getAllClinics().subscribe((res: any) => {
       this.clinics = res;
       this.clinicPagination.buildArray({ items: this.clinics, pageSize: 1 });
+      setInterval(() => {
+        this.clinics = this.clinicPagination.currentItems();
+      }, 15000)
+
     })
   }
 
   clinicLocations!: Observable<any>;
   getClinicLocation(clinic: Clinic) {
     this.clinicService.getClinicLocations(clinic.id!).subscribe((res: any) => {
-      this.clinicLocations = res.value
+      this.clinicLocations = res.value;
+
     })
   }
+
+
+  scroll() {
+    document.getElementById('homeMap')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   prevIndex(length: number) {
     this.pagination.previousPage();
     this.categories = this.pagination.currentItems();
@@ -122,8 +161,18 @@ export class HomeComponent implements OnInit {
   openMapForSearch() {
     const dialogRef = this.dialog.open(MapDialogComponent, {
       autoFocus: true,
-      maxHeight: '90vh'
+      maxHeight: '100vh'
     });
+
+    dialogRef.afterClosed().subscribe((res: any) => {
+      res.forEach((ele: any) => {
+        if (!this.clinicsByFilter.find((obj: any) => obj.clinicId === ele.clinicId)) {
+          this.clinicService.getClinicDetails(ele.clinicId).subscribe(res => {
+            this.clinicsByFilter.push(res);
+          })
+        }
+      })
+    })
   }
 
   handleMapToggle(e: boolean) {

@@ -1,7 +1,7 @@
 <section id="categories" class="categories">
   <div class="background-container">
     <div class="categories-grid">
-      <div class="paginator">
+      <div class="paginator" *ngIf="categories.length > 4">
         <button class="pagination-button" (click)="prevIndex(categories.length)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.967 3.967 39.8 39.8">
             <g data-name="arrow-circle-right">
@@ -20,8 +20,9 @@
           </svg>
         </button>
       </div>
-      <app-category-card *ngFor="let category of categories | slice : 0 : 4" [category]="category"
-        (click)="categoryClicked(category)"></app-category-card>
+      <app-category-card *ngFor="let category of categories | slice : 0 : 4 ;let i = index"
+        [ngClass]="{'selected': selectedCardIndex === i}" [category]="category"
+        (click)="categoryClicked(category);selectedCardIndex = i"></app-category-card>
     </div>
     <div class="search">
       <input class="search-input" placeholder="Search insurances..." type="text" i18n-placeholder />
@@ -56,7 +57,7 @@
 
 <section id="clinics" class="clinics" *ngIf="clinicsByFilter">
 
-<section id="clinics" class="clinics" *ngIf="clinics.length">
+  <section id="clinics" class="clinics" *ngIf="clinics.length">
 
   <div class="clinics-container">
     <app-clinic-card *ngFor="let clinic of clinicsByFilter" [clinic]="clinic" (click)="getClinicLocation(clinic)">
@@ -85,5 +86,20 @@
       <app-post *ngFor="let post of posts" [postDetails]="post"></app-post>
     </article>
   </section>
-  <app-home-map [clinicLocations]="clinicLocations" (mapToggled)="handleMapToggle($event)"></app-home-map>
-</div>
+  <div class="home-main">
+    <ng-container *ngIf="recommendedOpen">
+      <app-recommended-clinic *ngFor="let clinic of clinics | slice : 0 : 1" [clinicDetails1]="clinic"
+        (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
+    </ng-container>
+    <section id="social" class="social">
+      <article id="stories" class="stories">
+        <app-story *ngFor="let story of stories" [name]="story.name" [image]="story.imagePath"
+          (click)="openStoryModal(story)"></app-story>
+      </article>
+      <article id="posts" class="posts">
+        <app-post *ngFor="let post of posts" [postDetails]="post"></app-post>
+      </article>
+    </section>
+    <app-home-map id="homeMap" [clinicLocations]="clinicLocations" (mapToggled)="handleMapToggle($event)">
+    </app-home-map>
+  </div>

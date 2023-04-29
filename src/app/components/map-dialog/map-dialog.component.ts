@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, NgZone, Output, ViewChild } from '@angular/core';
+import { GoogleMap } from '@angular/google-maps';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable, catchError, map, of } from 'rxjs';
+import { ClinicService } from 'src/app/services/clinic.service';
+import { GoogleMapService } from 'src/app/services/google-map.service';
 
 @Component({
   selector: 'app-map-dialog',
@@ -8,6 +12,11 @@ import { Observable, catchError, map, of } from 'rxjs';
   styleUrls: ['./map-dialog.component.css']
 })
 export class MapDialogComponent {
+
+  @ViewChild('search')
+  public searchElementRef!: ElementRef;
+  @ViewChild(GoogleMap)
+  public map!: GoogleMap;
 
   display: any;
   center: google.maps.LatLngLiteral = {
@@ -23,19 +32,67 @@ export class MapDialogComponent {
   ];
 
 
-  apiLoaded: Observable<boolean>;
+  apiLoaded!: Observable<boolean>;
 
-  constructor(httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyDjlhzM0qKRN-bq-fE5JHDZBot4YGdDoZc&libraries=visualization', 'callback')
-      .pipe(
-        map(() => true),
-        catchError(() => of(false))
-      );
-  }
-
-  addMarker(event: google.maps.MapMouseEvent) {
-    this.markerPositions.length > 1 ? this.markerPositions.pop() : this.markerPositions;
-    this.markerPositions.push(event.latLng!.toJSON());
+  constructor(private googleMapService: GoogleMapService, private ngZone: NgZone, private clinicService: ClinicService, private dialogRef: MatDialogRef<MapDialogComponent>) {
 
   }
+
+  latitude!: any;
+  longitude!: any;
+  ngAfterViewInit(): void {
+    // Binding autocomplete to search input control
+    let autocomplete = new google.maps.places.Autocomplete(
+      this.searchElementRef.nativeElement
+    );
+    // Align search box to center
+    // this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
+    //   this.searchElementRef.nativeElement
+    // );
+    autocomplete.addListener('place_changed', () => {
+      this.ngZone.run(() => {
+        //get the place result
+        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+        //verify result
+        if (place.geometry === undefined || place.geometry === null) {
+          return;
+        }
+
+        //set latitude, longitude and zoom
+        this.latitude = place.geometry.location?.lat();
+        this.longitude = place.geometry.location?.lng();
+        this.center = {
+          lat: this.latitude,
+          lng: this.longitude,
+        };
+      });
+    });
+  }
+
+  ngOnInit() {
+    this.apiLoaded = this.googleMapService.apiLoaded;
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+    });
+  }
+
+  update(event: any) {
+    this.latitude = event[event.length - 1].lat;
+    this.longitude = event[event.length - 1].lng;
+  }
+
+  searchForClinics() {
+    this.clinicService.getNearestClinicLocation(this.longitude, this.latitude).subscribe((res: any) => {
+      res.value = res.value.filter((value: any, index: any, self: any) =>
+        index === self.findIndex((t: any) => (
+          t.clinicId === value.clinicId
+        ))
+      )
+      this.dialogRef.close(res.value);
+    })
+  }
+
 }

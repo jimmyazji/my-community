@@ -62,7 +62,7 @@
 }
 
 .button:hover {
-  background-color: var(--main-darker-background);
+  background-color: #2785b462;
 }
 
 .share-icon {

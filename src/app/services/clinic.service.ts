@@ -57,6 +57,9 @@ export class ClinicService {
     )
   }
 
+  getNearestClinicLocation(lng: number, lat: number) {
+    return this.http.get<any>(this.baseApiKey + `clinics/get-nearest-clinics-locations?longitude=${lng}&latitude=${lat}`)
+  }
   getClinicServices(id: number): Observable<Service[]> {
     return this.http.get(this.baseApiKey + 'clinics/get-clinic-services', { params: { clinicId: id } }).pipe(
       map((res: any) =>

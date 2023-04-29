@@ -1,8 +1,9 @@
 
 
 .main-container{
-    width: 500px !important;
-    height: 70vh !important;
+    height: 90vh !important;
+    overflow: hidden;
+    padding: 1.2rem 3rem;
 }
 
 .map-container {
@@ -13,11 +14,12 @@
 
 .search {
     position: relative;
+    margin-bottom: 1rem;
   }
   
   .search-input {
     border: solid 1px transparent;
-    background-color: #fff;
+    background-color: #eee;
     padding-left: 4rem;
     padding-right: 2rem;
     height: 4rem;
@@ -60,4 +62,10 @@
   .search-submit--icon {
     color: var(--primary-content);
     width: 1.5rem;
+  }
+
+  .button-container {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: end;
   }

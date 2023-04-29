@@ -61,4 +61,8 @@ export class PostComponent {
     this.dialog.closeAll();
     this.router.navigate(["post-details", this.postDetails.id])
   }
+
+  copyPostPath() {
+    return window.location.href.replace('home', `post-details/${this.postDetails.id}`)
+  }
 }

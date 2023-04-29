@@ -183,3 +183,8 @@
 .posts {
   padding-top: 1rem;
 }
+
+
+.selected {
+  transform: scale(1.1);
+}

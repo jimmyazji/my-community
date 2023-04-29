@@ -45,7 +45,16 @@
   width: 52rem;
 }
 
-.map-container.open:hover .iframe-mask {
+.map-container.open-dialog {
+  width: 32rem;
+}
+
+.map-container.open-dialog .map-iframe {
+  height: 26rem;
+}
+
+.map-container.open:hover .iframe-mask,
+.map-container.open-dialog:hover .iframe-mask {
   pointer-events: none;
 }
 

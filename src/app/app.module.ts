@@ -57,6 +57,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
 
 import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NotificationsComponent } from './page/notifications/notifications.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { FavoriteComponent } from './page/favorite/favorite.component';
@@ -122,6 +123,7 @@ import { FavoriteComponent } from './page/favorite/favorite.component';
     HttpClientJsonpModule,
     MatMenuModule,
     MatSnackBarModule,
+    ClipboardModule,
     MatProgressBarModule,
     StarRatingModule.forRoot()
   ],

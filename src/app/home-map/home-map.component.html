@@ -1,5 +1,6 @@
-<div id="map" class="map-container" [ngClass]="mapOpen ? 'open' : 'close'">
-  <google-map height="100%" width="100%" [center]="center" [zoom]="zoom" class="map-iframe" (mapClick)="addMarker($event)">
+<div id="map" class="map-container" [ngClass]="(mapOpen && mapDialog) ? 'open-dialog' : mapOpen ?  'open' : 'close'">
+  <google-map height="100%" width="100%" [center]="center" [zoom]="zoom" class="map-iframe"
+    (mapClick)="addMarker($event)">
     <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition" [options]="markerOptions">
     </map-marker>
   </google-map>

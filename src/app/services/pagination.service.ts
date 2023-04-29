@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Pagination } from '../models/pagination';
 
 
 interface PaginationProps {
@@ -17,7 +16,7 @@ export class PaginationService {
   items!: any[];
   pageSize!: number;
   currentPage!: number;
-
+  private intervalId?: any = 0;
   constructor() {
 
   }
@@ -26,7 +25,16 @@ export class PaginationService {
     this.items = props.items;
     this.pageSize = props.pageSize;
     this.currentPage = 1;
+
+    this.intervalId = setInterval(() => {
+      if (this.currentPage < this.totalPages()) {
+        this.nextPage();
+      } else {
+        this.currentPage = 1;
+      }
+    }, 15000);
   }
+
   totalPages(): number {
     return Math.ceil(this.items.length / this.pageSize);
   }
@@ -34,7 +42,6 @@ export class PaginationService {
   currentItems(): any[] {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-
     return this.items.slice(startIndex, endIndex);
   }
 
