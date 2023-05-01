@@ -60,12 +60,13 @@
       <mat-tab-group dynamicHeight class="primary-tabs">
         <mat-tab label="Location" i18n-label>
           <div class="locations-grid">
-            <div
+            <button
               *ngFor="let location of locations"
               class="location-card-container"
+              (click)="openMap(location)"
             >
               <h3 class="location-name">{{ location.name }}</h3>
-            </div>
+            </button>
           </div>
         </mat-tab>
         <mat-tab label="Services" i18n-label>
@@ -101,7 +102,11 @@
           </mat-tab-group> -->
         </mat-tab>
         <mat-tab label="Reviews" i18n-label>
-          <form class="review" [formGroup]="reviewFormGroup" (ngSubmit)="submitReview()">
+          <form
+            class="review"
+            [formGroup]="reviewFormGroup"
+            (ngSubmit)="submitReview()"
+          >
             <div class="rating-input">
               <textarea
                 class="rating-textarea"
@@ -110,7 +115,9 @@
                 cols="40"
                 formControlName="content"
               ></textarea>
-              <app-button class="review-submit" [rounded]="false" type="submit">Submit</app-button>
+              <app-button class="review-submit" [rounded]="false" type="submit"
+                >Submit</app-button
+              >
             </div>
             <star-rating-control
               size="large"

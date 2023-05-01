@@ -126,11 +126,8 @@
 }
 
 .clinics-container {
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
   gap: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -164,6 +161,8 @@
   overflow-x: scroll;
   gap: 1.5rem;
   max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
@@ -183,7 +182,6 @@
 .posts {
   padding-top: 1rem;
 }
-
 
 .selected {
   transform: scale(1.1);

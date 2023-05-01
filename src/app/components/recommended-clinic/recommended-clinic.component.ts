@@ -32,7 +32,7 @@ export class RecommendedClinicComponent {
   }
 
   ngOnChanges(changes: any) {
-    this.clinicDetails = changes.clinicDetails1.currentValue;
+    this.clinic = changes.clinic.currentValue;
   }
 
   requestAnAppointment() {

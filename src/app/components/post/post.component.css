@@ -31,8 +31,15 @@
   align-items: center;
 }
 
+.publisher-phone {
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+}
+
 .publish-date {
-  text-align: end;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  color: var(--primary-darker-placeholder);
 }
 
 .call-icon {
@@ -44,10 +51,11 @@
   padding: 2rem 0;
 }
 
-.post-tail {
+.post-footer {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
+  gap: 1rem;
 }
 
 .button {
@@ -55,10 +63,8 @@
   display: flex;
   padding: 0.5rem;
   border-radius: 0.25rem;
-}
-
-.button :not(:first-child) {
-  margin-left: 0.25rem;
+  gap: 0.25rem;
+  align-items: center;
 }
 
 .button:hover {
