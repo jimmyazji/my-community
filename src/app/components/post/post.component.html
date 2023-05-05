@@ -29,8 +29,11 @@
     <div>
       {{ text }}
     </div>
-    <div class="image-container" (click)="goToPostDetails()">
+    <div class="image-container post-image-container" (click)="goToPostDetails()">
       <img [src]="imagePath ? imagePath : videoThumbnailPath" alt="" />
+      <span *ngIf="videoThumbnailPath">
+        <mat-icon>play_arrow</mat-icon>
+      </span>
     </div>
   </div>
   <div class="post-footer">

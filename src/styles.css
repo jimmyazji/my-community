@@ -148,3 +148,8 @@ body {
 .mat-drawer-container {
   overflow: visible !important;
 }
+
+
+.mat-mdc-select-arrow {
+  width: 48px !important;
+}

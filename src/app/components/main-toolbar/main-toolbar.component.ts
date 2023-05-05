@@ -15,7 +15,7 @@ export class MainToolbarComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    this.getNotifications();  
+    this.getNotifications();
   }
 
   openNotifications() {
@@ -33,9 +33,8 @@ export class MainToolbarComponent implements OnInit {
   }
 
   getNotifications() {
-    this.notificationService.getNotifications().subscribe((res) => { 
+    this.notificationService.getNotifications().subscribe((res) => {
       this.notifications = res;
-      console.log(this.notifications);
     })
   }
 }

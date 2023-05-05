@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MapDialogComponent } from 'src/app/components/map-dialog/map-dialog.component';
 import { StoryDetailsComponent } from 'src/app/components/story-details/story-details.component';
+import { Insurance } from 'src/app/models/Insurance';
 import { Category } from 'src/app/models/category';
 import { Clinic } from 'src/app/models/clinic';
 import { ClinicService } from 'src/app/services/clinic.service';
@@ -22,6 +23,58 @@ export class HomeComponent implements OnInit {
   stories: any[] = []
   posts = []
   categories: Category[] = [];
+  paginatedCategories: Category[] = []
+  insurances: any[] = [
+    {
+      name: 'insurance1',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance2',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance3',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance4',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance5',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance6',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance7',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance8',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance9',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance10',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance11',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    },
+    {
+      name: 'insurance12',
+      iconPath: '../../../assets/images/clinic.jpeg'
+    }
+  ]
+  PaginatedInsurances: any[] = [];
   clinics: any[] = [
     {
       name: 'clinic1'
@@ -53,24 +106,38 @@ export class HomeComponent implements OnInit {
   clinicsByFilter: Clinic[] = [];
   pagination: any;
   clinicPagination: any;
+  insurancePagination: any;
   constructor(private router: Router, private clinicService: ClinicService, public dialog: MatDialog) {
     this.pagination = new PaginationService();
     this.clinicPagination = new PaginationService();
+    this.insurancePagination = new PaginationService();
   }
 
   selectedCardIndex: number = -1;
 
   ngOnInit(): void {
     this.getAllCategories();
+    this.getAllInsurance();
     this.getStories();
     this.getPosts();
     this.getAllClinics();
   }
 
+  getAllInsurance() {
+    this.PaginatedInsurances = this.insurances;
+    this.insurancePagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
+    // this.clinicService.getAllInsurances().subscribe((res: any) => {
+    //   this.insurances = res;
+    //   this.PaginatedInsurances = res;
+    //   this.pagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
+    // })
+  }
+
   getAllCategories() {
     this.clinicService.getAllCategories().subscribe((res: any) => {
       this.categories = res;
-      this.pagination.buildArray({ items: this.categories, pageSize: 4 });
+      this.paginatedCategories = res
+      this.pagination.buildArray({ items: this.paginatedCategories, pageSize: 4 });
     })
   }
 
@@ -82,6 +149,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  insuranceClickedProp: boolean = false;
+  insuranceClicked(insurance: Insurance) {
+    // this.insuranceClickedProp = !this.insuranceClickedProp;
+    // this.clinicService.getAllClinics('', 0, +insurance.id!).subscribe((res: any) => {
+    //   this.clinicsByFilter = res;
+    // })
+  }
+
+
   getAllClinics() {
     this.clinicService.getAllClinics().subscribe((res: any) => {
       this.clinics = res;
@@ -89,31 +165,47 @@ export class HomeComponent implements OnInit {
       setInterval(() => {
         this.clinics = this.clinicPagination.currentItems();
       }, 15000)
-
     })
   }
 
   clinicLocations!: Observable<any>;
   getClinicLocation(clinic: Clinic) {
     this.clinicService.getClinicLocations(clinic.id!).subscribe((res: any) => {
-      this.clinicLocations = res.value;
-
+      this.clinicLocations = res;
     })
   }
 
 
+  getOffset(el: any) {
+    const rect = el.getBoundingClientRect();
+    return {
+      left: rect.left + window.scrollX,
+      top: rect.top + window.scrollY
+    };
+  }
+
   scroll() {
-    document.getElementById('homeMap')?.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo(this.getOffset(document.getElementById('homeMap')).left, this.getOffset(document.getElementById('homeMap')).top)
   }
 
   prevIndex(length: number) {
     this.pagination.previousPage();
-    this.categories = this.pagination.currentItems();
+    this.paginatedCategories = this.pagination.currentItems();
   }
 
   nextIndex(endIndex: number) {
     this.pagination.nextPage();
-    this.categories = this.pagination.currentItems();
+    this.paginatedCategories = this.pagination.currentItems();
+  }
+
+  prevInsuranceIndex(length: number) {
+    this.insurancePagination.previousPage();
+    this.PaginatedInsurances = this.insurancePagination.currentItems();
+  }
+
+  nextInsuranceIndex(length: number) {
+    this.insurancePagination.nextPage();
+    this.PaginatedInsurances = this.insurancePagination.currentItems();
   }
 
   scrollItem(newItem: string) {

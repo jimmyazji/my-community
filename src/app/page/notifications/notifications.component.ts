@@ -7,14 +7,13 @@ import { NotificationService } from 'src/app/services/notification.service';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.css']
 })
-export class NotificationsComponent implements OnInit{
+export class NotificationsComponent implements OnInit {
   notifications: Notification[] = [];
   constructor(private notificationService: NotificationService) { }
 
   getNotifications() {
     this.notificationService.getNotifications().subscribe((res) => {
       this.notifications = res;
-      console.log(this.notifications);
     })
   }
 

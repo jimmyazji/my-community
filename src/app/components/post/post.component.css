@@ -90,3 +90,29 @@
   max-height: 100%;
   object-fit: cover;
 }
+
+
+.post-image-container {
+  position: relative;
+}
+
+.post-image-container img {
+  display: block;
+}
+
+.post-image-container span {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mat-icon {
+  height: 64px !important;
+  width: 64px !important;
+  overflow: hidden;
+  font-size: 5rem !important;
+  background-color: rgba(240 240 240, 0.5);
+}

@@ -32,10 +32,16 @@ export class ClinicService {
     return this.http.get(this.baseApiKey + `clinics?Search=${text}`)
   }
 
-  getAllClinics(search?: string, category?: number): Observable<Clinic[]> {
+  getAllClinics(search?: string, category?: number, insurance?: number): Observable<Clinic[]> {
     return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(search && { search }), ...(category && { category }) } }) }).pipe(
       map((res: any) =>
         res.dtos.map((clinic: Clinic) => new Clinic().deserialize(clinic))));
+  }
+
+  getAllInsurances(search?: any): Observable<any[]> {
+    return this.http.get(this.baseApiKey + 'clinics/all-insurances', { params: new HttpParams().set('Filters', search) }).pipe(
+      map((res: any) =>
+        res.dtos.map((insurance: Insurance) => new Insurance().deserialize(insurance))));
   }
 
   getAllCategories(): Observable<Category[]> {
