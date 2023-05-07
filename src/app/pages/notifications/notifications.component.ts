@@ -7,7 +7,7 @@ import { NotificationService } from 'src/app/services/notification.service';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.css']
 })
-export class NotificationsComponent implements OnInit{
+export class NotificationsComponent implements OnInit {
   notifications: Notification[] = [];
   constructor(private notificationService: NotificationService) { }
 

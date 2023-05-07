@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { VideoPlayerConfig } from 'ngx-thumbnail-video';
 import { ClinicService } from 'src/app/services/clinic.service';
 import { RequestAnAppointmentComponent } from '../appointments/request-an-appointment/request-an-appointment.component';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-post-details',
@@ -12,7 +13,7 @@ import { RequestAnAppointmentComponent } from '../appointments/request-an-appoin
   styleUrls: ['./post-details.component.css']
 })
 export class PostDetailsComponent {
-
+  @ViewChild("myTooltip") myTooltip!: MatTooltip
 
   creationTime: string = '';
   minutes!: number
@@ -60,5 +61,13 @@ export class PostDetailsComponent {
 
   copyPostPath() {
     return window.location.href
+  }
+
+  public displayTooltip() {
+    this.myTooltip.disabled = false;
+    this.myTooltip.show()
+    setTimeout(() => {
+      this.myTooltip.disabled = true;
+    }, 1000);
   }
 }

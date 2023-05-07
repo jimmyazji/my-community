@@ -150,7 +150,9 @@ img {
 .upload-label {
     background: var(--main-background);
     width: 100% !important;
+    color: rgba(0 0 0 / 0.5);
     padding: 1rem 2rem;
+    font-size: 1.1rem;
     border-radius: 1rem;
     border: 1px solid var(--primary-color) !important;
     display: block;
@@ -158,7 +160,7 @@ img {
 
 .upload-label::after {
     content: '\2191';
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     position: absolute;
     right: 1.2rem;
     bottom: 1.3rem;

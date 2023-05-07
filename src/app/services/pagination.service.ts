@@ -56,12 +56,16 @@ export class PaginationService {
   nextPage(): void {
     if (this.hasNextPage()) {
       this.currentPage++;
+    } else {
+      this.currentPage = 1;
     }
   }
 
   previousPage(): void {
     if (this.hasPreviousPage()) {
       this.currentPage--;
+    } else {
+      this.currentPage = this.totalPages();
     }
   }
 

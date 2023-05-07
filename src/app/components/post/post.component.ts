@@ -1,9 +1,10 @@
-import { Component, Input, Inject } from '@angular/core';
+import { Component, Input, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { RequestAnAppointmentComponent } from '../appointments/request-an-appointment/request-an-appointment.component';
 import { Router } from '@angular/router';
 import { VideoPlayerConfig } from 'ngx-thumbnail-video';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-post',
@@ -11,7 +12,7 @@ import { VideoPlayerConfig } from 'ngx-thumbnail-video';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-
+  @ViewChild("myTooltip") myTooltip!: MatTooltip
   @Input() postDetails!: any
 
   clinicName: string = '';
@@ -64,5 +65,13 @@ export class PostComponent {
 
   copyPostPath() {
     return window.location.href.replace('home', `post-details/${this.postDetails.id}`)
+  }
+
+  public displayTooltip() {
+    this.myTooltip.disabled = false;
+    this.myTooltip.show()
+    setTimeout(() => {
+      this.myTooltip.disabled = true;
+    }, 1000);
   }
 }

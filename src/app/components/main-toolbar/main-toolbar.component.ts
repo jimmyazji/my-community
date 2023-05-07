@@ -1,7 +1,6 @@
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/services/notification.service';
 import { Notification } from 'src/app/models/notification';
 
 @Component({
@@ -12,7 +11,7 @@ import { Notification } from 'src/app/models/notification';
 
 export class MainToolbarComponent {
   notifications: Notification[] = [];
-  constructor(private authService: AuthService, private router: Router, private notificationService: NotificationService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   openNotifications() {
