@@ -36,9 +36,11 @@
         >
           <img [src]="user?.imagePath" [alt]="user?.name" />
         </button>
-        <mat-menu #authMenu>
-          <button mat-menu-item><mat-icon>person</mat-icon>Profile</button>
-          <button mat-menu-item (click)="logout()">
+        <mat-menu #authMenu >
+          <a class="auth-menu-item" routerLink="profile" mat-menu-item
+            ><mat-icon>person</mat-icon>Profile</a
+          >
+          <button class="auth-menu-item" mat-menu-item (click)="logout()">
             <mat-icon>logout</mat-icon> Logout
           </button>
         </mat-menu>

@@ -1,9 +1,16 @@
 :host {
   flex-shrink: 0;
+  display: none;
+}
+
+@media only screen and (min-width: 75rem) {
+  :host {
+    display: inline;
+  }
 }
 
 .recommended-clinics {
-  width: 700px;
+  width: 44rem;
   background-color: var(--primary-darker-color);
   max-width: 22rem;
   border-top-right-radius: 0.25rem;
@@ -15,6 +22,7 @@
   height: 37rem;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .recommended-clinic-container {
@@ -38,7 +46,7 @@
 }
 
 .clinic-name {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 
 .crown {
@@ -113,6 +121,7 @@
   pointer-events: all;
 }
 .image-container img {
-  height: 18rem !important;
-  width: 100% !important;
+  width: 44rem;
+  aspect-ratio: 1;
+  object-fit: cover;
 }

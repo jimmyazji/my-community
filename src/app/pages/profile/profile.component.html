@@ -1,0 +1,37 @@
+<app-arch [contentClasses]="['centered']">
+  <div class="profile-header">
+    <div>
+      <img [src]="user?.imagePath" alt="" class="user-image" />
+      <span class="user-name">{{ user?.name }}</span>
+    </div>
+  </div>
+</app-arch>
+<div class="main-container">
+  <div class="profile-info-card">
+    <header class="profile-info-card-header">
+      <span>Email</span>
+      <button class="edit-button"><mat-icon>edit</mat-icon>edit</button>
+    </header>
+    <div class="profile-info">
+      {{ user?.email }}
+    </div>
+  </div>
+  <div class="profile-info-card">
+    <header class="profile-info-card-header">
+      <span>Mobile</span>
+      <button class="edit-button"><mat-icon>edit</mat-icon>edit</button>
+    </header>
+    <div class="profile-info">
+      {{ user?.email }}
+    </div>
+  </div>
+  <div class="profile-info-card">
+    <header class="profile-info-card-header">
+      <span>Gender</span>
+      <button class="edit-button"><mat-icon>edit</mat-icon>edit</button>
+    </header>
+    <div class="profile-info">
+      {{ user?.email }}
+    </div>
+  </div>
+</div>

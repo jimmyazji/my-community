@@ -1,54 +1,56 @@
 <app-arch>
-  <form (submit)="handleFilter()" class="search">
-    <input
-      class="search-input"
-      placeholder="Search by clinic name/insurance ..."
-      type="text"
-      i18n-placeholder
-      [formControl]="searchControl"
-    />
-    <div class="search-icons">
-      <button class="search-submit">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="search-icon"
-          viewBox="1.2 1.2 29.05 29.083"
-        >
-          <g data-name="search-normal">
-            <path
-              fill="transparent"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M26.212 14.417c0 6.514-5.281 11.795-11.795 11.795-6.515 0-11.796-5.281-11.796-11.795 0-6.515 5.281-11.796 11.796-11.796 6.514 0 11.795 5.281 11.795 11.796ZM24.81 27.116c.694 2.097 2.28 2.307 3.499.472 1.114-1.678.38-3.054-1.638-3.054-1.495-.013-2.333 1.153-1.861 2.582Z"
-              data-name="Vector"
+  <div class="filters">
+    <form (submit)="handleFilter()" class="search">
+      <input
+        class="search-input"
+        placeholder="Search by clinic name/insurance ..."
+        type="text"
+        i18n-placeholder
+        [formControl]="searchControl"
+      />
+      <div class="search-icons">
+        <button class="search-submit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="search-icon"
+            viewBox="1.2 1.2 29.05 29.083"
+          >
+            <g data-name="search-normal">
+              <path
+                fill="transparent"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M26.212 14.417c0 6.514-5.281 11.795-11.795 11.795-6.515 0-11.796-5.281-11.796-11.795 0-6.515 5.281-11.796 11.796-11.796 6.514 0 11.795 5.281 11.795 11.796ZM24.81 27.116c.694 2.097 2.28 2.307 3.499.472 1.114-1.678.38-3.054-1.638-3.054-1.495-.013-2.333 1.153-1.861 2.582Z"
+                data-name="Vector"
+              />
+            </g>
+          </svg>
+        </button>
+      </div>
+    </form>
+    <mat-form-field appearance="fill" class="category-select">
+      <mat-label>Category</mat-label>
+      <mat-select
+        [formControl]="categoryControl"
+        (selectionChange)="handleFilter()"
+      >
+        <mat-option [value]="undefined"> All </mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          <div class="category-option">
+            <img
+              *ngIf="category.iconPath; else defaultIcon"
+              [src]="category.iconPath"
+              class="category-icon"
+              alt=""
             />
-          </g>
-        </svg>
-      </button>
-    </div>
-  </form>
-  <mat-form-field appearance="fill" class="category-select">
-    <mat-label>Category</mat-label>
-    <mat-select
-      [formControl]="categoryControl"
-      (selectionChange)="handleFilter()"
-    >
-      <mat-option [value]="undefined"> All </mat-option>
-      <mat-option *ngFor="let category of categories" [value]="category.id">
-        <div class="category-option">
-          <img
-            *ngIf="category.iconPath; else defaultIcon"
-            [src]="category.iconPath"
-            class="category-icon"
-            alt=""
-          />
-          {{ category.name }}
-        </div>
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+            {{ category.name }}
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </app-arch>
 <div class="clinics-grid">
   <app-clinic-card

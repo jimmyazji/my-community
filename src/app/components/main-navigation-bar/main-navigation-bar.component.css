@@ -108,6 +108,16 @@
   margin: 0;
   padding: 0;
   border: 1px solid var(--primary-color);
+  flex-shrink: 0;
+}
+
+::ng-deep .auth-menu-item .mdc-list-item__primary-text,
+.auth-menu-item .mat-icon {
+  color: var(--primary-darker-color);
+}
+
+.auth-menu * {
+  color: inherit;
 }
 
 .hamburger {

@@ -10,13 +10,10 @@ import { Notification } from 'src/app/models/notification';
   styleUrls: ['./main-toolbar.component.css']
 })
 
-export class MainToolbarComponent implements OnInit {
+export class MainToolbarComponent {
   notifications: Notification[] = [];
   constructor(private authService: AuthService, private router: Router, private notificationService: NotificationService) { }
 
-  ngOnInit(): void {
-    this.getNotifications();  
-  }
 
   openNotifications() {
     if (!this.authService.isAuthenticated()) {
@@ -32,10 +29,4 @@ export class MainToolbarComponent implements OnInit {
     this.router.navigate(['/favorite'])
   }
 
-  getNotifications() {
-    this.notificationService.getNotifications().subscribe((res) => { 
-      this.notifications = res;
-      console.log(this.notifications);
-    })
-  }
 }

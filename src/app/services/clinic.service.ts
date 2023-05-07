@@ -32,8 +32,10 @@ export class ClinicService {
     return this.http.get(this.baseApiKey + `clinics?Search=${text}`)
   }
 
-  getAllClinics(search?: string, category?: number): Observable<Clinic[]> {
-    return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(search && { search }), ...(category && { category }) } }) }).pipe(
+  getAllClinics(search?: string, categoryIds?: number[]): Observable<Clinic[]> {
+    const Filters = search ? 'name@=' + search : undefined;
+    const IncludeCategoriesIds = categoryIds?.[0] ?? undefined;
+    return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(Filters && { Filters }), ...(IncludeCategoriesIds && { IncludeCategoriesIds }) } }) }).pipe(
       map((res: any) =>
         res.dtos.map((clinic: Clinic) => new Clinic().deserialize(clinic))));
   }

@@ -3,7 +3,6 @@
   top: 6.5rem;
   overflow: hidden;
   border-radius: 0.25rem;
-  width: 18rem;
   transition: width 200ms ease-out;
   right: 0;
   z-index: 40;
@@ -11,58 +10,79 @@
 }
 
 .map-iframe {
-  width: 64rem;
   height: 37rem;
   z-index: 40;
   display: block;
 }
 
-.map-container:hover {
-  width: 24rem;
-}
-
-.map-container.close:hover .iframe-mask {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: var(--primary-color);
-}
-
 .iframe-mask {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.5rem;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  color: transparent;
-  transition: color 300ms ease-out, background-color 300ms ease-out;
-  cursor: pointer;
+  display: none;
 }
 
-.map-container.open {
-  width: 52rem;
+@media only screen and (min-width: 72rem) {
+  .map-container {
+    width: 18rem;
+    border-radius: 0.25rem 0 0 0.25rem;
+  }
+
+  .map-container.close:hover .iframe-mask {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: var(--primary-color);
+  }
+
+  .iframe-mask {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    color: transparent;
+    transition: color 300ms ease-out, background-color 300ms ease-out;
+    cursor: pointer;
+  }
+
+  .map-container.open-dialog {
+    width: 32rem;
+  }
+
+  .map-container.open-dialog .map-iframe {
+    height: 26rem;
+  }
+
+  .map-container.open:hover .iframe-mask,
+  .map-container.open-dialog:hover .iframe-mask {
+    pointer-events: none;
+  }
+
+  .map-backdrop {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+  }
+
+  .map-container:hover {
+    width: 24rem;
+  }
+
+  .map-container.open {
+    width: 40rem;
+  }
+
 }
 
-.map-container.open-dialog {
-  width: 32rem;
-}
+@media only screen and (min-width: 85rem) {
+  .map-container {
+    width: 20rem;
+  }
 
-.map-container.open-dialog .map-iframe {
-  height: 26rem;
-}
-
-.map-container.open:hover .iframe-mask,
-.map-container.open-dialog:hover .iframe-mask {
-  pointer-events: none;
-}
-
-.map-backdrop {
-  top: 0;
-  left: 0;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 30;
+  .map-container.open {
+    width: 52rem;
+  }
 }

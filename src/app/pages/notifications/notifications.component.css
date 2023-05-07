@@ -1,6 +1,6 @@
 .page-title {
+  width: 100%;
   color: var(--primary-content);
-  grid-column: span 4;
   text-align: center;
   font-size: 2rem;
   line-height: 2rem;

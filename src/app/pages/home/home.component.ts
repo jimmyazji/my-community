@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
   categoryClickedProp: boolean = false;
   categoryClicked(category: Category) {
     this.categoryClickedProp = !this.categoryClickedProp;
-    this.clinicService.getAllClinics('', +category.id!).subscribe((res: any) => {
+    this.clinicService.getAllClinics('', [category.id!]).subscribe((res: any) => {
       this.clinicsByFilter = res;
     })
   }

@@ -119,13 +119,21 @@
                 >Submit</app-button
               >
             </div>
-            <star-rating-control
-              size="large"
-              staticColor="ok"
-              [rating]="0"
-              [hoverEnabled]="true"
-              formControlName="rate"
-            ></star-rating-control>
+            <div>
+              <star-rating-control
+                size="large"
+                staticColor="ok"
+                [rating]="0"
+                [hoverEnabled]="true"
+                formControlName="rate"
+              ></star-rating-control>
+              <mat-error
+                *ngIf="
+                  reviewFormGroup.controls['rate'].errors && reviewSubmitted
+                "
+                >Rate can't be less than 1 star</mat-error
+              >
+            </div>
           </form>
           <div class="reviews-container">
             <app-review-card

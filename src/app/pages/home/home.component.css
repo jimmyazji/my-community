@@ -41,7 +41,7 @@
   pointer-events: none;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 62rem) {
   .background-container {
     margin-left: 0;
     padding-left: 8rem;
@@ -67,7 +67,8 @@
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 8rem));
-  gap: 1.8rem;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .search {
@@ -152,8 +153,15 @@
 .home-main {
   display: flex;
   background-color: var(--main-darker-background);
-  gap: 1rem;
   justify-content: space-between;
+  flex-direction: column-reverse;
+  gap: 1rem;
+}
+
+@media only screen and (min-width: 72rem) {
+  .home-main {
+    flex-direction: row;
+  }
 }
 
 .stories {
@@ -163,6 +171,7 @@
   max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
+  margin: 0 1rem;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
@@ -173,10 +182,6 @@
 
 .stories::-webkit-scrollbar {
   display: none;
-}
-
-.social {
-  margin-left: 1rem;
 }
 
 .posts {

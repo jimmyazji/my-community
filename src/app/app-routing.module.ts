@@ -8,8 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ProviderComponent } from './pages/provider/provider.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
-import { NotificationsComponent } from './page/notifications/notifications.component';
-import { FavoriteComponent } from './page/favorite/favorite.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { FavoriteComponent } from './pages/favorite/favorite.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -31,7 +33,8 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'notifications', component: NotificationsComponent },
-  { path: 'favorite', component: FavoriteComponent }
+  { path: 'favorite', component: FavoriteComponent },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({

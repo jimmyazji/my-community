@@ -58,9 +58,10 @@ import { MapDialogComponent } from './components/map-dialog/map-dialog.component
 
 import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { NotificationsComponent } from './page/notifications/notifications.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { FavoriteComponent } from './page/favorite/favorite.component';
+import { FavoriteComponent } from './pages/favorite/favorite.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { FavoriteComponent } from './page/favorite/favorite.component';
     NotificationsComponent,
     NotificationComponent,
     FavoriteComponent,
+    ProfileComponent,
     
   ],
   imports: [

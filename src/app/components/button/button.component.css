@@ -9,6 +9,7 @@
   border: solid 2px var(--primary-color);
   border-radius: 0.25rem;
   text-transform: capitalize;
+  white-space: nowrap;
 }
 .button.rounded {
   border-radius: 99rem;

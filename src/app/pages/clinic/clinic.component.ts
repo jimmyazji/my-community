@@ -34,9 +34,10 @@ export class ClinicComponent implements OnInit {
   reviews: Review[] = [];
 
   reviewFormGroup: FormGroup = new FormGroup({
-    rate: new FormControl(0, Validators.required),
-    content: new FormControl('', [Validators.required, Validators.min(50)])
+    rate: new FormControl(0, [Validators.required, Validators.min(1)],),
+    content: new FormControl('')
   });
+  reviewSubmitted: boolean = false;
 
   getClinicDetails() {
     this.route.params.subscribe((params) => {
@@ -87,10 +88,13 @@ export class ClinicComponent implements OnInit {
     if (!this.authService.isAuthenticated()) {
       this.authService.loginAcquired.next(true);
     }
+    this.reviewSubmitted = true;
+    if (this.reviewFormGroup.invalid) return;
     const formData = { clinicId: this.clinic.id, ...this.reviewFormGroup.value }
     this.clinicService.createReview(formData).subscribe(
       (res) => {
         this.reviewFormGroup.reset({ content: '', rate: 0 });
+        this.reviewSubmitted = false;
         this.snackBar.open('Review submitted successfully', 'Ok', {
           duration: 3000
         });

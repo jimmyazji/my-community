@@ -29,9 +29,10 @@ export class ProviderComponent implements OnInit, OnDestroy {
   reviews: Review[] = [];
   recommendation: Recommendation = new Recommendation;
   reviewFormGroup: FormGroup = new FormGroup({
-    rate: new FormControl(0, Validators.required),
-    content: new FormControl('', [Validators.required, Validators.min(50)])
+    rate: new FormControl(0, Validators.min(1)),
+    content: new FormControl('')
   });
+  reviewSubmitted: boolean = false;
   authChangeSubscription: Subscription = new Subscription;
 
   getProviderDetails() {
@@ -57,9 +58,12 @@ export class ProviderComponent implements OnInit, OnDestroy {
     if (!this.authService.isAuthenticated()) {
       this.authService.loginAcquired.next(true);
     }
+    this.reviewSubmitted = true;
+    if (this.reviewFormGroup.invalid) return;
     this.providerService.createReview(formData).subscribe(
       (res) => {
         this.reviewFormGroup.reset({ content: '', rate: 0 });
+        this.reviewSubmitted = false;
         this.snackBar.open('Review submitted successfully', 'Ok', {
           duration: 3000
         });
@@ -105,9 +109,9 @@ export class ProviderComponent implements OnInit, OnDestroy {
     })
   }
 
-  recommendedCheck(){
+  recommendedCheck() {
     this.getProviderDetails();
-    if(this.provider.recommendedByUser){
+    if (this.provider.recommendedByUser) {
       this.getRecommendation()
     }
   }
@@ -117,7 +121,7 @@ export class ProviderComponent implements OnInit, OnDestroy {
     this.getProviderReviews();
     this.authChangeSubscription = this.authService.getAuthChange().subscribe(() => this.recommendedCheck());
   }
-  
+
 
   ngOnDestroy(): void {
     this.authChangeSubscription.unsubscribe();

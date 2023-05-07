@@ -39,7 +39,7 @@
         </button>
       </div>
       <app-category-card
-        *ngFor="let category of categories | slice : 0 : 4; let i = index"
+        *ngFor="let category of categories | slice : 0 : 8; let i = index"
         [ngClass]="{ selected: selectedCardIndex === i }"
         [category]="category"
         (click)="categoryClicked(category); selectedCardIndex = i"

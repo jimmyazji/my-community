@@ -18,7 +18,7 @@
   height: 5rem;
   border-radius: 99rem;
   overflow: hidden;
-  border: solid 1px var(--primary-color);
+  border: solid 2px var(--primary-color);
 }
 
 .insurance-info {
