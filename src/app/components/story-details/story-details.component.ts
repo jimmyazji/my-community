@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 @Component({
   selector: 'app-story-details',
@@ -13,7 +14,7 @@ export class StoryDetailsComponent {
   minutes!: number
   hours!: number
   days!: number
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private router:Router,private dialog:MatDialog) {
   }
 
   ngOnInit() {
@@ -24,5 +25,10 @@ export class StoryDetailsComponent {
     this.hours = Math.trunc(duration.asHours());
     this.minutes = Math.trunc(duration.asMinutes());
     this.days = +duration.days().toFixed(2);
+  }
+
+  goToClinic(){
+    this.dialog.closeAll();
+    this.router.navigate(['/clinics', this.data.clinicId])
   }
 }

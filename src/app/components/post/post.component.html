@@ -1,5 +1,5 @@
 <div class="post-container">
-  <div class="post-head">
+  <div class="post-head" (click)="goToClinicDetails()">
     <img [src]="clinicImagePath" alt="doctor" class="avatar" />
     <div class="publisher-info">
       <h3 class="publisher-name">
@@ -48,13 +48,13 @@
         </svg>
       </div>
     </button>
-    <button class="button view-instagram">
+    <button class="button view-instagram" *ngIf="instagramUrl">
       <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="687.517 2438 28.333 28.317">
         <path fill="currentColor" fill-rule="evenodd"
           d="M695.777 2438c-4.552 0-8.256 3.707-8.256 8.26v11.798c0 4.553 3.707 8.256 8.261 8.256h11.798c4.552 0 8.256-3.707 8.256-8.26v-11.798c0-4.553-3.707-8.256-8.261-8.256h-11.798Zm14.16 4.719a1.18 1.18 0 1 1-.001 2.36 1.18 1.18 0 0 1 0-2.36Zm-8.258 2.36a7.086 7.086 0 0 1 7.078 7.078 7.086 7.086 0 0 1-7.078 7.079 7.086 7.086 0 0 1-7.079-7.079 7.086 7.086 0 0 1 7.079-7.078Zm0 2.36a4.719 4.719 0 1 0 0 9.437 4.719 4.719 0 0 0 0-9.438Z"
           data-name="icons8-instagram" />
       </svg>
-      <span i18n>View Instagram</span>
+      <span i18n >View Instagram</span>
     </button>
     <button class="button share-button" [cdkCopyToClipboard]="copyPostPath()" [matTooltipDisabled]="true"
       #myTooltip="matTooltip" matTooltip="Copied" (click)="displayTooltip()" matTooltipPosition="below">

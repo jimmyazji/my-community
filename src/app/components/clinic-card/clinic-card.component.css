@@ -9,6 +9,7 @@
   grid-template-columns: 8rem auto;
   scroll-snap-align: end;
   cursor: pointer;
+  position: relative;
 }
 
 .clinic-img {
@@ -38,4 +39,20 @@
 .call-icon {
   height: 1rem;
   margin-right: 0.5rem;
+}
+
+
+.buttons {
+  width: 6rem;
+  height: 3rem;
+  background-color: var(--primary-color);
+  color:var(--primary-content);
+  border-radius: 0 0 3rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
 }

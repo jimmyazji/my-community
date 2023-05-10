@@ -20,7 +20,7 @@ export class RequestAnAppointmentComponent {
 
   constructor(
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { clinic: Clinic, providerId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { clinic: any, providerId?: number },
     private _fg: FormBuilder,
     private clinicService: ClinicService
   ) {
@@ -31,27 +31,30 @@ export class RequestAnAppointmentComponent {
       doctor: [this.data.providerId, Validators.required],
       location: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      image: File,
+      image: '',
       notes: ['', Validators.required],
 
     })
   }
 
   getClinicLocations() {
-    this.clinicService.getClinicLocations(this.data.clinic.id).subscribe(res => {
+    this.clinicService.getClinicLocations(this.data.clinic).subscribe(res => {
       this.locationsList = res;
     })
   }
 
   getDoctorsByClinicId() {
-    this.clinicService.getDoctorsByClinicId(this.data.clinic.id).subscribe((res: any) => {
+    this.clinicService.getDoctorsByClinicId(this.data.clinic).subscribe((res: any) => {
       this.doctorsList = res.value;
     })
   }
+
   ngOnInit() {
     this.getClinicLocations();
     this.getDoctorsByClinicId();
   }
+
+
 
   reqAnAppointment() {
     let formData = new FormData();
@@ -67,4 +70,19 @@ export class RequestAnAppointmentComponent {
       this.dialog.closeAll();
     })
   }
+
+  imageBase64: any;
+  changeInput(event: any) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = () => {
+        // convert image to base64 format
+        this.imageBase64 = reader.result as string;
+
+      };
+    }
+
+  }
+
 }

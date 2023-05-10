@@ -1,5 +1,5 @@
 <div class="post-container">
-    <div class="post-head">
+    <div class="post-head"(click)="goToClinic()">
         <img [src]="data.clinicImage" alt="doctor" class="avatar" />
         <div class="publisher-info">
             <h3 class="publisher-name">{{data.clinicName? data.clinicName : 'ClinicName'}}</h3>

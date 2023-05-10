@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { VideoPlayerConfig } from 'ngx-thumbnail-video';
 import { ClinicService } from 'src/app/services/clinic.service';
@@ -29,7 +29,7 @@ export class PostDetailsComponent {
   };
 
 
-  constructor(private route: ActivatedRoute, private clinicService: ClinicService, private dialog: MatDialog) {
+  constructor(private route: ActivatedRoute,private router:Router , private clinicService: ClinicService, private dialog: MatDialog) {
     this.route.params.subscribe((params) => {
       this.clinicService.getPostDetailsById(params['id']).subscribe(
         (res: any) => {
@@ -55,10 +55,17 @@ export class PostDetailsComponent {
     this.dialog.closeAll();
     this.dialog.open(RequestAnAppointmentComponent, {
       autoFocus: true,
-      maxHeight: '90vh'
+      maxHeight: '90vh',
+      data :{
+        clinic:this.data.clinicId,
+        providerId:0
+      }
     })
   }
 
+  backToHome(){
+    this.router.navigate([''])
+  }
   copyPostPath() {
     return window.location.href
   }

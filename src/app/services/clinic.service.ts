@@ -41,9 +41,11 @@ export class ClinicService {
   }
 
   getAllInsurances(search?: any): Observable<any[]> {
-    return this.http.get(this.baseApiKey + 'clinics/all-insurances', { params: new HttpParams().set('Filters', search) }).pipe(
+    const Filters = search ? 'name@=' + search : undefined;
+  
+    return this.http.post(this.baseApiKey + 'clinics/all-insurances', {}, { params: new HttpParams({ fromObject: { ...(Filters && { Filters }) }})}).pipe(
       map((res: any) =>
-        res.dtos.map((insurance: Insurance) => new Insurance().deserialize(insurance))));
+        res.value.map((insurance: Insurance) => new Insurance().deserialize(insurance))));
   }
 
   getAllCategories(): Observable<Category[]> {

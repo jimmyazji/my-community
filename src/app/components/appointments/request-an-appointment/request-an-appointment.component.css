@@ -158,10 +158,18 @@ img {
     display: block;
 }
 
+.upload-label img {
+    width: 75px;
+    height: 50px;
+    border-radius: 5px;
+}
+
 .upload-label::after {
     content: '\2191';
     font-size: 1.6rem;
     position: absolute;
     right: 1.2rem;
-    bottom: 1.3rem;
+    bottom: 50%;
+    transform: translateY(50%);
 }
+

@@ -16,4 +16,8 @@ export class ClinicCardComponent {
       this.router.navigate(['/clinics', this.clinic?.id])
     }
   }
+  goToClinicDetails(clinic:Clinic){
+    this.router.navigate(['/clinics', clinic.id])
+
+  }
 }
