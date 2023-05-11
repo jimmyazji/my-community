@@ -1,4 +1,5 @@
 <div class="story-container">
-    <img [src]="image" class="story-img" alt="">
-    <span class="story-name">{{name}}</span>
+    <img *ngIf="story?.imagePath" [src]="story?.imagePath" class="story-img" alt="">
+    <video *ngIf="!story?.image"  [src]="story?.videoPath" controls muted></video>
+    <span class="story-name">{{story?.name}}</span>
 </div>

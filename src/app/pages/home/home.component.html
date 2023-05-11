@@ -101,7 +101,7 @@
      </ng-container>
      <section id="social" class="social">
        <article id="stories" class="stories">
-         <app-story *ngFor="let story of stories" [name]="story.name" [image]="story.imagePath"
+         <app-story *ngFor="let story of stories" [story]="story"
            (click)="openStoryModal(story)"></app-story>
        </article>
        <article id="posts" class="posts">

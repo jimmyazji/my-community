@@ -9,7 +9,8 @@
     </div>
     <div class="post-body">
         <div class="image-container">
-            <img [src]="data.imagePath" alt="">
+            <img *ngIf="data.imagePath" [src]="data.imagePath" alt="">
+            <video *ngIf="!data.imagePath" [src]="data.videoPath" controls muted></video>
         </div>
     </div>
     <div class="post-tail">

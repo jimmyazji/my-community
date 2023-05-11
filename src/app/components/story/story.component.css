@@ -11,8 +11,9 @@
 .story-img {
   width: 100%;
   max-width: 100%;
-  object-fit: contain;
-  height: 100%;
+  object-fit: cover;
+  height: 285px !important;
+  min-height: 285px !important;
   filter: brightness(80%);
 }
 
