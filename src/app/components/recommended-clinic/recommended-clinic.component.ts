@@ -16,6 +16,7 @@ export class RecommendedClinicComponent {
 
 
   @Input() clinic: Clinic = new Clinic;
+  @Input() message!: string
   @Output() newItemEvent = new EventEmitter<string>();
 
   paginateOverRecommendedClinics(value: string) {
@@ -32,7 +33,11 @@ export class RecommendedClinicComponent {
   }
 
   ngOnChanges(changes: any) {
-    this.clinic = changes.clinic.currentValue;
+    this.clinic = changes.clinic?.currentValue;
+    setTimeout(()=>{
+      this.message = changes.message?.currentValue;
+    },1000)
+
   }
 
   requestAnAppointment() {

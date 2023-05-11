@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit {
   pagination: any;
   clinicPagination: any;
   insurancePagination: any;
-
+  recommendedClinics:Clinic[]=[];
+  
   constructor(private router: Router, private clinicService: ClinicService, public dialog: MatDialog) {
     this.pagination = new PaginationService();
     this.clinicPagination = new PaginationService();
@@ -47,6 +48,17 @@ export class HomeComponent implements OnInit {
     this.getStories();
     this.getPosts();
     this.getAllClinics();
+    this.getRecommendedClinics()
+  }
+
+  getRecommendedClinics(){
+    this.clinicService.getRecommendedClinics().subscribe((res:Clinic[])=> {
+      this.recommendedClinics = res;
+      this.clinicPagination.buildArray({ items: this.recommendedClinics, pageSize: 1 });
+      setInterval(() => {
+        this.recommendedClinics = this.clinicPagination.currentItems();
+      }, 15000)
+    })
   }
 
   getAllInsurance() {
@@ -95,10 +107,7 @@ export class HomeComponent implements OnInit {
   getAllClinics() {
     this.clinicService.getAllClinics().subscribe((res: any) => {
       this.clinics = res;
-      this.clinicPagination.buildArray({ items: this.clinics, pageSize: 1 });
-      setInterval(() => {
-        this.clinics = this.clinicPagination.currentItems();
-      }, 15000)
+      
     })
   }
 
@@ -152,12 +161,12 @@ export class HomeComponent implements OnInit {
 
   beforeIndex() {
     this.clinicPagination.previousPage();
-    this.clinics = this.clinicPagination.currentItems();
+    this.recommendedClinics = this.clinicPagination.currentItems();
   }
 
   afterIndex() {
     this.clinicPagination.nextPage();
-    this.clinics = this.clinicPagination.currentItems();
+    this.recommendedClinics = this.clinicPagination.currentItems();
   }
 
 

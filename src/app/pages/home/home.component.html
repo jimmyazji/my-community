@@ -79,25 +79,32 @@
 
  <section id="clinics" class="clinics">
    <section id="clinics" class="clinics">
-     <div class="clinics-container">
-      <div *ngIf="clinicsByFilter.length===0; else other_content">
+      <div  class="clinics-container" *ngIf="clinicsByFilter.length===0; else other_content">
         <app-clinic-card  *ngFor="let clinic of clinics" [clinic]="clinic" (click)="getClinicLocation(clinic)">
         </app-clinic-card>
       </div>
-      <ng-template #other_content>
-        <app-clinic-card  *ngFor="let clinic of clinics" [clinic]="clinic" (click)="getClinicLocation(clinic)">
-        </app-clinic-card>
+      <ng-template  #other_content>
+        <div class="clinics-container">
+          <app-clinic-card  *ngFor="let clinic of clinicsByFilter" [clinic]="clinic" (click)="getClinicLocation(clinic)">
+          </app-clinic-card>
+        </div>
+        
       </ng-template>
        
        <!-- <app-button class="more-button" (click)="moreClinics()" i18n>
         Show more
       </app-button> -->
-     </div>
+     
    </section>
    <div class="home-main">
      <ng-container *ngIf="recommendedOpen">
-       <app-recommended-clinic *ngFor="let clinic of clinics | slice : 0 : 1" [clinic]="clinic"
-         (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
+      <div *ngIf="recommendedClinics.length > 0;else other_content" >
+        <app-recommended-clinic *ngFor="let clinic of recommendedClinics | slice : 0 : 1" [clinic]="clinic" 
+        (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
+      </div>
+      <ng-template #other_content>
+        <app-recommended-clinic [message]="'There is currently no recommended clinic'" ></app-recommended-clinic>
+      </ng-template>
      </ng-container>
      <section id="social" class="social">
        <article id="stories" class="stories">

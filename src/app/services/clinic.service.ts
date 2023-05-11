@@ -40,6 +40,12 @@ export class ClinicService {
         res.dtos.map((clinic: Clinic) => new Clinic().deserialize(clinic))));
   }
 
+  getRecommendedClinics(): Observable<Clinic[]> {
+    const Filters = 'isRecommended==false';
+    return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(Filters && { Filters }) } }) }).pipe(
+      map((res: any) =>
+        res.dtos.map((clinic: Clinic) => new Clinic().deserialize(clinic))));
+  }
   getAllInsurances(search?: any): Observable<any[]> {
     const Filters = search ? 'name@=' + search : undefined;
   

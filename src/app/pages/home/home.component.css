@@ -127,17 +127,18 @@
 }
 
 .clinics {
-  position: relative;
+  position: relative; 
 }
 
 .clinics-container {
   display: flex;
-  gap: 1.5rem;
+  gap: 2.5rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scroll-padding-right: 1rem;
   padding: 2rem 2rem 5rem;
+  display: flex;
 }
 
 .more-button {
