@@ -10,9 +10,16 @@ export class FavoriteService {
   baseApiKey = 'https://mycommunity-api.solutions-it.net/app/api/'
   constructor(private http: HttpClient) { }
 
-  getFavoritePosts() : Observable<Post[]> {
+  getFavoritePosts(): Observable<Post[]> {
     return this.http.get(this.baseApiKey + 'users/get-user-favourites').pipe(
       map((res: any) =>
         res.value.map((post: Post) => new Post().deserialize(post))));
+  }
+
+  addOrRemovePost(postId:number, favored: boolean): Observable<any> {
+    if (favored) {
+      return this.http.post(this.baseApiKey + 'users/add-post-to-favourites',postId)
+    }
+    return this.http.post(this.baseApiKey + 'remove-post-from-favourites',postId)
   }
 }

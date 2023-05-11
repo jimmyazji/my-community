@@ -1,3 +1,4 @@
+
 import { Component, Input } from '@angular/core';
 import { timer } from 'rxjs';
 import { Service } from 'src/app/models/service';
@@ -10,14 +11,4 @@ import { Service } from 'src/app/models/service';
 export class ServiceCardComponent {
   @Input() service: Service = new Service;
   open: boolean = false;
-  descriptionShown: boolean = false;
-
-  toggleCard() {
-    this.open = !this.open;
-    if (this.open) {
-      timer(500).subscribe(() => { this.descriptionShown = this.open });
-    } else {
-      this.descriptionShown = this.open;
-    }
-  }
 }

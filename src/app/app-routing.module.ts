@@ -8,7 +8,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ProviderComponent } from './pages/provider/provider.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
-import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
@@ -32,7 +31,6 @@ const routes: Routes = [
   { path: 'insurances', component: InsurancesComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
-  { path: 'notifications', component: NotificationsComponent },
   { path: 'favorite', component: FavoriteComponent },
   { path: 'profile', component: ProfileComponent }
 ];

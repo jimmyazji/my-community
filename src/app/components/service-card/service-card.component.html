@@ -1,15 +1,16 @@
-<div
-  class="card-container"
-  (click)="toggleCard()"
-  [ngClass]="open ? 'open' : 'close'"
->
-  <div class="service-info">
+<div class="card-container" [ngClass]="open ? 'open' : 'close'">
+  <div
+    class="service-info"
+    [matTooltip]="service.description"
+    matTooltipPosition="below"
+    (click)="tooltip.show()" 
+    #tooltip="matTooltip"
+  >
     <ng-container *ngIf="service?.iconPath; else defaultIcon">
       <img class="service-icon" [src]="service.iconPath" />
     </ng-container>
     <h4 class="service-name">{{ service.name }}</h4>
   </div>
-  <p class="description" *ngIf="descriptionShown">{{ service.description }}</p>
 </div>
 
 <ng-template #defaultIcon>

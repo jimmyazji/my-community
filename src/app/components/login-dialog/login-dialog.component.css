@@ -37,8 +37,10 @@
 }
 
 .error-response {
+  font-size: 0.875rem;
+  color: #f44336;
   position: relative;
-  top: -3.25rem;
+  left: 1rem;
 }
 
 .visibility-button {
@@ -47,6 +49,7 @@
   right: 1.25rem;
   transform: translateY(60%);
   color: var(--primary-darker-placeholder);
+  cursor: pointer;
 }
 
 .password-reset-link {
@@ -104,6 +107,11 @@
 .login-form .mat-mdc-form-field input {
   background-color: var(--main-background);
   padding: 1rem 2rem;
+}
+
+.input-error {
+  position: relative;
+  bottom: -1.75rem;
 }
 
 ::ng-deep .login-form .mdc-text-field {

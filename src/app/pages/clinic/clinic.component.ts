@@ -103,12 +103,6 @@ export class ClinicComponent implements OnInit {
     )
   }
 
-  recommendClinic() {
-    if (!this.authService.isAuthenticated()) {
-      this.authService.loginAcquired.next(true);
-    }
-  }
-
   requestAnAppointment() {
     this.dialog.closeAll()
     timer(300).subscribe(

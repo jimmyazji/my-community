@@ -3,9 +3,8 @@ import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-main-navigation-bar',
   templateUrl: './main-navigation-bar.component.html',
@@ -23,8 +22,6 @@ export class MainNavigationBarComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private router: Router,
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {

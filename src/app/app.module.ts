@@ -11,17 +11,26 @@ import { HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule } from '@ang
 import { MatSelectModule } from '@angular/material/select';
 import { StarRatingModule } from 'angular-star-rating';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { NgxThumbnailVideoModule } from 'ngx-thumbnail-video';
+import { ChangeOnScrollDirective } from './change-on-scroll.directive';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+
+import { AppComponent } from './app.component';
+import { ProviderComponent } from './pages/provider/provider.component';
+import { FavoriteComponent } from './pages/favorite/favorite.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ClinicsComponent } from './pages/clinics/clinics.component';
 import { InsurancesComponent } from './pages/insurances/insurances.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ClinicComponent } from './pages/clinic/clinic.component';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-import { AppComponent } from './app.component';
 import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
 import { MainNavigationBarComponent } from './components/main-navigation-bar/main-navigation-bar.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -35,8 +44,6 @@ import { LoginDialogComponent } from './components/login-dialog/login-dialog.com
 import { RegisterDialogComponent } from './components/register-dialog/register-dialog.component';
 import { InputComponent } from './components/input/input.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-
-import { ChangeOnScrollDirective } from './change-on-scroll.directive';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ArchComponent } from './components/arch/arch.component';
 import { RatingComponent } from './components/rating/rating.component';
@@ -44,24 +51,15 @@ import { ServiceCardComponent } from './components/service-card/service-card.com
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { RecommendedClinicComponent } from './components/recommended-clinic/recommended-clinic.component';
 import { ProviderCardComponent } from './provider-card/provider-card.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { ProviderComponent } from './pages/provider/provider.component';
 import { StoryDetailsComponent } from './components/story-details/story-details.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { RequestAnAppointmentComponent } from './components/appointments/request-an-appointment/request-an-appointment.component';
-import { NgxThumbnailVideoModule } from 'ngx-thumbnail-video';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { HomeMapComponent } from './home-map/home-map.component';
-
-import { GoogleMapsModule } from '@angular/google-maps';
-import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
-
-import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
-import { ClipboardModule } from '@angular/cdk/clipboard';
-import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { HomeMapComponent } from './components/home-map/home-map.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { FavoriteComponent } from './pages/favorite/favorite.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
+import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
 
 @NgModule({
   declarations: [

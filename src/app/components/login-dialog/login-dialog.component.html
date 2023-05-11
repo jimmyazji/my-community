@@ -1,22 +1,29 @@
 <div class="login-dialog-container">
   <div class="login-form-container">
     <h2 class="title" i18n>Log In</h2>
-    <form class="login-form" [formGroup]="loginForm">
+    <form class="login-form" [formGroup]="loginFormGroup">
       <mat-form-field appearance="fill" class="input">
-        <mat-error class="error-response" *ngIf="errorResponse">
+        <span class="error-response" *ngIf="errorResponse">
           {{ errorResponse }}
-        </mat-error>
+        </span>
         <input
           matInput
           placeholder="Email"
           i18n-placeholder
-          formControlName="myCommunityEm"
+          formControlName="email"
           autocomplete="nope"
           required
         />
-        <mat-error class="input-error" *ngIf="validationErrors['Email']">{{
-          validationErrors["Email"]
-        }}</mat-error>
+        <mat-error
+          class="input-error"
+          *ngIf="loginFormGroup.controls['email'].errors?.['required'] && submitted"
+          >Email field is required</mat-error
+        >
+        <mat-error
+          class="input-error"
+          *ngIf="loginFormGroup.controls['email'].errors?.['email'] && submitted"
+          >Invalid email format</mat-error
+        >
       </mat-form-field>
       <mat-form-field appearance="fill" class="input">
         <input
@@ -26,10 +33,10 @@
           [type]="hide ? 'password' : 'text'"
           autocomplete="nope"
           (keydown.enter)="$event.preventDefault(); login()"
-          formControlName="Password"
+          formControlName="password"
           required
         />
-        <button
+        <span
           mat-icon-button
           (click)="hide = !hide"
           [attr.aria-label]="'Hide password'"
@@ -37,9 +44,14 @@
           class="visibility-button"
         >
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
+        </span>
+        <mat-error
+          class="input-error"
+          *ngIf="loginFormGroup.controls['password'].errors?.['required'] && submitted"
+          >Password field is required</mat-error
+        >
       </mat-form-field>
-      <a class="password-reset-link" routerLink="/" i18n>Forgot Password?</a>
+      <!-- <a class="password-reset-link" routerLink="/" i18n>Forgot Password?</a> -->
       <div class="login-button">
         <button (click)="login()" i18n>login</button>
       </div>

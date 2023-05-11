@@ -48,6 +48,7 @@
 }
 
 .post-body {
+  cursor: pointer;
   padding: 2rem 0;
 }
 
@@ -71,7 +72,7 @@
   background-color: #2785b462;
 }
 
-.share-icon {
+.footer-icon {
   height: 1.25rem;
 }
 
@@ -91,7 +92,6 @@
   object-fit: cover;
 }
 
-
 .post-image-container {
   position: relative;
 }
@@ -109,10 +109,18 @@
   transform: translate(-50%, -50%);
 }
 
-.mat-icon {
+.play-arrow.mat-icon {
   height: 64px !important;
   width: 64px !important;
   overflow: hidden;
   font-size: 5rem !important;
   background-color: rgba(240 240 240, 0.5);
+}
+
+.play-arrow {
+  color: var(--primary-content);
+}
+
+.favorite-button:hover svg{
+  fill: #ff3d3d;
 }

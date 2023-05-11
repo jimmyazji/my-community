@@ -15,11 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(formData: any): Observable<any> {
-    return this.http.post<any>(this.baseApiKey + 'users/login', formData).pipe(
-      tap(res => {
-        localStorage.setItem('authToken', res.value.token);
-        this.authChange.next(true);
-      }), shareReplay());
+    return this.http.post<any>(this.baseApiKey + 'users/login', formData)
   }
 
   register(formData: any): Observable<any> {

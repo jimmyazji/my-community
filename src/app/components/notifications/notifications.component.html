@@ -1,4 +1,3 @@
-<app-arch><h2 class="page-title">Notifications</h2></app-arch>
 <div class="notifications-container">
     <ng-container *ngIf="notifications.length; else emptyBlock">
         <app-notification *ngFor="let notification of notifications" [notification]="notification"></app-notification>

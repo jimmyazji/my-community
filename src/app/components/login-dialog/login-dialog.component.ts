@@ -2,7 +2,7 @@ import { RegisterDialogComponent } from './../register-dialog/register-dialog.co
 import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 import { timer } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 type ValidationErrors = { [key: string]: string }
 @Component({
@@ -11,27 +11,29 @@ type ValidationErrors = { [key: string]: string }
   styleUrls: ['./login-dialog.component.css']
 })
 export class LoginDialogComponent {
-  loginForm!: FormGroup;
   hide = true;
   validationErrors: ValidationErrors = {};
+  loginFormGroup: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email],),
+    password: new FormControl('',Validators.required)
+  });
+  errorResponse: string | null = null;
+  submitted = false;
 
   constructor(
     public dialog: MatDialog,
-    private _fg: FormBuilder,
     private authService: AuthService
-  ) {
-    this.loginForm = this._fg.group({
-      myCommunityEm: ['', Validators.required],
-      Password: ''
-    })
-  }
-  errorResponse: string | null = null;
+  ) { }
+
+
 
   login() {
     this.errorResponse = null;
+    this.submitted = true;
+    if (this.loginFormGroup.invalid) return;
     const formData = new FormData();
-    formData.append('Email', this.loginForm.value.myCommunityEm);
-    formData.append('Password', this.loginForm.value.Password);
+    formData.append('Email', this.loginFormGroup.value.email);
+    formData.append('Password', this.loginFormGroup.value.password);
 
     this.authService.login(formData).subscribe(res => {
       if (!res.status) {

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
+import { timer } from 'rxjs';
 type ValidationErrors = { [key: string]: string }
 
 @Component({
@@ -50,10 +51,16 @@ export class RegisterDialogComponent {
     formData.append('ProfileImage', this.registerForm.value.image)
 
     this.authService.register(formData).subscribe(res => {
+      if(!res.status){
+        this.errorResponse = res.message;
+      }
       this.dialog.closeAll()
       this.snackBar.open('Registration completed successfully', 'Ok', {
         duration: 3000
       });
+      timer(300).subscribe(
+        () => this.authService.loginAcquired.next(true)
+      )
     },
       (err) => {
         if (err instanceof HttpErrorResponse) {

@@ -1,7 +1,8 @@
 import { AuthService } from 'src/app/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Notification } from 'src/app/models/notification';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-main-toolbar',
@@ -12,20 +13,26 @@ import { Notification } from 'src/app/models/notification';
 export class MainToolbarComponent {
   notifications: Notification[] = [];
   constructor(private authService: AuthService, private router: Router) { }
+  @ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger | undefined;
 
-
-  openNotifications() {
-    if (!this.authService.isAuthenticated()) {
-      this.authService.loginAcquired.next(true);
-      return
-    }
-    this.router.navigate(['/notifications'])
+  
+  toggleNotifications() {
+    if (!this.checkAuth()) return;
+    this.menuTrigger?.openMenu();
   }
+
+  
+
   openFavorite() {
-    if (!this.authService.isAuthenticated()) {
-      this.authService.loginAcquired.next(true);
-    }
-    this.router.navigate(['/favorite'])
+    if (!this.checkAuth()) return;
+    this.router.navigate(['/favorite']);
   }
 
+  checkAuth(): boolean {
+    if (!this.authService.isAuthenticated()) {
+      this.authService.loginAcquired.next(true);
+      return false;
+    }
+    return true
+  }
 }

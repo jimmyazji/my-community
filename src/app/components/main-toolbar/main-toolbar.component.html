@@ -1,7 +1,11 @@
 <div class="main-toolbar" role="banner">
   <ul class="toolbar-list">
-    <li class="toolbar-item">
-      <button (click)="openNotifications()">
+    <li class="toolbar-item notification-button">
+      <button
+        (click)="toggleNotifications()"
+        #menuTrigger
+        [matMenuTriggerFor]="notificationMenu"
+      >
         <div class="toolbar-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +25,9 @@
         </div>
         <span i18n class="toolbar-item-description">notification</span>
       </button>
-        
+      <mat-menu #notificationMenu="matMenu" class="notification-menu">
+        <app-notifications></app-notifications>
+      </mat-menu>
     </li>
     <li class="toolbar-item">
       <button (click)="openFavorite()">

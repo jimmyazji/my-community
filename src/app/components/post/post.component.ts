@@ -1,10 +1,13 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FavoriteService } from './../../services/favorite.service';
 import { Component, Input, Inject, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { RequestAnAppointmentComponent } from '../appointments/request-an-appointment/request-an-appointment.component';
 import { Router } from '@angular/router';
 import { VideoPlayerConfig } from 'ngx-thumbnail-video';
 import { MatTooltip } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-post',
@@ -32,7 +35,7 @@ export class PostComponent {
     height: '400px',
     frontendPreload: false
   };
-  constructor(private dialog: MatDialog, private router: Router) { }
+  constructor(private dialog: MatDialog, private router: Router, private favoriteService: FavoriteService, private snackBar: MatSnackBar) { }
   ngOnInit() {
     this.clinicName = this.postDetails.clinicName;
     this.clinicImagePath = this.postDetails.clinicImagePath;
@@ -73,5 +76,21 @@ export class PostComponent {
     setTimeout(() => {
       this.myTooltip.disabled = true;
     }, 1000);
+  }
+
+  toggleFavorite() {
+    this.postDetails.isFavourite = !this.postDetails.isFavourite;
+    this.favoriteService.addOrRemovePost(this.postDetails.id, this.postDetails.isFavourite).subscribe((res) => {
+      if (!res.status) {
+        this.unToggleFavorite();
+      }
+    }, (err) => { this.unToggleFavorite(); })
+  }
+
+  unToggleFavorite() {
+    this.snackBar.open('Something went wrong, please try again', 'Ok', {
+      duration: 3000
+    });
+    this.postDetails.isFavourite = !this.postDetails.isFavourite;
   }
 }

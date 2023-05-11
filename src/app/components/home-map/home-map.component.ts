@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GoogleMapService } from '../services/google-map.service';
+import { GoogleMapService } from '../../services/google-map.service';
 
 @Component({
   selector: 'app-home-map',
