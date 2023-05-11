@@ -88,8 +88,6 @@ export class HomeMapComponent {
   closeMap(): void {
     this.mapOpen = false;
     this.mapToggled.emit(this.mapOpen);
-
-
   }
 
   addMarker(event: google.maps.MapMouseEvent) {

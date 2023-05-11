@@ -24,89 +24,15 @@ export class HomeComponent implements OnInit {
   posts = []
   categories: Category[] = [];
   paginatedCategories: Category[] = []
-  insurances: any[] = [
-    {
-      name: 'insurance1',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance2',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance3',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance4',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance5',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance6',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance7',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance8',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance9',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance10',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance11',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    },
-    {
-      name: 'insurance12',
-      iconPath: '../../../assets/images/clinic.jpeg'
-    }
-  ]
-  PaginatedInsurances: any[] = [];
-  clinics: any[] = [
-    {
-      name: 'clinic1'
-    },
-    {
-      name: 'clinic9'
-    },
-    {
-      name: 'clinic8'
-    },
-    {
-      name: 'clinic7'
-    },
-    {
-      name: 'clinic6'
-    },
-    {
-      name: 'clinic5'
-    },
-    {
-      name: 'clinic4'
-    },
-    {
-      name: 'clinic3'
-    }, {
-      name: 'clinic2'
-    }
-  ];
+  insurances: Insurance[] =[]
+  PaginatedInsurances: Insurance[] = [];
+  clinics: any[] = [];
   clinicsByFilter: Clinic[] = [];
   pagination: any;
   clinicPagination: any;
   insurancePagination: any;
+  recommendedClinics:Clinic[]=[];
+  
   constructor(private router: Router, private clinicService: ClinicService, public dialog: MatDialog) {
     this.pagination = new PaginationService();
     this.clinicPagination = new PaginationService();
@@ -114,6 +40,7 @@ export class HomeComponent implements OnInit {
   }
 
   selectedCardIndex: number = -1;
+  selectedInsuranceCardIndex:number = -1;
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -121,15 +48,42 @@ export class HomeComponent implements OnInit {
     this.getStories();
     this.getPosts();
     this.getAllClinics();
+    this.getRecommendedClinics()
+  }
+
+  getRecommendedClinics(){
+    this.clinicService.getRecommendedClinics().subscribe((res:Clinic[])=> {
+      this.recommendedClinics = res;
+      this.clinicPagination.buildArray({ items: this.recommendedClinics, pageSize: 1 });
+      setInterval(() => {
+        this.recommendedClinics = this.clinicPagination.currentItems();
+      }, 15000)
+    })
   }
 
   getAllInsurance() {
     this.PaginatedInsurances = this.insurances;
     this.insurancePagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
-    // this.clinicService.getAllInsurances().subscribe((res: any) => {
-    //   this.insurances = res;
-    //   this.PaginatedInsurances = res;
-    //   this.pagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
+    this.clinicService.getAllInsurances().subscribe((res: Insurance[]) => {
+      this.insurances = res;
+      this.PaginatedInsurances = res;
+      this.pagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
+    })
+  }
+
+  searchInInsurance(searchWord:any){
+    this.clinicService.getAllInsurances(searchWord.value).subscribe((res: Insurance[]) => {
+      this.insurances = res;
+      this.PaginatedInsurances = res;
+      this.pagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
+    })
+  }
+
+  insuranceClickedProp: boolean = false;
+  insuranceClicked(insurance: Insurance) {
+    // this.insuranceClickedProp = !this.insuranceClickedProp;
+    // this.clinicService.getAllClinics('', 0, +insurance.id!).subscribe((res: any) => {
+    //   this.clinicsByFilter = res;
     // })
   }
 
@@ -149,22 +103,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  insuranceClickedProp: boolean = false;
-  insuranceClicked(insurance: Insurance) {
-    // this.insuranceClickedProp = !this.insuranceClickedProp;
-    // this.clinicService.getAllClinics('', 0, +insurance.id!).subscribe((res: any) => {
-    //   this.clinicsByFilter = res;
-    // })
-  }
-
 
   getAllClinics() {
     this.clinicService.getAllClinics().subscribe((res: any) => {
       this.clinics = res;
-      this.clinicPagination.buildArray({ items: this.clinics, pageSize: 1 });
-      setInterval(() => {
-        this.clinics = this.clinicPagination.currentItems();
-      }, 15000)
+      
     })
   }
 
@@ -218,12 +161,12 @@ export class HomeComponent implements OnInit {
 
   beforeIndex() {
     this.clinicPagination.previousPage();
-    this.clinics = this.clinicPagination.currentItems();
+    this.recommendedClinics = this.clinicPagination.currentItems();
   }
 
   afterIndex() {
     this.clinicPagination.nextPage();
-    this.clinics = this.clinicPagination.currentItems();
+    this.recommendedClinics = this.clinicPagination.currentItems();
   }
 
 

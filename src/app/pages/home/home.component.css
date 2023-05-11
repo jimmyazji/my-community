@@ -26,7 +26,7 @@
   margin-right: auto;
 }
 
-.background-container > :not(:first-child) {
+.background-container> :not(:first-child) {
   margin-top: 1.5rem;
 }
 
@@ -39,6 +39,10 @@
   justify-content: space-between;
   align-items: center;
   pointer-events: none;
+}
+
+.paginator1 {
+  height: 300px;
 }
 
 @media only screen and (min-width: 62rem) {
@@ -68,7 +72,7 @@
   padding-right: 0.25rem;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 8rem));
   gap: 1rem;
-  justify-content: center;
+  justify-content: start;
 }
 
 .search {
@@ -123,17 +127,18 @@
 }
 
 .clinics {
-  position: relative;
+  position: relative; 
 }
 
 .clinics-container {
   display: flex;
-  gap: 1.5rem;
+  gap: 2.5rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scroll-padding-right: 1rem;
   padding: 2rem 2rem 5rem;
+  display: flex;
 }
 
 .more-button {

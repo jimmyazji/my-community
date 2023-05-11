@@ -25,6 +25,7 @@ export class PostComponent {
   text: string = '';
   imagePath: string = '';
   videoPath: string = '';
+  instagramUrl: string = '';
   videoThumbnailPath: string = '';
   minutes!: number
   hours!: number
@@ -57,7 +58,11 @@ export class PostComponent {
     this.dialog.closeAll();
     this.dialog.open(RequestAnAppointmentComponent, {
       autoFocus: true,
-      maxHeight: '90vh'
+      maxHeight: '90vh',
+      data : {
+        clinic:this.postDetails.clinicId,
+        providerId:0
+      }
     })
   }
 
@@ -66,6 +71,10 @@ export class PostComponent {
     this.router.navigate(["post-details", this.postDetails.id])
   }
 
+  goToClinicDetails(){
+    this.router.navigate(['/clinics', this.postDetails.clinicId])
+  }
+  
   copyPostPath() {
     return window.location.href.replace('home', `post-details/${this.postDetails.id}`)
   }

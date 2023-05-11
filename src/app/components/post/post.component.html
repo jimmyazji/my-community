@@ -1,5 +1,5 @@
 <div class="post-container">
-  <div class="post-head">
+  <div class="post-head" (click)="goToClinicDetails()">
     <img [src]="clinicImagePath" alt="doctor" class="avatar" />
     <div class="publisher-info">
       <h3 class="publisher-name">
@@ -80,7 +80,7 @@
           data-name="icons8-instagram"
         />
       </svg>
-      <span i18n>View Instagram</span>
+      <span i18n >View Instagram</span>
     </button>
     <button
       class="button share-button"

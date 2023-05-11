@@ -1,5 +1,5 @@
 <div class="post-container">
-    <div class="post-head">
+    <div class="post-head"(click)="goToClinic()">
         <img [src]="data.clinicImage" alt="doctor" class="avatar" />
         <div class="publisher-info">
             <h3 class="publisher-name">{{data.clinicName? data.clinicName : 'ClinicName'}}</h3>
@@ -9,7 +9,8 @@
     </div>
     <div class="post-body">
         <div class="image-container">
-            <img [src]="data.imagePath" alt="">
+            <img *ngIf="data.imagePath" [src]="data.imagePath" alt="">
+            <video *ngIf="!data.imagePath" [src]="data.videoPath" controls muted></video>
         </div>
     </div>
     <div class="post-tail">

@@ -18,8 +18,8 @@
   border: 1px solid var(--primary-color);
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.16));
   position: sticky;
-  top: 6.5rem;
-  height: 37rem;
+  top: 6rem;
+  height: 33rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -121,7 +121,22 @@
   pointer-events: all;
 }
 .image-container img {
-  width: 44rem;
+  width: 40rem;
+  height: 18rem;
   aspect-ratio: 1;
   object-fit: cover;
+}
+
+.message-container {
+  width: 100%;
+  height: 30rem;
+  min-height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff !important;
+}
+.message-container p {
+  color: var(--primary-color);
+  font-weight: bold;
 }

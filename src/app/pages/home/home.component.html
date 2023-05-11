@@ -25,7 +25,7 @@
          (click)="categoryClicked(category); selectedCardIndex = i"></app-category-card>
      </div>
      <div class="search">
-       <input class="search-input" placeholder="Search insurances..." type="text" i18n-placeholder />
+       <input class="search-input" (keyup)="searchInInsurance($event.target)" placeholder="Search insurances..." type="text" i18n-placeholder />
        <div class="search-icons">
          <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="1.2 1.2 29.05 29.083">
            <g data-name="search-normal">
@@ -51,7 +51,7 @@
        </div>
      </div>
      <div class="insurance-grid">
-       <div class="paginator" *ngIf="insurances.length > 8">
+       <div class="paginator paginator1" *ngIf="insurances.length > 8">
          <button class="pagination-button" (click)="prevInsuranceIndex(insurances.length)">
            <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.967 3.967 39.8 39.8">
              <g data-name="arrow-circle-right">
@@ -70,36 +70,51 @@
            </svg>
          </button>
        </div>
-       <app-insurance-card *ngFor="let insurance of PaginatedInsurances | slice : 0 : 8; let i = index"
-         [ngClass]="{ selected: selectedCardIndex === i }" [insurance]="insurance"
-         (click)="insuranceClicked(insurance); selectedCardIndex = i"></app-insurance-card>
+       <app-insurance-card *ngFor="let insurance of PaginatedInsurances | slice : 0 : 8; let j = index"
+         [ngClass]="{ selected: selectedInsuranceCardIndex === j }" [insurance]="insurance"
+         (click)="insuranceClicked(insurance); selectedInsuranceCardIndex = j"></app-insurance-card>
      </div>
    </div>
  </section>
 
- <section id="clinics" class="clinics" *ngIf="clinicsByFilter">
-   <section id="clinics" class="clinics" *ngIf="clinics.length">
-     <div class="clinics-container">
-       <app-clinic-card *ngFor="let clinic of clinicsByFilter" [clinic]="clinic" (click)="getClinicLocation(clinic)">
-       </app-clinic-card>
+ <section id="clinics" class="clinics">
+   <section id="clinics" class="clinics">
+      <div  class="clinics-container" *ngIf="clinicsByFilter.length===0; else other_content">
+        <app-clinic-card  *ngFor="let clinic of clinics" [clinic]="clinic" (click)="getClinicLocation(clinic)">
+        </app-clinic-card>
+      </div>
+      <ng-template  #other_content>
+        <div class="clinics-container">
+          <app-clinic-card  *ngFor="let clinic of clinicsByFilter" [clinic]="clinic" (click)="getClinicLocation(clinic)">
+          </app-clinic-card>
+        </div>
+        
+      </ng-template>
+       
        <!-- <app-button class="more-button" (click)="moreClinics()" i18n>
         Show more
       </app-button> -->
-     </div>
+     
    </section>
    <div class="home-main">
      <ng-container *ngIf="recommendedOpen">
-       <app-recommended-clinic *ngFor="let clinic of clinics | slice : 0 : 1" [clinic]="clinic"
-         (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
+      <div *ngIf="recommendedClinics.length > 0;else other_content" >
+        <app-recommended-clinic *ngFor="let clinic of recommendedClinics | slice : 0 : 1" [clinic]="clinic" 
+        (newItemEvent)="scrollItem($event)"></app-recommended-clinic>
+      </div>
+      <ng-template #other_content>
+        <app-recommended-clinic [message]="'There is currently no recommended clinic'" ></app-recommended-clinic>
+      </ng-template>
      </ng-container>
      <section id="social" class="social">
        <article id="stories" class="stories">
-         <app-story *ngFor="let story of stories" [name]="story.name" [image]="story.imagePath"
+         <app-story *ngFor="let story of stories" [story]="story"
            (click)="openStoryModal(story)"></app-story>
        </article>
        <article id="posts" class="posts">
          <app-post *ngFor="let post of posts" [postDetails]="post"></app-post>
        </article>
+       
      </section>
      <div class="home-main">
        <app-home-map id="homeMap" [clinicLocations]="clinicLocations" (mapToggled)="handleMapToggle($event)">
