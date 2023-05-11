@@ -48,7 +48,7 @@
       <div class="input-wrapper">
         <input type="file" id="file-upload" (change)="changeInput($event)" name="file-upload" formControlName="image">
         <label for="file-upload" class="upload-label">
-          <span *ngIf="!imageBase64">Choose a file</span>
+          <span *ngIf="!imageBase64">upload your insurance card</span>
           <img *ngIf="imageBase64" [src]="imageBase64" alt="">
         </label>
       </div>
