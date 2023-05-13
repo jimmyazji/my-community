@@ -60,6 +60,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { NotificationComponent } from './components/notification/notification.component';
 import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
 import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
+import { SocialComponent } from './components/social/social.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { MapDialogComponent } from './components/map-dialog/map-dialog.component
     NotificationComponent,
     FavoriteComponent,
     ProfileComponent,
+    SocialComponent,
     
   ],
   imports: [

@@ -1,4 +1,4 @@
-import { Insurance } from './Insurance';
+import { Insurance } from './insurance';
 export class Provider {
     id!: number
     clinicId!: number

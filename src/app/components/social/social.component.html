@@ -1,0 +1,12 @@
+<section id="social" class="social">
+  <article id="stories" class="stories">
+    <app-story
+      *ngFor="let story of stories"
+      [story]="story"
+      (click)="openStoryModal(story)"
+    ></app-story>
+  </article>
+  <article id="posts" class="posts">
+    <app-post *ngFor="let post of posts" [postDetails]="post"></app-post>
+  </article>
+</section>

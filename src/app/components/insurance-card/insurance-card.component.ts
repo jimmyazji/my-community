@@ -1,4 +1,4 @@
-import { Insurance } from './../../models/Insurance';
+import { Insurance } from '../../models/insurance';
 import { Component, Input } from '@angular/core';
 
 @Component({

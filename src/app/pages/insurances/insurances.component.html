@@ -1,10 +1,11 @@
-<app-arch
-  ><div class="search">
+<app-arch>
+  <form (submit)="handleFilter()" class="search">
     <input
       class="search-input"
       placeholder="Search insurances..."
       i18n-placeholder
       type="text"
+      [formControl]="searchControl"
     />
     <div class="search-icons">
       <button class="search-submit">
@@ -26,11 +27,12 @@
           </g>
         </svg>
       </button>
-    </div></div
-></app-arch>
+    </div>
+  </form>
+</app-arch>
 <div class="insurances-grid">
-  <app-insurance-card ></app-insurance-card>
-  <app-insurance-card ></app-insurance-card>
-  <app-insurance-card ></app-insurance-card>
-  <app-insurance-card ></app-insurance-card>
+  <app-insurance-card
+    *ngFor="let insurance of insurances"
+    [insurance]="insurance"
+  ></app-insurance-card>
 </div>

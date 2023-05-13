@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Category } from '../models/category';
 import { Service } from '../models/service';
-import { Insurance } from '../models/Insurance';
+import { Insurance } from '../models/insurance';
 import { Review } from '../models/review';
 
 

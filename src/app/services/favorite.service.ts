@@ -16,10 +16,10 @@ export class FavoriteService {
         res.value.map((post: Post) => new Post().deserialize(post))));
   }
 
-  addOrRemovePost(postId:number, favored: boolean): Observable<any> {
+  addOrRemovePost(postId: number, favored: boolean): Observable<any> {
     if (favored) {
-      return this.http.post(this.baseApiKey + 'users/add-post-to-favourites',postId)
+      return this.http.post(this.baseApiKey + 'users/add-post-to-favourites', { postId: postId })
     }
-    return this.http.post(this.baseApiKey + 'remove-post-from-favourites',postId)
+    return this.http.post(this.baseApiKey + 'remove-post-from-favourites', { postId: postId })
   }
 }

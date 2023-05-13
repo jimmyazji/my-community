@@ -1,5 +1,5 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Insurance } from './../../models/Insurance';
+import { Insurance } from '../../models/insurance';
 import { ActivatedRoute } from '@angular/router';
 import { ClinicService } from './../../services/clinic.service';
 import { Clinic } from 'src/app/models/clinic';

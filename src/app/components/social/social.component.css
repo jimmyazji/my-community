@@ -1,0 +1,27 @@
+.stories {
+  display: flex;
+  overflow-x: scroll;
+  gap: 1.5rem;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 1rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.stories::-webkit-scrollbar {
+  display: none;
+}
+
+.posts {
+  padding-top: 1rem;
+}
+
+.selected {
+  transform: scale(1.1);
+}
