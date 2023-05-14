@@ -48,8 +48,8 @@ export class ClinicService {
   }
   getAllInsurances(search?: any): Observable<any[]> {
     const Filters = search ? 'name@=' + search : undefined;
-  
-    return this.http.post(this.baseApiKey + 'clinics/all-insurances', {}, { params: new HttpParams({ fromObject: { ...(Filters && { Filters }) }})}).pipe(
+
+    return this.http.post(this.baseApiKey + 'clinics/all-insurances', {}, { params: new HttpParams({ fromObject: { ...(Filters && { Filters }) } }) }).pipe(
       map((res: any) =>
         res.value.map((insurance: Insurance) => new Insurance().deserialize(insurance))));
   }
@@ -106,5 +106,12 @@ export class ClinicService {
 
   createReview(review: { clinicId: number, rate: number, content: string }) {
     return this.http.post<any>(this.baseApiKey + 'clinics/reviews/create-clinic-review', review);
+  }
+
+  getClinicPosts(id: number): Observable<any[]> {
+    return this.http.get<any>(this.baseApiKey + 'clinics/get-clinic-posts', { params: { clinicId: id } })
+  }
+  getClinicStories(id: number): Observable<any[]> {
+    return this.http.get<any>(this.baseApiKey + 'clinics/stories/get-clinic-stories', { params: { clinicId: id } })
   }
 }

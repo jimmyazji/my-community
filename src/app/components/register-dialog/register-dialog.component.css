@@ -58,6 +58,30 @@
   cursor: pointer;
 }
 
+.uploaded-image {
+  position: absolute;
+}
+
+.uploaded-image img {
+  object-fit: cover;
+}
+
+.uploaded-image.uploaded {
+  position: relative;
+  border-radius: 99rem;
+  margin-right: auto;
+  margin-left: auto;
+  grid-column: span 2;
+  aspect-ratio: 1 / 1;
+  width: 5rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.img-upload.uploaded {
+  display: none;
+}
+
 .img-upload::after {
   white-space: nowrap;
   position: absolute;

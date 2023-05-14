@@ -32,6 +32,8 @@ export class ClinicComponent implements OnInit {
   services: Service[] = [];
   insurances: Insurance[] = [];
   reviews: Review[] = [];
+  posts: any = [];
+  stories: any = [];
 
   reviewFormGroup: FormGroup = new FormGroup({
     rate: new FormControl(0, [Validators.required, Validators.min(1)],),
@@ -124,12 +126,30 @@ export class ClinicComponent implements OnInit {
     });
   }
 
+  getClinicPosts() {
+    this.route.params.subscribe((params) => {
+      this.clinicService.getClinicPosts(params['id']).subscribe((res) => {
+        this.posts = res;
+      })
+    });
+  }
+
+  getClinicStories() {
+    this.route.params.subscribe((params) => {
+      this.clinicService.getClinicStories(params['id']).subscribe((res) => {
+        this.stories = res;
+      })
+    });
+  }
+
   ngOnInit(): void {
     this.getClinicDetails();
     this.getClinicLocations();
     this.getClinicServices();
     this.getClinicInsurances();
     this.getClinicReviews();
+    this.getClinicPosts();
+    this.getClinicStories();
   }
 
 

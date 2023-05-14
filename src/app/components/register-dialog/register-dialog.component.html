@@ -1,7 +1,11 @@
 <div class="register-dialog-container">
   <div class="login-form-container">
     <form class="register-form" [formGroup]="registerForm">
-      <label class="img-upload" for="img-input">
+      <label
+        class="img-upload"
+        for="img-input"
+        [ngClass]="imageBase64 ? 'uploaded' : ''"
+      >
         <input
           type="file"
           class="img-upload-input"
@@ -25,12 +29,16 @@
             />
           </g>
         </svg>
-
+      </label>
+      <label
+        class="uploaded-image"
+        for="img-input"
+        [ngClass]="imageBase64 ? 'uploaded' : ''"
+      >
         <img
           *ngIf="imageBase64"
           [src]="imageBase64"
           alt=""
-          class="img-upload-icon"
         />
       </label>
       <mat-error class="error-response" *ngIf="errorResponse">{{

@@ -12,7 +12,6 @@ export class HomeMapComponent {
   @Input() mapDialog!: boolean;
   @Input() lat!: number;
   @Input() lng!: number;
-
   @Output() mapToggled: EventEmitter<boolean> = new EventEmitter;
   display: any;
   center: google.maps.LatLngLiteral = {
