@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MapDialogComponent } from 'src/app/components/map-dialog/map-dialog.component';
-import { StoryDetailsComponent } from 'src/app/components/story-details/story-details.component';
 import { Insurance } from 'src/app/models/insurance';
 import { Category } from 'src/app/models/category';
 import { Clinic } from 'src/app/models/clinic';

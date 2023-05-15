@@ -5,6 +5,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { User } from 'src/app/models/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
+import { LogoutConfirmationDialogComponent } from '../logout-confirmation-dialog/logout-confirmation-dialog.component';
 @Component({
   selector: 'app-main-navigation-bar',
   templateUrl: './main-navigation-bar.component.html',
@@ -50,13 +51,19 @@ export class MainNavigationBarComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.authService.logout();
-    this.handleAuth();
-    if (!this.authenticated) {
-      this.snackBar.open('Logged out successfully', 'Ok', {
-        duration: 3000
-      });
-    }
+    const dialogRef = this.dialog.open(LogoutConfirmationDialogComponent);
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.authService.logout();
+        this.handleAuth();
+        if (!this.authenticated) {
+          this.snackBar.open('Logged out successfully', 'Ok', {
+            duration: 3000
+          });
+        }
+      }
+    });
+
   }
 
   toggleDrawer() {

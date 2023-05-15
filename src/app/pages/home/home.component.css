@@ -26,7 +26,7 @@
   margin-right: auto;
 }
 
-.background-container> :not(:first-child) {
+.background-container > :not(:first-child) {
   margin-top: 1.5rem;
 }
 
@@ -63,6 +63,10 @@
   width: 3rem;
   cursor: pointer;
   pointer-events: all;
+}
+
+.insurance-card {
+  cursor: pointer;
 }
 
 .categories-grid {
@@ -127,7 +131,7 @@
 }
 
 .clinics {
-  position: relative; 
+  position: relative;
 }
 
 .clinics-container {

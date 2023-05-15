@@ -1,0 +1,22 @@
+.action-button {
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 200ms;
+}
+
+.action-button:hover {
+  background-color: var(--main-darker-background);
+}
+
+.confirm-button {
+  background-color: var(--primary-darker-color);
+  color: var(--primary-content);
+}
+
+.action-buttons-container {
+  gap: 0.5rem;
+}
+
+.confirm-button:hover {
+  background-color: var(--primary-color);
+}

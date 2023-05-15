@@ -23,8 +23,8 @@
 
 .insurance-info {
   height: 70%;
-  color: var(--primary-color);
-  background-color: var(--main-background);
+  color: var(--primary-content);
+  background-color: var(--primary-color);
   border-radius: 0.25rem;
   padding-top: 3rem;
   text-align: center;

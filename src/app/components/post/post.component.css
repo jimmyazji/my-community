@@ -69,7 +69,7 @@
 }
 
 .button:hover {
-  background-color: #2785b462;
+  background-color: var(--main-darker-background);
 }
 
 .footer-icon {

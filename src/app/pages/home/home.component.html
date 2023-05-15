@@ -149,6 +149,7 @@
         [ngClass]="{ selected: selectedInsuranceCardIndex === j }"
         [insurance]="insurance"
         (click)="insuranceClicked(insurance); selectedInsuranceCardIndex = j"
+        class="insurance-card"
       ></app-insurance-card>
     </div>
   </div>

@@ -109,9 +109,13 @@ export class ClinicService {
   }
 
   getClinicPosts(id: number): Observable<any[]> {
-    return this.http.get<any>(this.baseApiKey + 'clinics/get-clinic-posts', { params: { clinicId: id } })
+    return this.http.get<any>(this.baseApiKey + 'clinics/get-clinic-posts', { params: { clinicId: id } }).pipe(
+      map((res: any) =>
+        res = res.value));
   }
   getClinicStories(id: number): Observable<any[]> {
-    return this.http.get<any>(this.baseApiKey + 'clinics/stories/get-clinic-stories', { params: { clinicId: id } })
+    return this.http.get<any>(this.baseApiKey + 'clinics/stories/get-clinic-stories', { params: { clinicId: id } }).pipe(
+      map((res: any) =>
+      res = res.value));
   }
 }

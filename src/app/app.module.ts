@@ -61,6 +61,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
 import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
 import { SocialComponent } from './components/social/social.component';
+import { LogoutConfirmationDialogComponent } from './components/logout-confirmation-dialog/logout-confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import { SocialComponent } from './components/social/social.component';
     FavoriteComponent,
     ProfileComponent,
     SocialComponent,
+    LogoutConfirmationDialogComponent,
     
   ],
   imports: [
