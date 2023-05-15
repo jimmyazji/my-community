@@ -62,6 +62,7 @@ import { LocaleSwitcherComponent } from './components/locale-switcher/locale-swi
 import { MapDialogComponent } from './components/map-dialog/map-dialog.component';
 import { SocialComponent } from './components/social/social.component';
 import { LogoutConfirmationDialogComponent } from './components/logout-confirmation-dialog/logout-confirmation-dialog.component';
+import { ServiceDialogComponent } from './components/service-dialog/service-dialog.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { LogoutConfirmationDialogComponent } from './components/logout-confirmat
     ProfileComponent,
     SocialComponent,
     LogoutConfirmationDialogComponent,
+    ServiceDialogComponent,
     
   ],
   imports: [

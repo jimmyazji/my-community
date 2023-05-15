@@ -1,10 +1,6 @@
-<div class="card-container" [ngClass]="open ? 'open' : 'close'">
+<div class="card-container" (click)="openService()">
   <div
     class="service-info"
-    [matTooltip]="service.description"
-    matTooltipPosition="below"
-    (click)="tooltip.show()" 
-    #tooltip="matTooltip"
   >
     <ng-container *ngIf="service?.iconPath; else defaultIcon">
       <img class="service-icon" [src]="service.iconPath" />
