@@ -64,7 +64,7 @@ export class PostDetailsComponent {
   }
 
   backToHome(){
-    this.router.navigate([''])
+    window.history.back();
   }
   copyPostPath() {
     return window.location.href

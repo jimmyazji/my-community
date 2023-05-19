@@ -63,6 +63,7 @@ import { MapDialogComponent } from './components/map-dialog/map-dialog.component
 import { SocialComponent } from './components/social/social.component';
 import { LogoutConfirmationDialogComponent } from './components/logout-confirmation-dialog/logout-confirmation-dialog.component';
 import { ServiceDialogComponent } from './components/service-dialog/service-dialog.component';
+import { SpecialMapComponent } from './components/map-dialog/special-map/special-map.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { ServiceDialogComponent } from './components/service-dialog/service-dial
     SocialComponent,
     LogoutConfirmationDialogComponent,
     ServiceDialogComponent,
+    SpecialMapComponent,
     
   ],
   imports: [

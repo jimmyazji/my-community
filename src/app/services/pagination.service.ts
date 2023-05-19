@@ -22,10 +22,10 @@ export class PaginationService {
   }
 
   buildArray(props: PaginationProps) {
+    
     this.items = props.items;
     this.pageSize = props.pageSize;
     this.currentPage = 1;
-
     this.intervalId = setInterval(() => {
       if (this.currentPage < this.totalPages()) {
         this.nextPage();

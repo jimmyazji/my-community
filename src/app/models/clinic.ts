@@ -13,4 +13,7 @@ export class Clinic {
         Object.assign(this, input);
         return this;
     }
+
+
+
 }
