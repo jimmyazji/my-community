@@ -40,7 +40,7 @@
 }
 
 .header :nth-child(even) {
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .clinic-info {
