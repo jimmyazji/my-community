@@ -8,6 +8,7 @@ import { Category } from 'src/app/models/category';
 import { Clinic } from 'src/app/models/clinic';
 import { ClinicService } from 'src/app/services/clinic.service';
 import { PaginationService } from 'src/app/services/pagination.service';
+import { SpecialMapComponent } from 'src/app/components/map-dialog/special-map/special-map.component';
 window.HTMLElement.prototype.scrollIntoView = function () { };
 @Component({
   selector: 'app-home',
@@ -61,12 +62,10 @@ export class HomeComponent implements OnInit {
   }
 
   getAllInsurance() {
-    this.PaginatedInsurances = this.insurances;
-    this.insurancePagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
     this.clinicService.getAllInsurances().subscribe((res: Insurance[]) => {
       this.insurances = res;
       this.PaginatedInsurances = res;
-      this.pagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
+      this.insurancePagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
     })
   }
 
@@ -74,13 +73,13 @@ export class HomeComponent implements OnInit {
     this.clinicService.getAllInsurances(searchWord.value).subscribe((res: Insurance[]) => {
       this.insurances = res;
       this.PaginatedInsurances = res;
-      this.pagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
+      this.insurancePagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
     })
   }
 
   insuranceClickedProp: boolean = false;
   insuranceClicked(insurance: Insurance) {
-    // this.insuranceClickedProp = !this.insuranceClickedProp;
+    this.insuranceClickedProp = !this.insuranceClickedProp;
     // this.clinicService.getAllClinics('', 0, +insurance.id!).subscribe((res: any) => {
     //   this.clinicsByFilter = res;
     // })
@@ -187,7 +186,7 @@ export class HomeComponent implements OnInit {
 
 
   openMapForSearch() {
-    const dialogRef = this.dialog.open(MapDialogComponent, {
+    const dialogRef = this.dialog.open(SpecialMapComponent, {
       autoFocus: true,
       maxHeight: '100vh'
     });
@@ -198,6 +197,7 @@ export class HomeComponent implements OnInit {
           this.clinicService.getClinicDetails(ele.clinicId).subscribe(res => {
             this.clinicsByFilter.push(res);
           })
+          
         }
       })
     })

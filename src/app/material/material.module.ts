@@ -6,13 +6,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
 const materialsArray = [
   MatFormFieldModule,
   MatIconModule,
   MatAutocompleteModule,
   MatInputModule,
   MatProgressSpinnerModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatDialogModule
 ]
 
 @NgModule({
