@@ -8,12 +8,15 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: User | null = new User;
+  user: User = new User;
   constructor(private authService: AuthService) { }
 
   getProfileDetails() {
-    this.user = this.authService.getUser()
+    this.authService.getProfile().subscribe((res) => {
+      this.user = res;
+    })
   }
+
 
   ngOnInit(): void {
     this.getProfileDetails();

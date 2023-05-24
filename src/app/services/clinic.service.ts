@@ -32,10 +32,11 @@ export class ClinicService {
     return this.http.get(this.baseApiKey + `clinics?Search=${text}`)
   }
 
-  getAllClinics(search?: string, categoryIds?: number[]): Observable<Clinic[]> {
+  getAllClinics(search?: string, categoryIds?: number[], insurancesIds?: number[]): Observable<Clinic[]> {
     const Filters = search ? 'name@=' + search : undefined;
     const IncludeCategoriesIds = categoryIds?.[0] ?? undefined;
-    return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(Filters && { Filters }), ...(IncludeCategoriesIds && { IncludeCategoriesIds }) } }) }).pipe(
+    const InsurancesIds = insurancesIds?.[0] ?? undefined;
+    return this.http.get(this.baseApiKey + 'clinics', { params: new HttpParams({ fromObject: { ...(Filters && { Filters }), ...(IncludeCategoriesIds && { IncludeCategoriesIds }), ...(InsurancesIds && { InsurancesIds }) } }) }).pipe(
       map((res: any) =>
         res.dtos.map((clinic: Clinic) => new Clinic().deserialize(clinic))));
   }
@@ -48,7 +49,6 @@ export class ClinicService {
   }
   getAllInsurances(search?: any): Observable<any[]> {
     const Filters = search ? 'name@=' + search : undefined;
-
     return this.http.post(this.baseApiKey + 'clinics/all-insurances', {}, { params: new HttpParams({ fromObject: { ...(Filters && { Filters }) } }) }).pipe(
       map((res: any) =>
         res.value.map((insurance: Insurance) => new Insurance().deserialize(insurance))));
@@ -108,6 +108,11 @@ export class ClinicService {
     return this.http.post<any>(this.baseApiKey + 'clinics/reviews/create-clinic-review', review);
   }
 
+  getClinicBeforeAfter(id: number): Observable<any[]> {
+    return this.http.get<any>(this.baseApiKey + 'clinics/before-and-after/get-clinic-before-and-after', { params: { clinicId: id, pageId: 1, pageCount: 100 } }).pipe(
+      map((res: any) =>
+        res = res.value));
+  }
   getClinicPosts(id: number): Observable<any[]> {
     return this.http.get<any>(this.baseApiKey + 'clinics/get-clinic-posts', { params: { clinicId: id } }).pipe(
       map((res: any) =>
@@ -116,6 +121,6 @@ export class ClinicService {
   getClinicStories(id: number): Observable<any[]> {
     return this.http.get<any>(this.baseApiKey + 'clinics/stories/get-clinic-stories', { params: { clinicId: id } }).pipe(
       map((res: any) =>
-      res = res.value));
+        res = res.value));
   }
 }

@@ -34,6 +34,7 @@ export class ClinicComponent implements OnInit {
   insurances: Insurance[] = [];
   reviews: Review[] = [];
   posts: any = [];
+  beforeAfter: any = [];
   stories: any = [];
 
   reviewFormGroup: FormGroup = new FormGroup({
@@ -134,6 +135,14 @@ export class ClinicComponent implements OnInit {
       })
     });
   }
+  
+  getClinicBeforeAfter() {
+    this.route.params.subscribe((params) => {
+      this.clinicService.getClinicBeforeAfter(params['id']).subscribe((res) => {
+        this.beforeAfter = res;
+      })
+    });
+  }
 
   getClinicStories() {
     this.route.params.subscribe((params) => {
@@ -151,6 +160,7 @@ export class ClinicComponent implements OnInit {
     this.getClinicReviews();
     this.getClinicPosts();
     this.getClinicStories();
+    this.getClinicBeforeAfter();
   }
 
 

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, shareReplay, tap, Subject } from 'rxjs';
+import { Observable, shareReplay, tap, Subject, map } from 'rxjs';
 import { User } from '../models/user';
 import jwt_decode from 'jwt-decode';
 @Injectable({
@@ -42,6 +42,12 @@ export class AuthService {
       user.imagePath = decodedToken['Image'];
     }
     return user;
+  }
+
+  getProfile() {
+    return this.http.get(this.baseApiKey + 'users/profile').pipe(
+      map((res: any) =>
+        res.value = new User().deserialize(res.value)));
   }
 
   decodeToken(token: string | null): { [key: string]: string } | null {

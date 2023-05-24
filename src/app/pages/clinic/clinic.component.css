@@ -119,7 +119,7 @@
   .mdc-tab__text-label {
   color: var(--primary-color);
 }
-::ng-deep .mat-mdc-tab .mdc-tab__text-label{
+::ng-deep .mat-mdc-tab .mdc-tab__text-label {
   color: unset;
 }
 .locations-grid {
@@ -216,4 +216,17 @@
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
+}
+
+.social-title {
+  font-size: 1rem;
+  color: #00000082;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+@media only screen and (min-width: 70rem) {
+  .social-title {
+    margin-right: 5rem;
+  }
 }

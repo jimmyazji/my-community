@@ -1,8 +1,8 @@
 <app-arch [contentClasses]="['centered']">
   <div class="profile-header">
     <div>
-      <img [src]="user?.imagePath" alt="" class="user-image" />
-      <span class="user-name">{{ user?.name }}</span>
+      <img [src]="user.imagePath" alt="" class="user-image" />
+      <span class="user-name">{{ user.name }}</span>
     </div>
   </div>
 </app-arch>
@@ -13,7 +13,7 @@
       <button class="edit-button"><mat-icon>edit</mat-icon>edit</button>
     </header>
     <div class="profile-info">
-      {{ user?.email }}
+      {{ user.email }}
     </div>
   </div>
   <div class="profile-info-card">
@@ -22,7 +22,7 @@
       <button class="edit-button"><mat-icon>edit</mat-icon>edit</button>
     </header>
     <div class="profile-info">
-      {{ user?.email }}
+      {{ user.phoneNumber }}
     </div>
   </div>
   <div class="profile-info-card">
@@ -31,7 +31,7 @@
       <button class="edit-button"><mat-icon>edit</mat-icon>edit</button>
     </header>
     <div class="profile-info">
-      {{ user?.email }}
+      {{ user.getGender() }}
     </div>
   </div>
 </div>

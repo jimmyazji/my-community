@@ -1,5 +1,5 @@
 export class Insurance {
-    id?: number
+    id!: number
     clinicId?: number
     name: string = 'NaN'
     iconPath?: string;

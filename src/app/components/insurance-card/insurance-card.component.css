@@ -6,6 +6,7 @@
   aspect-ratio: 1 / 1;
   max-width: 8rem;
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.16));
+  cursor: pointer;
 }
 
 .insurance-img {

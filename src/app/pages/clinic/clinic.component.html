@@ -142,7 +142,13 @@
             ></app-review-card>
           </div>
         </mat-tab>
+        <mat-tab label="Before & After" i18n-label *ngIf="beforeAfter.length">
+          <app-social [posts]="beforeAfter"></app-social>
+        </mat-tab>
       </mat-tab-group>
+      <h2 class="social-title" *ngIf="posts.length || stories.length">
+        Recent posts & stories
+      </h2>
       <app-social [posts]="posts" [stories]="stories"></app-social>
     </div>
   </div>

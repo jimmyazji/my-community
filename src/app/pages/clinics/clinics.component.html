@@ -35,6 +35,7 @@
       <mat-select
         [formControl]="categoryControl"
         (selectionChange)="handleFilter()"
+        [compareWith]="compareWith"
       >
         <mat-option [value]="undefined"> All </mat-option>
         <mat-option *ngFor="let category of categories" [value]="category.id">
@@ -46,6 +47,27 @@
               alt=""
             />
             {{ category.name }}
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="category-select">
+      <mat-label>Insurance</mat-label>
+      <mat-select
+        [formControl]="insuranceControl"
+        (selectionChange)="handleFilter()"
+        [compareWith]="compareWith"
+      >
+        <mat-option [value]="undefined"> All </mat-option>
+        <mat-option *ngFor="let insurance of insurances" [value]="insurance.id">
+          <div class="category-option">
+            <img
+              *ngIf="insurance.iconPath; else defaultIcon"
+              [src]="insurance.iconPath"
+              class="category-icon"
+              alt=""
+            />
+            {{ insurance.name }}
           </div>
         </mat-option>
       </mat-select>

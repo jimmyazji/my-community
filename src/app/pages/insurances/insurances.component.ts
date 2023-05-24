@@ -35,4 +35,7 @@ export class InsurancesComponent implements OnInit {
     this.router.navigate([], { relativeTo: this.route, replaceUrl: true, queryParams: { search: this.searchControl.value } }).then(() => { this.getInsurances(this.searchControl.value) })
   }
 
+  openClinics(insuranceId: number) {
+    this.router.navigate(['clinics'], { queryParams: { insurance: insuranceId } })
+  }
 }
