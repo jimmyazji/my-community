@@ -3,6 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Clinic } from 'src/app/models/clinic';
 import { ClinicService } from 'src/app/services/clinic.service';
 @Component({
@@ -22,7 +23,8 @@ export class RequestAnAppointmentComponent {
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { clinic: any, providerId?: number },
     private _fg: FormBuilder,
-    private clinicService: ClinicService
+    private clinicService: ClinicService,
+    private snackBar: MatSnackBar,
   ) {
     this.appointmentForm = this._fg.group({
       fname: ['', Validators.required],
@@ -38,13 +40,13 @@ export class RequestAnAppointmentComponent {
   }
 
   getClinicLocations() {
-    this.clinicService.getClinicLocations(this.data.clinic).subscribe(res => {
+    this.clinicService.getClinicLocations(this.data.clinic.id).subscribe(res => {
       this.locationsList = res;
     })
   }
 
   getDoctorsByClinicId() {
-    this.clinicService.getDoctorsByClinicId(this.data.clinic).subscribe((res: any) => {
+    this.clinicService.getDoctorsByClinicId(this.data.clinic.id).subscribe((res: any) => {
       this.doctorsList = res.value;
     })
   }
@@ -67,6 +69,9 @@ export class RequestAnAppointmentComponent {
     formData.set('PatientPhoneNumber', this.appointmentForm.value.phoneNumber);
     formData.set('PatientEmail', this.appointmentForm.value.email);
     this.clinicService.requestAnAppointment(formData).subscribe(res => {
+      this.snackBar.open('Appointment send successfully', 'Ok', {
+        duration: 3000
+      });
       this.dialog.closeAll();
     })
   }
