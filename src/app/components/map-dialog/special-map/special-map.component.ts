@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
 import { ClinicService } from 'src/app/services/clinic.service';
 import { GoogleMapService } from 'src/app/services/google-map.service';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-special-map',
   templateUrl: './special-map.component.html',
@@ -23,29 +23,54 @@ export class SpecialMapComponent {
   directionsResults$!: Observable<google.maps.DirectionsResult | undefined>;
   zoom = 2;
 
-  markerOptions: google.maps.MarkerOptions = { draggable: true };
+  scaledSize: google.maps.Size = {
+    width: 25,
+    height: 25,
+    equals: function(other: google.maps.Size) {
+      return other.width === this.width && other.height === this.height;
+    }
+  };
+  markerOptions: google.maps.MarkerOptions = { 
+    draggable: false, 
+    icon: {
+      url: '../../../assets/images/21-1024.webp',
+      scaledSize: this.scaledSize
+    } 
+ };
   markerPositions: google.maps.LatLngLiteral[] = [];
 
   apiLoaded!: Observable<boolean>;
 
-  constructor(private googleMapService: GoogleMapService,
-     mapDirectionsService: MapDirectionsService,
-      private dialogRef: MatDialogRef<SpecialMapComponent>,
-      private clinicService:ClinicService,
+  constructor(
+    private googleMapService: GoogleMapService,
+    mapDirectionsService: MapDirectionsService,
+    private dialogRef: MatDialogRef<SpecialMapComponent>,
+    private clinicService: ClinicService,
     @Inject(MAT_DIALOG_DATA) public data: any
-    ) {
+  ) {
     navigator.geolocation.getCurrentPosition((position) => {
-      const request: google.maps.DirectionsRequest = {
-        destination: { lat: +this.data.latitude, lng: this.data.longitude },
-        origin: { lat: +position.coords.latitude, lng: +position.coords.longitude },
-        travelMode: google.maps.TravelMode.DRIVING
-      };
-      this.directionsResults$ = mapDirectionsService.route(request).pipe(map(response => response.result));
+      if(this.markerPositions.length>0){
+        this.markerPositions.splice(0,1)
+      }
       this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
       this.markerPositions.push(this.center);
+      if(data){
+        const request: google.maps.DirectionsRequest = {
+          destination: { lat: +this.data.latitude, lng: this.data.longitude },
+          origin: { lat: +position.coords.latitude, lng: +position.coords.longitude },
+          travelMode: google.maps.TravelMode.DRIVING
+        };
+        this.directionsResults$ = mapDirectionsService.route(request).pipe(map(response => response.result));
+        this.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        this.markerPositions.push(this.center);
+      }
+      
     });
 
   }
@@ -59,7 +84,7 @@ export class SpecialMapComponent {
 
   ngOnChanges(changes: any) {
     this.markerPositions.splice(0);
-    if (changes.lat) {
+    if (changes?.lat) {
       this.markerPositions.push({
         lat: changes.lat.currentValue,
         lng: changes.lng.currentValue
@@ -119,7 +144,6 @@ export class SpecialMapComponent {
 
 
   addMarker(event: google.maps.MapMouseEvent) {
-
     this.markerPositions.splice(0);
     this.markerPositions.push(event.latLng!.toJSON());
   }
