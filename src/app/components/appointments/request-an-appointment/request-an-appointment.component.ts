@@ -33,7 +33,7 @@ export class RequestAnAppointmentComponent {
       doctor: [this.data.providerId, Validators.required],
       location: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      image: '',
+      image: File,
       notes: ['', Validators.required],
 
     })
@@ -79,6 +79,7 @@ export class RequestAnAppointmentComponent {
   imageBase64: any;
   changeInput(event: any) {
     const reader = new FileReader();
+    this.appointmentForm.get('image')?.setValue(event.target.files[0])
     if (event.target.files && event.target.files.length) {
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = () => {

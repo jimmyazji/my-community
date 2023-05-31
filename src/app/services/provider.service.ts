@@ -9,7 +9,7 @@ import { Review } from '../models/review';
   providedIn: 'root'
 })
 export class ProviderService {
-  baseApiKey = 'https://mycommunity-api.solutions-it.net/app/api/'
+  baseApiKey = 'https://api.mycommunityclinics.com/app/api/'
   constructor(private http: HttpClient) { }
 
   getProviderDetails(id: number): Observable<Provider> {

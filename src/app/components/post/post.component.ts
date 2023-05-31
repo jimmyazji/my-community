@@ -17,7 +17,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 export class PostComponent {
   @ViewChild("myTooltip") myTooltip!: MatTooltip
   @Input() postDetails!: any
-
   clinicName: string = '';
   clinicImagePath: string = '';
   clinicPhoneNumber: string = '';
@@ -60,7 +59,7 @@ export class PostComponent {
       autoFocus: true,
       maxHeight: '90vh',
       data : {
-        clinic:this.postDetails.clinicId,
+        clinic:{id:this.postDetails.clinicId},
         providerId:0
       }
     })

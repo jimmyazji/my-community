@@ -7,7 +7,7 @@ import { Notification } from '../models/notification';
   providedIn: 'root'
 })
 export class NotificationService {
-  baseApiKey = 'https://mycommunity-api.solutions-it.net/app/api/'
+  baseApiKey = 'https://api.mycommunityclinics.com/app/api/'
 
   constructor(private http: HttpClient) { }
 
