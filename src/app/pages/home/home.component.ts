@@ -24,15 +24,15 @@ export class HomeComponent implements OnInit {
   posts = []
   categories: Category[] = [];
   paginatedCategories: Category[] = []
-  insurances: Insurance[] =[]
+  insurances: Insurance[] = []
   PaginatedInsurances: Insurance[] = [];
   clinics: any[] = [];
   clinicsByFilter: Clinic[] = [];
   pagination: any;
   clinicPagination: any;
   insurancePagination: any;
-  recommendedClinics:Clinic[]=[];
-  
+  recommendedClinics: Clinic[] = [];
+
   constructor(private router: Router, private clinicService: ClinicService, public dialog: MatDialog) {
     this.pagination = new PaginationService();
     this.clinicPagination = new PaginationService();
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
   }
 
   selectedCardIndex: number = -1;
-  selectedInsuranceCardIndex:number = -1;
+  selectedInsuranceCardIndex: number = -1;
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit {
     this.getRecommendedClinics()
   }
 
-  getRecommendedClinics(){
-    this.clinicService.getRecommendedClinics().subscribe((res:Clinic[])=> {
+  getRecommendedClinics() {
+    this.clinicService.getRecommendedClinics().subscribe((res: Clinic[]) => {
       this.recommendedClinics = res;
       this.clinicPagination.buildArray({ items: this.recommendedClinics, pageSize: 1 });
       setInterval(() => {
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  searchInInsurance(searchWord:any){
+  searchInInsurance(searchWord: any) {
     this.clinicService.getAllInsurances(searchWord.value).subscribe((res: Insurance[]) => {
       this.insurances = res;
       this.PaginatedInsurances = res;
@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit {
   getAllClinics() {
     this.clinicService.getAllClinics().subscribe((res: any) => {
       this.clinics = res;
-      
+
     })
   }
 
@@ -188,7 +188,7 @@ export class HomeComponent implements OnInit {
   openMapForSearch() {
     const dialogRef = this.dialog.open(SpecialMapComponent, {
       autoFocus: true,
-      maxHeight: '100vh'
+      width: '90%',
     });
 
     dialogRef.afterClosed().subscribe((res: any) => {
@@ -197,7 +197,7 @@ export class HomeComponent implements OnInit {
           this.clinicService.getClinicDetails(ele.clinicId).subscribe(res => {
             this.clinicsByFilter.push(res);
           })
-          
+
         }
       })
     })

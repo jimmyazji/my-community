@@ -48,24 +48,26 @@
       </span>
     </div>
   </div>
-  <div class="post-footer">
-    <button>
-      <button class="toolbar-icon favorite-button" (click)="toggleFavorite()">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          [attr.fill]="postDetails.isFavourite ? 'red' : 'transparent'"
-          stroke="red"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
-          class="footer-icon"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-          />
-        </svg>
-      </button>
+  <div class="post-footer" [ngClass]="{ centered: !(withFav || withShare) }">
+    <button
+      *ngIf="withFav"
+      class="toolbar-icon favorite-button"
+      (click)="toggleFavorite()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        [attr.fill]="postDetails.isFavourite ? 'red' : 'transparent'"
+        stroke="red"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        class="footer-icon"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+        />
+      </svg>
     </button>
     <button class="button view-instagram" *ngIf="postDetails.instagramUrl">
       <svg
@@ -80,9 +82,10 @@
           data-name="icons8-instagram"
         />
       </svg>
-      <span i18n >View Instagram</span>
+      <span i18n>View Instagram</span>
     </button>
     <button
+      *ngIf="withShare"
       class="button share-button"
       [cdkCopyToClipboard]="copyPostPath()"
       [matTooltipDisabled]="true"

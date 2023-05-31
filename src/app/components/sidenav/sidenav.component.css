@@ -56,3 +56,7 @@
 .navigation-item .active::after {
   opacity: 1;
 }
+
+.navigation-item.accent {
+  background-color: var(--primary-color);
+}

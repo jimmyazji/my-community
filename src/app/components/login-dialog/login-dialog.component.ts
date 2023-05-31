@@ -15,7 +15,7 @@ export class LoginDialogComponent {
   validationErrors: ValidationErrors = {};
   loginFormGroup: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email],),
-    password: new FormControl('',Validators.required)
+    password: new FormControl('', Validators.required)
   });
   errorResponse: string | null = null;
   submitted = false;
@@ -51,7 +51,7 @@ export class LoginDialogComponent {
   register() {
     this.dialog.closeAll()
     timer(300).subscribe(
-      () => { const dialogRef = this.dialog.open(RegisterDialogComponent); }
+      () => { const dialogRef = this.dialog.open(RegisterDialogComponent, { maxHeight: '42rem' }); }
     )
   }
 }

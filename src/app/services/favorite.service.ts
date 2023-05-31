@@ -18,8 +18,8 @@ export class FavoriteService {
 
   addOrRemovePost(postId: number, favored: boolean): Observable<any> {
     if (favored) {
-      return this.http.post(this.baseApiKey + 'users/add-post-to-favourites', { postId: postId })
+      return this.http.post(this.baseApiKey + 'users/add-post-to-favourites', {}, { params: { postId: postId } })
     }
-    return this.http.post(this.baseApiKey + 'remove-post-from-favourites', { postId: postId })
+    return this.http.post(this.baseApiKey + 'remove-post-from-favourites', {}, { params: { postId: postId } })
   }
 }
