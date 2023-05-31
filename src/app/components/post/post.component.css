@@ -59,6 +59,10 @@
   gap: 1rem;
 }
 
+.post-footer.centered {
+  justify-content: center;
+}
+
 .button {
   margin-right: 0.25rem;
   display: flex;
@@ -122,6 +126,6 @@
   color: var(--primary-content);
 }
 
-.favorite-button:hover svg{
+.favorite-button:hover svg {
   fill: #ff3d3d;
 }

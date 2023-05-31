@@ -7,6 +7,7 @@ import { RequestAnAppointmentComponent } from '../appointments/request-an-appoin
 import { Router } from '@angular/router';
 import { VideoPlayerConfig } from 'ngx-thumbnail-video';
 import { MatTooltip } from '@angular/material/tooltip';
+import { Clinic } from 'src/app/models/clinic';
 
 
 @Component({
@@ -17,7 +18,10 @@ import { MatTooltip } from '@angular/material/tooltip';
 export class PostComponent {
   @ViewChild("myTooltip") myTooltip!: MatTooltip
   @Input() postDetails!: any
-
+  @Input() withShare: boolean = true;
+  @Input() withFav: boolean = true;
+  @Input() clinic: Clinic | undefined;
+  
   clinicName: string = '';
   clinicImagePath: string = '';
   clinicPhoneNumber: string = '';
@@ -38,10 +42,10 @@ export class PostComponent {
   };
   constructor(private dialog: MatDialog, private router: Router, private favoriteService: FavoriteService, private snackBar: MatSnackBar) { }
   ngOnInit() {
-    this.clinicName = this.postDetails.clinicName;
-    this.clinicImagePath = this.postDetails.clinicImagePath;
-    this.clinicPhoneNumber = this.postDetails.clinicPhoneNumber;
-    this.creationTime = this.postDetails.creationTime;
+    this.clinicName = this.clinic ? this.clinic.name : this.postDetails.clinicName;
+    this.clinicImagePath = this.clinic ? this.clinic.imagePath : this.postDetails.clinicImagePath;
+    this.clinicPhoneNumber = this.clinic ? this.clinic.phoneNumber : this.postDetails.clinicPhoneNumber;
+    this.creationTime = this.postDetails.creationTime ?? this.postDetails.createdAt;
     var now = moment(new Date()); //todays date
     var end = moment(this.creationTime).add(-new Date().getTimezoneOffset() / 60, 'hours'); // another date
     var duration = moment.duration(now.diff(end));
@@ -59,22 +63,22 @@ export class PostComponent {
     this.dialog.open(RequestAnAppointmentComponent, {
       autoFocus: true,
       maxHeight: '90vh',
-      data : {
-        clinic:this.postDetails.clinicId,
-        providerId:0
+      data: {
+        clinic: this.postDetails.clinicId,
+        providerId: 0
       }
     })
   }
 
   goToPostDetails() {
-    this.dialog.closeAll();
     this.router.navigate(["post-details", this.postDetails.id])
   }
 
-  goToClinicDetails(){
+  goToClinicDetails() {
+    if(!this.withFav) return;
     this.router.navigate(['/clinics', this.postDetails.clinicId])
   }
-  
+
   copyPostPath() {
     return window.location.href.replace('home', `post-details/${this.postDetails.id}`)
   }

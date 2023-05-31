@@ -1,32 +1,57 @@
-<div class="main-container">
-  <div class="search" *ngIf="!data">
-    <input class="search-input" (keydown.enter)="$event.preventDefault()" #search placeholder="Search Locatoins..."
-      type="text" i18n-placeholder />
-    <div class="search-icons">
-      <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="1.2 1.2 29.05 29.083">
-        <g data-name="search-normal">
-          <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M26.212 14.417c0 6.514-5.281 11.795-11.795 11.795-6.515 0-11.796-5.281-11.796-11.795 0-6.515 5.281-11.796 11.796-11.796 6.514 0 11.795 5.281 11.795 11.796ZM24.81 27.116c.694 2.097 2.28 2.307 3.499.472 1.114-1.678.38-3.054-1.638-3.054-1.495-.013-2.333 1.153-1.861 2.582Z"
-            data-name="Vector" />
-        </g>
-      </svg>
+<div class="dialog-container">
+  <div class="main-container">
+    <div class="search" *ngIf="!data">
+      <input
+        class="search-input"
+        (keydown.enter)="$event.preventDefault()"
+        #search
+        placeholder="Search Locations"
+        type="text"
+        i18n-placeholder
+      />
+      <div class="search-icons">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="search-icon"
+          viewBox="1.2 1.2 29.05 29.083"
+        >
+          <g data-name="search-normal">
+            <path
+              fill="transparent"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M26.212 14.417c0 6.514-5.281 11.795-11.795 11.795-6.515 0-11.796-5.281-11.796-11.795 0-6.515 5.281-11.796 11.796-11.796 6.514 0 11.795 5.281 11.795 11.796ZM24.81 27.116c.694 2.097 2.28 2.307 3.499.472 1.114-1.678.38-3.054-1.638-3.054-1.495-.013-2.333 1.153-1.861 2.582Z"
+              data-name="Vector"
+            />
+          </g>
+        </svg>
+      </div>
     </div>
-  </div>
 
-  <div class="map-container">
-    <!-- <app-home-map [mapDialog]="true" [lat]="latitude" [lng]="longitude" (newMarkerPositions)="update($event)">
-      </app-home-map> -->
-    <google-map height="100%" width="100%" [center]="center" [zoom]="zoom" class="map-iframe"
-      (mapClick)="addMarker($event)">
-      <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"  [options]="markerOptions">
+    <google-map
+      height="100%"
+      width="100%"
+      [center]="center"
+      [zoom]="zoom"
+      class="map-iframe"
+      (mapClick)="addMarker($event)"
+    >
+      <map-marker
+        *ngFor="let markerPosition of markerPositions"
+        [position]="markerPosition"
+        [options]="markerOptions"
+      >
       </map-marker>
-      <map-directions-renderer *ngIf="(directionsResults$ | async) as directionsResults"
-      [directions]="directionsResults"></map-directions-renderer>
+      <map-directions-renderer
+        *ngIf="directionsResults$ | async as directionsResults"
+        [directions]="directionsResults"
+      ></map-directions-renderer>
     </google-map>
-    
-  </div>
 
-  <div class="button-container" *ngIf="!data">
-    <app-button i18n (click)="searchForClinics()">Select</app-button>
+    <div class="button-container" *ngIf="!data">
+      <app-button i18n (click)="searchForClinics()">Select</app-button>
+    </div>
   </div>
 </div>

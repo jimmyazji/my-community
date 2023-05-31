@@ -12,7 +12,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { timer } from 'rxjs';
 import { RequestAnAppointmentComponent } from 'src/app/components/appointments/request-an-appointment/request-an-appointment.component';
-import { MapDialogComponent } from 'src/app/components/map-dialog/map-dialog.component';
 import { SpecialMapComponent } from 'src/app/components/map-dialog/special-map/special-map.component';
 
 @Component({
@@ -122,8 +121,8 @@ export class ClinicComponent implements OnInit {
 
   openMap(location: Location) {
     const dialogRef = this.dialog.open(SpecialMapComponent, {
-      autoFocus: true,
       maxHeight: '42rem',
+      width: '90%',
       data: location
     });
   }

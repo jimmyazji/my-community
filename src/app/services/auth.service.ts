@@ -8,7 +8,7 @@ import jwt_decode from 'jwt-decode';
 })
 
 export class AuthService {
-  baseApiKey = 'https://mycommunity-api.solutions-it.net/app/api/'
+  baseApiKey = 'https://api.mycommunityclinics.com/app/api/'
   loginAcquired = new Subject();
   authChange = new Subject();
 

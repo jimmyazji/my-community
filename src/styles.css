@@ -113,6 +113,11 @@ body {
     background: none !important;
   }
 }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent;
+}
+
 .mat-mdc-form-field-focus-overlay {
   background: none !important;
 }
@@ -151,7 +156,6 @@ body {
 .mat-drawer-container {
   overflow: visible !important;
 }
-
 
 .mat-mdc-select-arrow {
   width: 48px !important;

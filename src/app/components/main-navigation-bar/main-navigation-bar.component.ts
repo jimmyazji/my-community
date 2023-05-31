@@ -31,7 +31,7 @@ export class MainNavigationBarComponent implements OnInit, OnDestroy {
   }
 
   login() {
-    const dialogRef = this.dialog.open(LoginDialogComponent);
+    const dialogRef = this.dialog.open(LoginDialogComponent, { panelClass: 'login-dialog', });
     dialogRef.afterClosed().subscribe(res => {
       this.handleAuth();
       if (this.authenticated) {

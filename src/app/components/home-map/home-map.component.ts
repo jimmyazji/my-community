@@ -104,7 +104,6 @@ export class HomeMapComponent {
   openMap(): void {
     this.mapOpen = true;
     this.mapToggled.emit(this.mapOpen);
-
   }
 
   closeMap(): void {
