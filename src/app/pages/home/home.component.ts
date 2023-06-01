@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -33,7 +33,9 @@ export class HomeComponent implements OnInit {
   insurancePagination: any;
   recommendedClinics: Clinic[] = [];
 
-  constructor(private router: Router, private clinicService: ClinicService, public dialog: MatDialog) {
+  @ViewChild('mapIcon') mapIcon!: ElementRef;
+  @ViewChild('insuraceSearchInput') insuraceSearchInput!: ElementRef;
+  constructor(private router: Router, private clinicService: ClinicService, public dialog: MatDialog, private elementRef: ElementRef) {
     this.pagination = new PaginationService();
     this.clinicPagination = new PaginationService();
     this.insurancePagination = new PaginationService();
@@ -48,9 +50,14 @@ export class HomeComponent implements OnInit {
     this.getStories();
     this.getPosts();
     this.getAllClinics();
-    this.getRecommendedClinics()
+    this.getRecommendedClinics();
   }
 
+  ngAfterContentInit(){
+    setTimeout(()=>{
+      this.insuraceSearchInput.nativeElement.classList.add('focus');
+    },1000)
+  }
   getRecommendedClinics() {
     this.clinicService.getRecommendedClinics().subscribe((res: Clinic[]) => {
       this.recommendedClinics = res;
@@ -70,10 +77,12 @@ export class HomeComponent implements OnInit {
   }
 
   searchInInsurance(searchWord: any) {
+    this.insuraceSearchInput.nativeElement.classList.remove('focus');
     this.clinicService.getAllInsurances(searchWord.value).subscribe((res: Insurance[]) => {
       this.insurances = res;
       this.PaginatedInsurances = res;
       this.insurancePagination.buildArray({ items: this.PaginatedInsurances, pageSize: 8 });
+      this.mapIcon.nativeElement.classList.add('focus');
     })
   }
 
@@ -186,6 +195,7 @@ export class HomeComponent implements OnInit {
 
 
   openMapForSearch() {
+    this.mapIcon.nativeElement.classList.remove('focus');
     const dialogRef = this.dialog.open(SpecialMapComponent, {
       autoFocus: true,
       width: '90%',

@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./story.component.css']
 })
 export class StoryComponent {
-  @Input() story:any
-  
+  @Input() story:any;
 }

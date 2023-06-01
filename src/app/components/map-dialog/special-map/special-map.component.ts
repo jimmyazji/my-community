@@ -21,7 +21,7 @@ export class SpecialMapComponent {
   };
 
   directionsResults$!: Observable<google.maps.DirectionsResult | undefined>;
-  zoom = 2;
+  zoom = 4;
 
   scaledSize: google.maps.Size = {
     width: 25,
@@ -107,10 +107,10 @@ export class SpecialMapComponent {
   ngAfterViewInit() {
 
     const searchBox = new google.maps.places.SearchBox(
-      this.searchField.nativeElement
+      this.searchField?.nativeElement
     )
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
-      this.searchField.nativeElement
+      this.searchField?.nativeElement
     )
     searchBox.addListener('places_changed', () => {
       const places = searchBox.getPlaces();

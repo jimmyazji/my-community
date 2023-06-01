@@ -90,3 +90,11 @@
 video {
   height: 280px;
 }
+
+.favorite-button svg {
+  width: 1.5rem;
+}
+
+.favorite-button:hover svg {
+  fill: #ff3d3d;
+}

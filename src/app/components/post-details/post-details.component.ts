@@ -6,6 +6,8 @@ import { VideoPlayerConfig } from 'ngx-thumbnail-video';
 import { ClinicService } from 'src/app/services/clinic.service';
 import { RequestAnAppointmentComponent } from '../appointments/request-an-appointment/request-an-appointment.component';
 import { MatTooltip } from '@angular/material/tooltip';
+import { FavoriteService } from 'src/app/services/favorite.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-post-details',
@@ -29,11 +31,17 @@ export class PostDetailsComponent {
   };
 
 
-  constructor(private route: ActivatedRoute,private router:Router , private clinicService: ClinicService, private dialog: MatDialog) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private clinicService: ClinicService,
+    private dialog: MatDialog,
+    private favoriteService: FavoriteService,
+    private snackBar: MatSnackBar) {
     this.route.params.subscribe((params) => {
       this.clinicService.getPostDetailsById(params['id']).subscribe(
         (res: any) => {
-          this.data = res.value
+          this.data = res.value;
           this.creationTime = this.data.creationTime;
           var now = moment(new Date()); //todays date
           var end = moment(this.creationTime).add(-new Date().getTimezoneOffset() / 60, 'hours'); // another date
@@ -45,6 +53,21 @@ export class PostDetailsComponent {
     })
   }
 
+  toggleFavorite() {
+    this.data.isFavourite = !this.data.isFavourite;
+    this.favoriteService.addOrRemovePost(this.data.id, this.data.isFavourite).subscribe((res) => {
+      if (!res.status) {
+        this.unToggleFavorite();
+      }
+    }, (err) => { this.unToggleFavorite(); })
+  }
+
+  unToggleFavorite() {
+    this.snackBar.open('Something went wrong, please try again', 'Ok', {
+      duration: 3000
+    });
+    this.data.isFavourite = !this.data.isFavourite;
+  }
 
   ngOnInit() {
 
@@ -56,14 +79,14 @@ export class PostDetailsComponent {
     this.dialog.open(RequestAnAppointmentComponent, {
       autoFocus: true,
       maxHeight: '90vh',
-      data :{
-        clinic:this.data.clinicId,
-        providerId:0
+      data: {
+        clinic: this.data.clinicId,
+        providerId: 0
       }
     })
   }
 
-  backToHome(){
+  backToHome() {
     window.history.back();
   }
   copyPostPath() {

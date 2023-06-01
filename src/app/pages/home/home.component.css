@@ -174,3 +174,21 @@
     flex-direction: row;
   }
 }
+
+.selected {
+  transform: scale(1.1);
+}
+
+.focus{
+  filter: brightness(1);
+  animation: brightness-animation 2s ease-in-out infinite alternate;
+}
+
+@keyframes brightness-animation {
+  0% {
+    filter: brightness(0.9);
+  }
+  100% {
+    filter: brightness(1.3);
+  }
+}

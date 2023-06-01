@@ -55,8 +55,9 @@
         placeholder="Search insurances..."
         type="text"
         i18n-placeholder
+        #insuraceSearchInput
       />
-      <div class="search-icons">
+      <div class="search-icons" >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="search-icon"
@@ -74,7 +75,7 @@
             />
           </g>
         </svg>
-        <button class="search-submit" (click)="openMapForSearch()">
+        <button class="search-submit" (click)="openMapForSearch()" #mapIcon>
           <svg
             class="search-submit--icon"
             xmlns="http://www.w3.org/2000/svg"
