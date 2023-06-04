@@ -1,5 +1,4 @@
 .review-card-container {
-  display: flex;
   gap: 0.5rem;
   padding: 1rem;
   border-radius: 0.25rem;
@@ -8,6 +7,16 @@
 
 .review-card-container:hover {
   background-color: var(--main-background);
+}
+
+.reviewer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.review-head {
+  display: flex;
+  justify-content: space-between;
 }
 
 .review-body {
@@ -19,6 +28,7 @@
 .reviewer-avatar {
   height: 6rem;
   aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: 99rem;
   border: 1px solid var(--primary-color);
 }

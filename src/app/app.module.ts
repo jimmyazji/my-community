@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule} from '@angular/material/expansion'; 
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { MaterialModule } from './material/material.module';
 import { HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
@@ -122,6 +123,7 @@ import { SpecialMapComponent } from './components/map-dialog/special-map/special
     ReactiveFormsModule,
     MatTabsModule,
     MatSelectModule,
+    MatExpansionModule,
     MaterialModule,
     LoadingBarHttpClientModule,
     BrowserAnimationsModule,

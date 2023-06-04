@@ -9,11 +9,8 @@
 }
 
 .story-img {
-  width: 100%;
-  max-width: 100%;
   object-fit: cover;
-  height: 285px !important;
-  min-height: 285px !important;
+  height: 18rem;
   filter: brightness(80%);
 }
 

@@ -178,15 +178,26 @@
 
 .rating-input {
   position: relative;
+  flex: 1.5 0.5 16rem;
 }
 
 .rating-textarea {
   background-color: var(--main-background);
   border: 1px solid transparent;
-  padding: 1rem 8rem 1rem 2rem;
+  padding: 1.5rem 1.5rem 6rem 1.5rem;
+  white-space: pre-wrap;
+  align-content: flex-start;
+  display: flex;
+  width: 100%;
   filter: drop-shadow(0px 1px 0.5px rgba(0, 0, 0, 0.16));
   border-radius: 0.25rem;
   resize: none;
+}
+
+.rate-input {
+  flex: 0.5 1.5 16rem;
+  display: flex;
+  justify-content: center;
 }
 
 .reviews-container {

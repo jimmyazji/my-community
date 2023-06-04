@@ -3,9 +3,9 @@ import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { LogoutConfirmationDialogComponent } from '../logout-confirmation-dialog/logout-confirmation-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-main-navigation-bar',
   templateUrl: './main-navigation-bar.component.html',
@@ -16,54 +16,39 @@ export class MainNavigationBarComponent implements OnInit, OnDestroy {
   @Input() drawerOpened: boolean = false;
   sideMenuOpen: boolean = false;
   authenticated: boolean = false;
-  user: User | null = new User;
+  user: User | null = null;
   loginAcquiredSubscription: Subscription = new Subscription;
+  authChangeSubscription: Subscription = new Subscription;
 
   constructor(
     public dialog: MatDialog,
     private authService: AuthService,
-    private snackBar: MatSnackBar,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    this.loginAcquiredSubscription = this.authService.getLoginAcquired().subscribe(() => this.login());
     this.handleAuth();
+    this.loginAcquiredSubscription = this.authService.getLoginAcquired().subscribe(() => this.login());
+    this.authChangeSubscription = this.authService.getAuthChange().subscribe(() => this.handleAuthChange());
   }
 
   login() {
-    const dialogRef = this.dialog.open(LoginDialogComponent, { panelClass: 'login-dialog', });
-    dialogRef.afterClosed().subscribe(res => {
-      this.handleAuth();
-      if (this.authenticated) {
-        this.snackBar.open('Logged in successfully', 'Ok', {
-          duration: 3000
-        });
-      }
-    });
+    this.dialog.open(LoginDialogComponent, { panelClass: 'login-dialog', });
+  }
+
+  handleAuthChange() {
+    this.handleAuth();
+    const message = this.authenticated ? 'Successfully logged in' : 'Successfully logged out'
+    this.snackBar.open(message, 'ok', { duration: 3000 })
   }
 
   handleAuth() {
     this.authenticated = this.authService.isAuthenticated();
-    if (this.authenticated) {
-      this.user = this.authService.getUser();
-    }
-    else { this.user = new User }
+    if (this.authenticated) this.user = this.authService.getUser();
   }
 
   logout() {
-    const dialogRef = this.dialog.open(LogoutConfirmationDialogComponent);
-    dialogRef.afterClosed().subscribe(res => {
-      if (res) {
-        this.authService.logout();
-        this.handleAuth();
-        if (!this.authenticated) {
-          this.snackBar.open('Logged out successfully', 'Ok', {
-            duration: 3000
-          });
-        }
-      }
-    });
-
+    this.dialog.open(LogoutConfirmationDialogComponent);
   }
 
   toggleDrawer() {
@@ -72,6 +57,7 @@ export class MainNavigationBarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.loginAcquiredSubscription.unsubscribe();
+    this.authChangeSubscription.unsubscribe();
   }
 
 }

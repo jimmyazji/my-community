@@ -1,7 +1,9 @@
 <div class="review-card-container">
-  <img [src]="review?.userImagePath" class="reviewer-avatar" alt="" />
-  <div class="review-body">
-    <h2 class="reviewer-name">{{ review?.userName }}</h2>
+  <div class="review-head">
+    <div class="reviewer">
+      <img [src]="review?.userImagePath" class="reviewer-avatar" alt="" />
+      <h2 class="reviewer-name">{{ review?.userName }}</h2>
+    </div>
     <star-rating
       class="review-rating"
       size="medium"
@@ -10,6 +12,8 @@
       [readOnly]="true"
       [rating]="review?.rate ?? 0"
     ></star-rating>
+  </div>
+  <div class="review-body">
     <p class="review-content">
       {{ review?.content }}
     </p>

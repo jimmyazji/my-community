@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -7,9 +8,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./logout-confirmation-dialog.component.css']
 })
 export class LogoutConfirmationDialogComponent {
-  constructor(public dialogRef: MatDialogRef<LogoutConfirmationDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<LogoutConfirmationDialogComponent>, private authService: AuthService) { }
 
   confirmLogout() {
+    this.authService.logout()
     this.dialogRef.close(true);
   }
 }

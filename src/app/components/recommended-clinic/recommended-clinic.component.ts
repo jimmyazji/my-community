@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, timer } from 'rxjs';
+import { timer } from 'rxjs';
 import { RequestAnAppointmentComponent } from '../appointments/request-an-appointment/request-an-appointment.component';
-import { ClinicService } from 'src/app/services/clinic.service';
 import { Router } from '@angular/router';
 import { Clinic } from 'src/app/models/clinic';
 
@@ -13,8 +11,6 @@ import { Clinic } from 'src/app/models/clinic';
   styleUrls: ['./recommended-clinic.component.css']
 })
 export class RecommendedClinicComponent {
-
-
   @Input() clinic: Clinic = new Clinic;
   @Input() message!: string
   @Output() newItemEvent = new EventEmitter<string>();
@@ -23,20 +19,13 @@ export class RecommendedClinicComponent {
     this.newItemEvent.emit(value);
   }
 
-  constructor(
-    public dialog: MatDialog,
-    private router: Router
-  ) {
-  }
-
-  ngOnInit() {
-  }
-
+  constructor(public dialog: MatDialog, private router: Router) { }
+  
   ngOnChanges(changes: any) {
     this.clinic = changes.clinic?.currentValue;
-    setTimeout(()=>{
+    setTimeout(() => {
       this.message = changes.message?.currentValue;
-    },1000)
+    }, 1000)
 
   }
 

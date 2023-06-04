@@ -56,7 +56,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
+  gap: 0.25rem;
+  font-size: 0.75rem;
 }
 
 .post-footer.centered {

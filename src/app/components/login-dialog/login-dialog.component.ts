@@ -40,6 +40,7 @@ export class LoginDialogComponent {
         this.errorResponse = res.message;
       } else {
         localStorage.setItem('authToken', res.value.token);
+        this.authService.authChange.next(true);
         this.dialog.closeAll();
       }
     }, (err) => {
@@ -51,7 +52,7 @@ export class LoginDialogComponent {
   register() {
     this.dialog.closeAll()
     timer(300).subscribe(
-      () => { const dialogRef = this.dialog.open(RegisterDialogComponent, { maxHeight: '42rem' }); }
+      () => { this.dialog.open(RegisterDialogComponent, { maxHeight: '42rem' }); }
     )
   }
 }

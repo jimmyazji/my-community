@@ -44,7 +44,25 @@
       >contact us</a
     >
   </li>
-  <li class="navigation-item accent">
+  <li class="navigation-item inverted" *ngIf="!authenticated">
     <a i18n (click)="handleNavigation()" (click)="login()">Login</a>
+  </li>
+
+  <li class="navigation-item" *ngIf="authenticated">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header
+        ><div class="user-card">
+          <img [src]="user?.imagePath" alt="" class="user-avatar" />
+          <div class="user-info">
+            <div class="user-name">{{ user?.name }}</div>
+            <div class="user-email">{{ user?.email }}</div>
+          </div>
+        </div>
+      </mat-expansion-panel-header>
+      <ul class="auth-action-list">
+        <li class="auth-action"><button routerLink="profile">Profile</button></li>
+        <li class="auth-action"><button (click)="logout()">Logout</button></li>
+      </ul>
+    </mat-expansion-panel>
   </li>
 </ul>

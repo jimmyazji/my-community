@@ -45,18 +45,55 @@
   border-radius: 90rem;
   transition: all 200ms ease-out;
 }
-.navigation-item:focus-within ::after {
-  opacity: 0.3;
-}
-
-.navigation-item:hover ::after {
-  opacity: 0.3;
-}
 
 .navigation-item .active::after {
   opacity: 1;
 }
 
-.navigation-item.accent {
+.navigation-item.inverted {
   background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.user-card {
+  display: flex;
+  padding: 0.5rem 1rem 0.5rem 0;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-info {
+  line-height: 0.825rem;
+}
+
+.user-email {
+  font-size: 0.75rem;
+}
+
+.user-avatar {
+  aspect-ratio: 1 / 1;
+  height: 2.5rem;
+  object-fit: cover;
+  border-radius: 99rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--primary-color);
+  flex-shrink: 0;
+}
+
+.auth-action-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.auth-action {
+  padding: 1rem 0;
+}
+
+.auth-action button {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
 }
