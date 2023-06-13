@@ -20,7 +20,7 @@ export class RecommendedClinicComponent {
   }
 
   constructor(public dialog: MatDialog, private router: Router) { }
-  
+
   ngOnChanges(changes: any) {
     this.clinic = changes.clinic?.currentValue;
     setTimeout(() => {
@@ -36,7 +36,7 @@ export class RecommendedClinicComponent {
         const dialogRef = this.dialog.open(RequestAnAppointmentComponent, {
           data: { clinic: this.clinic },
           autoFocus: false,
-          maxHeight: '40rem'
+          maxHeight: '90vh',
         });
       }
     )

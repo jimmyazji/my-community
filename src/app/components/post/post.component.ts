@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FavoriteService } from './../../services/favorite.service';
 import { Component, Input, Inject, ViewChild } from '@angular/core';
@@ -21,7 +22,7 @@ export class PostComponent {
   @Input() withShare: boolean = true;
   @Input() withFav: boolean = true;
   @Input() clinic: Clinic | undefined;
-  
+
   clinicName: string = '';
   clinicImagePath: string = '';
   clinicPhoneNumber: string = '';
@@ -40,7 +41,7 @@ export class PostComponent {
     height: '400px',
     frontendPreload: false
   };
-  constructor(private dialog: MatDialog, private router: Router, private favoriteService: FavoriteService, private snackBar: MatSnackBar) { }
+  constructor(private dialog: MatDialog, private router: Router, private favoriteService: FavoriteService, private snackBar: MatSnackBar, private authService: AuthService) { }
   ngOnInit() {
     this.clinicName = this.clinic ? this.clinic.name : this.postDetails.clinicName;
     this.clinicImagePath = this.clinic ? this.clinic.imagePath : this.postDetails.clinicImagePath;
@@ -63,9 +64,10 @@ export class PostComponent {
     this.dialog.open(RequestAnAppointmentComponent, {
       autoFocus: true,
       maxHeight: '90vh',
-      data : {
-        clinic:{id:this.postDetails.clinicId},
-        providerId:0
+      width: '32rem',
+      data: {
+        clinic: { id: this.postDetails.clinicId },
+        providerId: 0
       }
     })
   }
@@ -75,7 +77,7 @@ export class PostComponent {
   }
 
   goToClinicDetails() {
-    if(!this.withFav) return;
+    if (!this.withFav) return;
     this.router.navigate(['/clinics', this.postDetails.clinicId])
   }
 
@@ -92,6 +94,10 @@ export class PostComponent {
   }
 
   toggleFavorite() {
+    if (!this.authService.isAuthenticated()) {
+      this.authService.loginAcquired.next(true);
+      return;
+    }
     this.postDetails.isFavourite = !this.postDetails.isFavourite;
     this.favoriteService.addOrRemovePost(this.postDetails.id, this.postDetails.isFavourite).subscribe((res) => {
       if (!res.status) {

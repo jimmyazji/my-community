@@ -127,6 +127,7 @@
   grid-template-columns: repeat(auto-fit, min(100%, 9rem));
   gap: 1rem;
   padding: 0 0.5rem 1rem 0.5rem;
+  justify-content: center;
 }
 
 .location-card-container {
@@ -150,6 +151,7 @@
   padding: 0 0.5rem 1rem 0.5rem;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .insurances-grid {
@@ -158,6 +160,7 @@
   padding: 0 0.5rem 1rem 0.5rem;
   grid-template-columns: repeat(auto-fit, min(100%, 8rem));
   gap: 1rem;
+  justify-content: center;
 }
 
 .providers-grid {
@@ -166,6 +169,7 @@
   padding: 0 0.5rem 1rem 0.5rem;
   grid-template-columns: repeat(auto-fit, min(100%, 14rem));
   gap: 1rem;
+  justify-content: center;
 }
 
 .review {

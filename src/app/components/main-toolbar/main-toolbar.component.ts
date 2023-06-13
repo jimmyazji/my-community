@@ -17,11 +17,13 @@ export class MainToolbarComponent {
 
   
   toggleNotifications() {
-    if (!this.checkAuth()) return;
+    if (!this.authService.isAuthenticated()) {
+      this.authService.loginAcquired.next(true);
+      this.menuTrigger?.closeMenu();
+      return;
+    }
     this.menuTrigger?.openMenu();
   }
-
-  
 
   openFavorite() {
     if (!this.checkAuth()) return;

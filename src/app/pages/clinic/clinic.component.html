@@ -53,7 +53,8 @@
                 data-name="Vector"
               />
             </g></svg
-          >{{ clinic.phoneNumber }}
+          >
+          <a :href="tel:clinic.phoneNumber">{{ clinic.phoneNumber }}</a>
         </h4>
       </div>
       <p class="clinic-description">{{ clinic.description }}</p>

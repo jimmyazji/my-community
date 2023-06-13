@@ -113,7 +113,7 @@ export class ClinicComponent implements OnInit {
         const dialogRef = this.dialog.open(RequestAnAppointmentComponent, {
           data: { clinic: this.clinic, providerId: undefined },
           autoFocus: false,
-          maxHeight: '40rem'
+          maxHeight: '90vh'
         });
       }
     )
