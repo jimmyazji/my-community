@@ -5,25 +5,25 @@
 .main-container {
   overflow: hidden;
   position: relative;
-  padding-bottom: 150%;
+  /* padding-bottom: 150%; */
 }
 
 @media only screen and (min-width: 30rem) {
   .main-container {
     padding-bottom: 100%;
-  }  
+  }
 }
 
 @media only screen and (min-width: 42rem) {
   .main-container {
     padding-bottom: 75%;
-  }  
+  }
 }
 
 @media only screen and (min-width: 60rem) {
   .main-container {
     padding-bottom: 45%;
-  }  
+  }
 }
 
 .map-iframe {
@@ -85,8 +85,11 @@
 }
 
 .button-container {
+  width: 100%;
   margin-top: 0.8rem;
   display: flex;
   justify-content: flex-end;
   padding: 0.5rem;
+  bottom: 0;
+  position: absolute;
 }

@@ -31,7 +31,7 @@
     </div>
 
     <google-map
-      height="100%"
+      [height]="data?'100%':'85%'"
       width="100%"
       [center]="center"
       [zoom]="zoom"

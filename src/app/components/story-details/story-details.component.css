@@ -3,6 +3,7 @@
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.16));
   padding: 1rem;
   border-radius: 0.25rem;
+  width: 50wv;
 }
 
 .post-head {
@@ -46,6 +47,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 15rem;
+  width: 15rem;
+  word-break: break-all;
+  text-align: center;
 }
 
 .button {
