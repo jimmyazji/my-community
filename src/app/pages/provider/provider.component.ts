@@ -40,6 +40,9 @@ export class ProviderComponent implements OnInit, OnDestroy {
       this.providerService.getProviderDetails(params['id']).subscribe(
         (res) => {
           this.provider = res;
+          if (this.provider.recommendedByUser != null) {
+            this.getRecommendation();
+          }
         })
     })
   }
@@ -77,7 +80,7 @@ export class ProviderComponent implements OnInit, OnDestroy {
       this.authService.loginAcquired.next(true);
     }
     this.route.params.subscribe((params) => {
-      this.providerService.recommendProvider({ value: value, doctorId: params['id'] }).subscribe(
+      this.providerService.recommendProvider({ recommended: value, doctorId: params['id'] }).subscribe(
         (res) => {
           this.provider.recommendedByUser = value;
           this.getRecommendation();
@@ -122,6 +125,11 @@ export class ProviderComponent implements OnInit, OnDestroy {
     this.authChangeSubscription = this.authService.getAuthChange().subscribe(() => this.recommendedCheck());
   }
 
+  setBarWidth(recommended: boolean) {
+    return {
+      'width': recommended ? `${this.recommendation.upVotesPercentage}%` : `${this.recommendation.downVotesPercentage}%`
+    }
+  }
 
   ngOnDestroy(): void {
     this.authChangeSubscription.unsubscribe();

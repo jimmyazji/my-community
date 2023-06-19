@@ -58,7 +58,7 @@
               <div
                 class="recommendation-fill"
                 *ngIf="recommendation.upVotesPercentage != 0"
-                [style.width]="recommendation.upVotesPercentage + '%'"
+                [ngStyle]="setBarWidth(true)"
               >
                 {{ recommendation.upVotesPercentage + "%" }}
               </div>
@@ -76,7 +76,7 @@
               <div
                 class="recommendation-fill"
                 *ngIf="recommendation.downVotesPercentage != 0"
-                [style.width]="recommendation.downVotesPercentage + '%'"
+                [style.width]="setBarWidth(false)"
               >
                 {{ recommendation.downVotesPercentage + "%" }}
               </div>
