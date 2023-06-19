@@ -20,7 +20,12 @@
   flex-direction: column;
   overflow: hidden;
 }
-
+@media only screen and (min-width: 85rem) {
+  .recommended-clinics {
+    height: 80vh;
+    height: 80dvh;
+  }
+}
 .recommended-clinic-container {
   background-color: #fff;
 }
@@ -135,5 +140,3 @@
   margin: 0;
   font-size: var(--message-font-size);
 }
-
-
