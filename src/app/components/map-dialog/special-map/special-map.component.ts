@@ -21,7 +21,7 @@ export class SpecialMapComponent {
   };
 
   directionsResults$!: Observable<google.maps.DirectionsResult | undefined>;
-  zoom = 4;
+  zoom = 8;
 
   scaledSize: google.maps.Size = {
     width: 25,
@@ -30,12 +30,12 @@ export class SpecialMapComponent {
       return other.width === this.width && other.height === this.height;
     }
   };
-  markerOptions: google.maps.MarkerOptions = { 
-    draggable: false, 
+  markerOptions: google.maps.MarkerOptions = {
+    draggable: false,
     icon: {
       url: '../../../assets/images/21-1024.webp',
       scaledSize: this.scaledSize
-    } 
+    }
  };
   markerPositions: google.maps.LatLngLiteral[] = [];
 
@@ -70,7 +70,7 @@ export class SpecialMapComponent {
         };
         this.markerPositions.push(this.center);
       }
-      
+
     });
 
   }

@@ -22,6 +22,6 @@
     </div>
   </div>
   <div class="post-tail">
-    {{ data.name }}
+    {{ data.text.slice(0, 150) }}{{ data.text.length > 150 ? "..." : "" }}
   </div>
 </div>
