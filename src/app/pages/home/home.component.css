@@ -179,10 +179,14 @@
   transform: scale(1.1);
 }
 
-.focus{
+.focus {
   filter: brightness(1);
   animation: brightness-animation 2s ease-in-out infinite alternate;
   transition: 0.3s;
+}
+
+.recommended-clinic {
+  display: none;  
 }
 
 @keyframes brightness-animation {
@@ -195,5 +199,3 @@
     transform: scale(1.018);
   }
 }
-
-

@@ -185,7 +185,7 @@
       </app-button> -->
   </section>
   <div class="home-main">
-    <ng-container *ngIf="recommendedOpen">
+    <div class="recommended-clinic" *ngIf="recommendedOpen">
       <ng-container *ngIf="recommendedClinics.length > 0; else other_content">
         <app-recommended-clinic
           *ngFor="let clinic of recommendedClinics | slice : 0 : 1"
@@ -198,7 +198,7 @@
           [message]="'There is currently no recommended clinic'"
         ></app-recommended-clinic>
       </ng-template>
-    </ng-container>
+    </div>
     <app-social [stories]="stories" [posts]="posts"> </app-social>
     <div class="home-main">
       <app-home-map

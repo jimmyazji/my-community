@@ -106,44 +106,4 @@
     >
   </div>
 </article>
-<article class="responsive-recommended-clinics">
-  <div class="recommended-clinics-container">
-    <div class="recommended-clinic-navigator" *ngIf="!message">
-      <button
-        class="pagination-button"
-        (click)="paginateOverRecommendedClinics('before')"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.967 3.967 39.8 39.8">
-          <g data-name="arrow-circle-right">
-            <path
-              fill="currentColor"
-              fill-rule="evenodd"
-              d="M23.865 3.978c10.958 0 19.887 8.93 19.887 19.888 0 10.959-8.93 19.888-19.887 19.888-10.958 0-19.887-8.93-19.887-19.888 0-10.958 8.93-19.888 19.887-19.888ZM18.316 24.92l7.02 7.02c.299.299.677.438 1.055.438.378 0 .755-.139 1.054-.437a1.5 1.5 0 0 0 0-2.108l-5.966-5.967 5.966-5.966a1.5 1.5 0 0 0 0-2.109 1.5 1.5 0 0 0-2.108 0l-7.02 7.02a1.465 1.465 0 0 0 0 2.11Z"
-              data-name="Vector"
-            />
-          </g>
-        </svg>
-      </button>
-      <button
-        class="pagination-button"
-        (click)="paginateOverRecommendedClinics('after')"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="3.967 3.967 39.8 39.8">
-          <g data-name="arrow-circle-right">
-            <path
-              fill="currentColor"
-              fill-rule="evenodd"
-              d="M23.866 3.978c-10.958 0-19.888 8.93-19.888 19.888 0 10.959 8.93 19.888 19.888 19.888 10.959 0 19.888-8.93 19.888-19.888 0-10.958-8.93-19.888-19.888-19.888Zm5.549 20.942-7.02 7.02a1.475 1.475 0 0 1-1.055.438c-.378 0-.756-.139-1.054-.437a1.5 1.5 0 0 1 0-2.108l5.967-5.967-5.967-5.966a1.5 1.5 0 0 1 0-2.109 1.5 1.5 0 0 1 2.108 0l7.02 7.02a1.465 1.465 0 0 1 0 2.11Z"
-            />
-          </g>
-        </svg>
-      </button>
-    </div>
-    <h2 class="responsive-recommended-clinics-title" i18n>
-      Recommended Clinics
-    </h2>
-    <div class="message-container" *ngIf="message">
-      <h3>{{ message }}</h3>
-    </div>
-  </div>
-</article>
+

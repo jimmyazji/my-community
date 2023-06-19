@@ -74,7 +74,6 @@
   .map-container.open {
     width: 40rem;
   }
-
 }
 
 @media only screen and (min-width: 85rem) {
@@ -87,7 +86,16 @@
   }
 }
 
-
-.icon{
+.icon {
   width: 20px !important;
+}
+
+.responsive-map{
+  display: block;
+}
+
+@media only screen and (min-width: 85rem) {
+  .responsive-map {
+    display: none;
+  }
 }
