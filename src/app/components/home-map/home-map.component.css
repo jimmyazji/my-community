@@ -1,6 +1,6 @@
 .map-container {
   position: sticky;
-  top: 6.5rem;
+  top: 6rem;
   overflow: hidden;
   border-radius: 0.25rem;
   transition: width 200ms ease-out;
@@ -8,9 +8,13 @@
   z-index: 40;
   border: 2px solid var(--primary-color);
 }
+.regular-map {
+  display: none;
+}
 
 .map-iframe {
-  height: 36rem;
+  height: 80vh;
+  height: 80dvh;
   z-index: 40;
   display: block;
 }
@@ -90,12 +94,15 @@
   width: 20px !important;
 }
 
-.responsive-map{
+.responsive-map {
   display: block;
 }
 
 @media only screen and (min-width: 85rem) {
   .responsive-map {
     display: none;
+  }
+  .regular-map {
+    display: block;
   }
 }

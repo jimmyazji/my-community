@@ -28,7 +28,30 @@
     </div>
   </mat-tab>
   <mat-tab label="Recommended Clinics">
-    <app-recommended-clinic>
-    </app-recommended-clinic>
+    <app-recommended-clinic> </app-recommended-clinic>
   </mat-tab>
 </mat-tab-group>
+<div
+  id="map"
+  class="map-container regular-map"
+  [ngClass]="mapOpen && mapDialog ? 'open-dialog' : mapOpen ? 'open' : 'close'"
+>
+  <google-map
+    height="100%"
+    width="100%"
+    [center]="center"
+    [zoom]="zoom"
+    class="map-iframe"
+    (mapClick)="addMarker($event)"
+  >
+    <map-marker
+      *ngFor="let markerPosition of markerPositions"
+      [position]="markerPosition"
+      [options]="markerOptions"
+    >
+    </map-marker>
+  </google-map>
+  <div class="iframe-mask" (click)="openMap()" (keydown.esc)="closeMap()">
+    Click to expand
+  </div>
+</div>
